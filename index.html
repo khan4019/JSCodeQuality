@@ -276,6 +276,66 @@ console.log(NaN); // NaN
 				</section>
 				<section>
 					<section>
+						<h2>Some pattern</h2>
+						<br>
+						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
+					</section>
+					<section>
+			
+						<pre><code>
+document.getElementsByName()
+document.getElementsByClassName()
+document.getElementsByTagName()
+						</code></pre>
+						<pre class="fragment"><code>
+document.images
+document.links
+document.forms
+document.scripts
+document.styleSheets 
+						</code></pre>
+						<aside class="notes">
+							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Increase readability by using switch statement</h2>
+						<pre><code>
+var inspect_me = 0, 
+    result = '';
+switch (inspect_me) { 
+case 0:
+   result = "zero";
+   break; 
+case 1:
+   result = "one";
+   break; 
+default:
+   result = "unknown";
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Indentation</h2>
+
+					</section>
+					<section>
+						<h2>Curly braces</h2>
+						<pre><code>
+// bad practice 
+for (var i = 0; i < 10; i += 1)
+   alert(i); 
+   alert(i + " is " + (i % 2 ? "odd" : "even"));
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>simple js lint rules</h2>
+					<br>
+					<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">JS patterns</a>
+				</section>
+				<section>
+					<section>
 						<h2>Lay down the reality</h2>
 						<blockquote cite="https://www.sitepoint.com/write-maintainable-javascript/">
 						&ldquo;Almost every developer has had the experience of maintaining or taking over a legacy project. Or, maybe it’s an old project which got picked up again. Common first thoughts are to throw away the code base, and start from scratch. The code can be messy, undocumented and it can take days to fully understand everything. But, with proper planning, analysis, and a good workflow, it is possible to turn a spaghetti codebase into a clean, organised, and scalable one.&rdquo;
@@ -493,13 +553,19 @@ const [last, ...initial] = [1, 2, 3].reverse();
 				</section>
 
 				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
+					<section>
+						<h2>Style Guide</h2>
+					</section>
+					<section>
+						<h2>List of style guides</h2>
+						<ul>
+							<li><a href="https://github.com/airbnb/javascript">Airbnb Style Guide</a></li>
+							<li><a href="http://speakingjs.com/es5/ch26.html"> Meta Code Style Guide</a></li>
+							
+							<li><a href=""></a></li>
+							<li><a href=""></a></li>
+						</ul>
+					</section>
 				</section>
 
 				<section>
