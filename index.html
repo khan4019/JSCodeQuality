@@ -51,29 +51,191 @@
 				<section>
 					<h2>TODO: Very good</h2>
 					<ul>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
-						<li><a href=""></a></li>
+						<li>What do you mean by code quality</li>
+						<li>How we can measure code quality</li>
+						<li>what specific about JS code quality</li>
+						<li>Manage large application</li>
+						<li>Few mistakes in JS</li>
+						<li>
+							<ul>
+								<li>Design/Architecture/Code review</li>
+								<li>Unit test</li>
+								<li>Code Analysis tools</li>
+								<li>Security</li>
+								<li></li>
+							</ul>
+						</li>
 					</ul>
 				</section>
 				<section>
 					<section>
 						<h2>Medium</h2>
+						<ul>
+							<li><a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a></li>
+							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
+						</ul>
 					</section>
 					<section>
 						<h2>Less important</h2>
 						<ul>
 							<li><a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring JS video store</a></li>
 							<li><a href="https://github.com/bmeck/UnambiguousJavaScriptGrammar/blob/master/README.md ">Unambiguous JavaScript Grammar</a></li>
-							<li><a href=""></a></li>
+							<li><a href="http://developer.telerik.com/featured/web-going-2016/">what to expect</a></li>
 						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Code Quality</h2>
+					</section>
+					<section>
+						<blockquote>Code quality is a loose approximation of how long-term useful and long-term maintainable the code is.</blockquote>
+						<br>
+						<a href="https://www.quora.com/How-do-you-define-code-quality">define code quality</a>
+					</section>
+					<section>
+						<ul>
+							<li>Clear and understandable design and implementation.
+							<li>Well defined interfaces.
+							<li>Ease of build and use.
+							<li>Ease of extensibility.
+							<li>Minimum extra dependencies.
+							<li>Tests and examples.
+							<li>Documentation, better yet -- self-explaining code.
+							<li>Up to date means to contact the developer.
+						</ul>
+						<ul>
+							<li>Things are clever, but not too clever
+							<li>Algorithms are optimal, both in speed as well as in readability
+							<li>Classes, variables and functions are well named and make sense without having to think too much
+							<li>You come back to it after a weekend off, and you can jump straight in
+							<li>Things that will be reused are reusable
+							<li>Unit tests are easy to write
+						</ul>
+						<br>
+						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Simple Rules</h2>
+						<p>Simple rules that all of us know</p>
+					</section>
+					<section>
+						<blockquote>
+							“There are only 2 hard things in CS: cache invalidation and naming things”
+						</blockquote>
+					</section>
+					<section>
+						<h2>Naming Convention</h2>
+						<p>No body writes name like this</p>
+						<pre><code class="hljs" data-trim contenteditable>
+ var $d; //elapsed time in days 
+ var dsc; //description
+
+ var god_damn_it_IE;
+						</code></pre>
+						<p>Google weird variable name</p>
+
+						<pre><code>
+other language
+						</code></pre>
+ 						<aside class="notes">
+							<p class="">But</p>
+							<ul>
+								<li>When things are not working as expecting</li>
+								<li>You starts trying different things</li>
+								<li>After trying a lot of things.</li>
+								<li>It starts working and you focus on checking</li>
+								<li>Become happy and push the code</li>
+							</ul>
+						</aside> 
+					</section>
+					<section>
+						<h2>comment</h2>
+						<ul>
+							<li class="fragment">Don’t comment bad code, rewrite it</li>
+							<li class="fragment">If code is readable you don’t need comments</li>
+							<pre class="fragment"><code>
+This is bad:
+
+// Check to see if the employee is eligible for full benefits
+
+if ($employee->flags && self::HOURLY_FLAG && $employee->age > 65)
+
+This is good:
+
+if ($employee->isEligibleForFullBenefits())
+							</code></pre>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+						</ul>
+					</section>
+					<section>
+						<h2>comment</h2>
+						<ul>
+							<li class="fragment">Explain your intention in comments</li>
+							<pre><code>
+// if we sort the array here the logic becomes simpler in calculatePayment() method
+							</code></pre>
+							<li class="fragment">Warn of consequences in comments</li>
+							<pre><code>
+// this script will take a very long time to run
+							</code></pre>
+							<li class="fragment">Emphasis important points in comments</li>
+							<pre><code>
+// the trim function is very important, in most cases the username has a trailing space
+							</code></pre>
+							<li class="fragment">Always have your PHPDoc comments</li>
+							<li class="fragment">Noise comments are bad</li>
+							<pre><code>
+/** The day of the month. */
+private $dayOfMonth;
+							</code></pre>
+							<li class="fragment">Never leave code commented</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code>
+// In the global scope:
+var NaN = 42;
+console.log(NaN); // NaN
+
+// …but elsewhere:
+(function() {
+	var NaN = 42;
+	console.log(NaN); // 42
+}());
+						</code></pre>
+					</section>
+					<section>
+						<h2>Other code smells</h2>
+						<ul>
+							<li>Dead code
+							<li>Speculative Generality - no need “what if?”
+							<li>Large classes
+							<li>God object
+							<li>Multiple languages in one file
+							<li>Framework core modifications
+							<li>Overuse of static (especially when coding in Joomla!)
+							<li>Magic numbers - replace with const or var
+							<li>Long if conditions - replace with function
+							<li>Call super’s overwritten methods
+							<li>Circular dependency
+							<li>Circular references
+							<li>Sequential coupling
+							<li>Hard-coding
+							<li>Too much inheritance - composition is better than inheritance
+						</ul>
+						<br>
+						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Write Testable JavaScript</h2>
+						<br>
+						<a href="http://alistapart.com/article/writing-testable-javascript">writing-testable-javascript</a>
 					</section>
 				</section>
 				<section>
@@ -206,6 +368,23 @@
 				</section>
 				<section>
 					<section>
+						<h2>Architecture</h2>
+						<br>
+						<a href="https://robots.thoughtbot.com/architecting-front-end-styles">architecting front end</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Memory Leak</h2>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Single Page Application</h2>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>Forward conf talk</h2>
 						<p>Watch video</p>
 						<br>
@@ -239,6 +418,8 @@
 						<h2>Use Dev tool</h2>
 						<br>
 						<a href="https://developers.google.com/web/updates/2016/06/devtools-digest">DevTools in 2016 and Beyond</a>
+						<br>
+						<a href="https://developers.google.com/web/updates/2016/06/performance-observer">Access Performance data</a>
 					</section>
 				</section>
 				<section>
@@ -274,10 +455,41 @@ console.log(emptyAccount.hasMoney); // false
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
+					<section>
+						<h2>security</h2>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Functional Programming</h2>
+					</section>
+					<section>
+						<h2>use native than lodash</h2>
+						<p>there are more in the link</p>
+						<pre><code>
+_.head([1, 2, 3]);
+// 1
+_.tail([1, 2, 3]);
+// [2, 3]
+
+// becomes
+const [head, ...tail] = [1, 2, 3];
+						</code></pre>
+						<pre><code>
+_.initial([1, 2, 3]);
+// -> [1, 2]
+_.last([1, 2, 3]);
+// 3
+
+// becomes
+
+const [last, ...initial] = [1, 2, 3].reverse();
+						</code></pre>
+						<a href="https://www.sitepoint.com/lodash-features-replace-es6/">10 Lodash Features You Can Replace with ES6</a>
+					</section>
+					<section>
+						
+					</section>
 				</section>
 
 				<section>
