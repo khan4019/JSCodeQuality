@@ -13,9 +13,9 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+		<link rel="shortcut icon" href="images/favicon.jpg">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -71,7 +71,6 @@
 					<section>
 						<h2>Medium</h2>
 						<ul>
-							<li><a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a></li>
 							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
 						</ul>
 					</section>
@@ -114,6 +113,145 @@
 						</ul>
 						<br>
 						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>common mistakes</h2>
+					</section>
+					<section>
+						<h2>pure function</h2>
+						<ul>
+							<li>doesn’t depend on or modify variables outside of its scope</li>
+						</ul>
+						<pre class="fragment"><code>
+function mouseOnLeftSide(mouseX) {
+    return mouseX < window.innerWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX));
+};
+						</code></pre>
+						<ul class="fragment">
+							<li>this piece of code works just fine</li>
+							<li>does the job expected</li>
+						</ul>
+						<br>
+						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
+						<aside class="notes">
+							<p>Not pure. </p>
+							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Why Pure Function?</h2>
+						<ul>
+							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
+							<li class="fragment">How do you test this?
+								<ul class="fragment">
+									<li>manually test by loading up your browser</li>
+									<li>write some unit tests</li>
+								</ul>
+							</li>
+							<li class="fragment">You cann't write unit test</li>
+							<li class="fragment">function relies on window.innerWidth</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Pure version</h2>
+						<pre><code>
+function mouseOnLeftSide(mouseX, windowWidth) {
+    return mouseX < windowWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
+};
+						</code></pre>
+						<pre class="fragment"><code>
+mouseOnLeftSide(5, 499);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Why Pure</h2>
+						<ul>
+							<li class="fragment">Self-documenting</li>
+							<li class="fragment">Know dependency at declaration</li>
+							<li class="fragment">Avoid changes in global variables</li>
+							<li class="fragment">Referential transparency</li>
+							<pre class="fragment"><code>
+function mouseOnLeftSide(mouseX) {
+    return mouseX < window.innerWidth / 2;
+}
+
+</code></pre>
+						</ul>
+						<aside class="notes">
+							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
+							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
+							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
+						</aside>
+					</section>
+					<section>
+						<h2>How to Decide</h2>
+						<ul>
+							<li class="fragment">Impossible to avoid impure function
+								<ul class="fragment">
+									<li>fetch data</li>
+									<li>read DOM</li>
+								</ul>
+							</li>
+							<li class="fragment">Structure in a way to isolate impure function</li>
+							<li class="fragment">Try to use pure as many place as possible</li>
+						</ul>
+						<aside class="notes">
+							<p>It’s impossible to have pure functions consistently—there will always be a time when you need to reach out and fetch data, the most common example of which is reaching into the DOM to grab a specific element to interact with.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Read comment and change this example</h2>
+						<pre class="fragment"><code>
+function changeElementToRed() {
+    var foo = document.getElementById('foo');
+    foo.style.backgroundColor = "red";
+}
+
+changeElementToRed();
+
+</code></pre>
+						<ul>
+							<li class="fragment">This function is not reusable at all</li>
+							<li class="fragment">Hard to test</li>
+							<li class="fragment">Have to create element with specific ID</li>
+						</ul>
+						<aside class="notes">
+							<p>This function is not reusable at all; it’s directly tied to a specific DOM element. If we wanted to reuse it to change a different element, we couldn’t.</p>
+						</aside>
+					</section>
+					<section>
+						<h2></h2>
+						<pre><code>
+function changeElementToRed(elem) {
+    elem.style.backgroundColor = "red";
+}
+
+function changeFooToRed() {
+    var foo = document.getElementById('foo');
+    changeElementToRed(foo);
+}
+
+changeFooToRed();
+
+</code></pre>			
+						<ul>
+							<li class="fragment">Even though part is impure</li>
+							<li class="fragment">Can test core part</li>
+							<li class="fragment"> increase its readability, reusability, and testability</li>
+						</ul>
+						<aside class="notes">
+							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
+						</aside>
 					</section>
 				</section>
 				<section>
