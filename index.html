@@ -472,6 +472,220 @@ var pairs = evens.map(v => ({even: v, odd: v + 1}));
 				</section>
 				<section>
 					<section>
+						<h1>More code style</h1>
+						<br>
+						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
+					</section>
+					<section>
+						<h2>Performance vs Readability</h2>
+						<pre><code>
+// bad (albeit way faster)
+const arr = [1, 2, 3, 4];
+const len = arr.length;
+var i = -1;
+var result = [];
+while (++i < len) {
+  var n = arr[i];
+  if (n % 2 > 0) continue;
+  result.push(n * n);
+}
+						</code></pre>
+						<pre class="fragment"><code>
+const isEven = n => n % 2 == 0;
+const square = n => n * n;
+
+const result = arr.filter(isEven).map(square);
+						</code></pre>
+						<aside class="notes">
+							<p>Favor readability, correctness and expressiveness over performance. JavaScript will basically never be your performance bottleneck. Optimize things like image compression, network access and DOM reflows instead. If you remember just one guideline from this document, choose this one.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>coercion</h2>
+						<pre><code>
+// bad
+if (x === undefined || x === null) { ... }
+
+// good
+if (x == undefined) { ... }
+						</code></pre>
+					</section>
+					<section>
+						<h2>Loop</h2>
+						<pre><code>
+const sum = arr => {
+  var sum = 0;
+  var i = -1;
+  for (;arr[++i];) {
+    sum += arr[i];
+  }
+  return sum;
+};
+
+sum([1, 2, 3]); // => 6
+						</code></pre>
+						<pre class="fragment"><code>
+const sum = arr =>
+  arr.reduce((x, y) => x + y);
+
+sum([1, 2, 3]); // => 6
+						</code></pre>
+					</section>
+					<section>
+						<h2>apply</h2>
+						<pre><code>
+const greet = (first, last) => `Hi ${first} ${last}`;
+const person = ["John", "Doe"];
+
+// bad
+greet.apply(null, person);
+
+// good
+greet(...person);
+						</code></pre>
+						<aside class="notes">
+							<p>Forget about apply(). Use the spread operator instead.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>bind</h2>
+						<pre><code>
+const person = {
+  first: "John",
+  last: "Doe",
+  greet() {
+    const full = function() {
+      return `${this.first} ${this.last}`;
+    }.bind(this);
+    return `Hello ${full()}`;
+  }
+}
+
+						</code></pre>
+						<pre class="fragment"><code>
+const person = {
+  first: "John",
+  last: "Doe",
+  greet() {
+    const full = () => `${this.first} ${this.last}`;
+    return `Hello ${full()}`;
+  }
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>nested function</h2>
+						<pre><code>
+const plus1 = a => a + 1;
+const mult2 = a => a * 2;
+
+// bad
+mult2(plus1(5)); // => 12
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const pipeline = (...funcs) => val => funcs.reduce((a, b) => b(a), val);
+const addThenMult = pipeline(plus1, mult2);
+addThenMult(5); // => 12
+						</code></pre>
+					</section>
+					<section>
+						<h2>caching</h2>
+						<pre><code>
+const contains = (arr, value) =>
+  Array.prototype.includes
+    ? arr.includes(value)
+    : arr.some(el => el === value);
+contains(["foo", "bar"], "baz"); // => false
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const contains = (() =>
+  Array.prototype.includes
+    ? (arr, value) => arr.includes(value)
+    : (arr, value) => arr.some(el => el === value)
+)();
+contains(["foo", "bar"], "baz"); // => false
+						</code></pre>
+					</section>
+					<section>
+						<h2>for...in</h2>
+						<pre><code>
+const shared = { foo: "foo" };
+const obj = Object.create(shared, {
+  bar: {
+    value: "bar",
+    enumerable: true
+  }
+});
+
+// bad
+for (var prop in obj) {
+  if (obj.hasOwnProperty(prop))
+    console.log(prop);
+}
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+Object.keys(obj).forEach(prop => console.log(prop));
+						</code></pre>
+					</section>
+					<section>
+						<h2>Objects as Maps</h2>
+						<pre><code>
+// bad
+const me = {
+  name: "Ben",
+  age: 30
+};
+var meSize = Object.keys(me).length;
+meSize; // => 2
+me.country = "Belgium";
+meSize++;
+meSize; // => 3
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const me = new Map();
+me.set("name", "Ben");
+me.set("age", 30);
+me.size; // => 2
+me.set("country", "Belgium");
+me.size; // => 3
+						</code></pre>
+					</section>
+					<section>
+						<h2>Dependencies</h2>
+						<pre><code>
+// bad
+var _ = require("underscore");
+_.compact(["foo", 0]));
+_.unique(["foo", "foo"]);
+_.union(["foo"], ["bar"], ["foo"]);
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const compact = arr => arr.filter(el => el);
+const unique = arr => [...Set(arr)];
+const union = (...arr) => unique([].concat(...arr));
+
+compact(["foo", 0]);
+unique(["foo", "foo"]);
+union(["foo"], ["bar"], ["foo"]);
+						</code></pre>
+						<aside class="notes">
+							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Architecture</h2>
+						<p>Doesn't look very good: can read if have time</p>
+						<br>
+						<a href="https://robots.thoughtbot.com/architecting-front-end-styles">architecting front end</a>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>three dots</h2>
 						<br>
 						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
@@ -826,13 +1040,6 @@ return Math.round(x); // yes
 							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
 							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
 						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Architecture</h2>
-						<br>
-						<a href="https://robots.thoughtbot.com/architecting-front-end-styles">architecting front end</a>
 					</section>
 				</section>
 				<section>
