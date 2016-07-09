@@ -98,6 +98,8 @@
 							<li><a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring JS video store</a></li>
 							<li><a href="https://github.com/bmeck/UnambiguousJavaScriptGrammar/blob/master/README.md ">Unambiguous JavaScript Grammar</a></li>
 							<li><a href="http://developer.telerik.com/featured/web-going-2016/">what to expect</a></li>
+							<a href="https://www.sitepoint.com/javascript-object-creation-patterns-best-practises/">Object Creation: Patterns: not very good</a>
+							<li><a href="https://www.youtube.com/watch?v=xbZzahWakGs">Making Javascript Initialize Faster</a></li>
 						</ul>
 					</section>
 				</section>
@@ -952,13 +954,6 @@ for (var i = 0; i < 10; i += 1)
 				</section>
 				<section>
 					<section>
-						<h4>JavaScript Object Creation: Patterns and Best Practices</h4>
-						<br>
-						<a href="https://www.sitepoint.com/javascript-object-creation-patterns-best-practises/">Read this</a>
-					</section>
-				</section>
-				<section>
-					<section>
 						<h2>Facebook sixth sense</h2>
 						<p>Pick interesting part</p>
 						<p>Smooth: scroll</p>
@@ -1062,13 +1057,6 @@ return Math.round(x); // yes
 				</section>
 				<section>
 					<section>
-						<h2>Making Javascript Initialize Faster</h2>
-						<br>
-						<a href="https://www.youtube.com/watch?v=xbZzahWakGs">watch video and more in the link</a>
-					</section>
-				</section>
-				<section>
-					<section>
 						<h2>when to test</h2>
 						<p>very good: make it generic</p>
 						<br>
@@ -1093,71 +1081,7 @@ return Math.round(x); // yes
 				</section>
 				<section>
 					<section>
-						<h2>12 Extremely Useful Hacks for JavaScript</h2>
-						<pre><code class="hljs" data-trim contenteditable>
-function Account(cash) {
-    this.cash = cash;
-    this.hasMoney = !!cash;
-}
-var account = new Account(100.50);
-console.log(account.cash); // 100.50
-console.log(account.hasMoney); // true
-
-var emptyAccount = new Account(0);
-console.log(emptyAccount.cash); // 0
-console.log(emptyAccount.hasMoney); // false
-					</code></pre>
-					</section>
-					<section>
-						<h2>Minor Hacks</h2>
-						<ul>
-							<li>+ operator</li>
-							<li>short circuit conditionals</li>
-							<li>Detecting properties in an object</li>
-							<li>Getting last item in the array</li>
-							<li>Replace all</li>
-							<li>Shuffling array's element</li>
-						</ul>
-						<br>
-						<a href="https://blog.jscrambler.com/12-extremely-useful-hacks-for-javascript/">12 useful JS hacks</a>
-					</section>
-				</section>
-
-				<section>
-					<section>
 						<h2>security</h2>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Functional Programming</h2>
-					</section>
-					<section>
-						<h2>use native than lodash</h2>
-						<p>there are more in the link</p>
-						<pre><code>
-_.head([1, 2, 3]);
-// 1
-_.tail([1, 2, 3]);
-// [2, 3]
-
-// becomes
-const [head, ...tail] = [1, 2, 3];
-						</code></pre>
-						<pre><code>
-_.initial([1, 2, 3]);
-// -> [1, 2]
-_.last([1, 2, 3]);
-// 3
-
-// becomes
-
-const [last, ...initial] = [1, 2, 3].reverse();
-						</code></pre>
-						<a href="https://www.sitepoint.com/lodash-features-replace-es6/">10 Lodash Features You Can Replace with ES6</a>
-					</section>
-					<section>
-						
 					</section>
 				</section>
 				<section>
