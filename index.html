@@ -75,17 +75,12 @@
 						<ul>
 							<li>Hoisting</li>
 							<li>Rest</li>
-							<li>Arrow</li>
 							<li>Array Spread</li>
 							<li>Modules</li>
 							<li>Iterators and Generators</li>
-							<li>Default Parameters</li>
 							<li>Object</li>
 							<li>Boolean</li>
 							<li>Equality</li>
-							<li>Function</li>
-							<li></li>
-							<li></li>
 						</ul>
 					</section>
 					<section>
@@ -110,30 +105,24 @@
 				<section>
 					<section>
 						<h2>Code Quality</h2>
-					</section>
-					<section>
-						<blockquote>Code quality is a loose approximation of how long-term useful and long-term maintainable the code is.</blockquote>
+						<blockquote>Code quality is a loose approximation of how long-term usefulness and maintainability of code.</blockquote>
 						<br>
 						<a href="https://www.quora.com/How-do-you-define-code-quality">define code quality</a>
 					</section>
 					<section>
+						<h2>Code Quality</h2>
 						<ul>
 							<li>Clear and understandable design and implementation.
 							<li>Well defined interfaces.
-							<li>Ease of build and use.
-							<li>Ease of extensibility.
-							<li>Minimum extra dependencies.
-							<li>Tests and examples.
+							<li>Extensible, maintainable, readable.
+							<li>Clear Naming convention
+							<li>Can Jump straight in after few weekend off
 							<li>Documentation, better yet -- self-explaining code.
-							<li>Up to date means to contact the developer.
-						</ul>
-						<ul>
-							<li>Things are clever, but not too clever
-							<li>Algorithms are optimal, both in speed as well as in readability
-							<li>Classes, variables and functions are well named and make sense without having to think too much
-							<li>You come back to it after a weekend off, and you can jump straight in
-							<li>Things that will be reused are reusable
 							<li>Unit tests are easy to write
+						</ul>
+						<ul class="fragment">
+							<li>Things could be clever, but not too clever
+							<li>Algorithms are optimal (fast and readable)
 						</ul>
 						<br>
 						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
@@ -146,16 +135,16 @@
 					<section>
 						<h2>Setup for quality</h2>
 						<ul>
-							<li>Build tool</li>
-							<li>Unit test</li>
-							<li>Code Coverage</li>
-							<li></li>
+							<li>Build tool: Grunt, Gulp, WebPack</li>
+							<li>Unit test: Jasmine, Mocha, karma</li>
+							<li>Code Coverage: Istanbul</li>
+							<li>Package Management: Bower, npm</li>
 						</ul>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>common mistakes</h2>
+						<h1>pure function</h1>
 					</section>
 					<section>
 						<h2>pure function</h2>
@@ -285,7 +274,7 @@ changeFooToRed();
 						<ul>
 							<li class="fragment">Even though part is impure</li>
 							<li class="fragment">Can test core part</li>
-							<li class="fragment"> increase its readability, reusability, and testability</li>
+							<li class="fragment"> increase its readability, re-usability, and testability</li>
 						</ul>
 						<aside class="notes">
 							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
@@ -294,22 +283,192 @@ changeFooToRed();
 				</section>
 				<section>
 					<section>
-						<h2>Embrace ES6</h2>
+						<h1>Embrace ES6</h1>
 					</section>
 					<section>
-						<h2>ES5</h2>
-						<pre><code>
-//find an example
-						</code></pre>
-					</section>
-					<section>
-						<h2></h2>
+						<h2>var, let, const</h2>
 						<ul>
-							<li class="fragment"> avoid using var</li>
+							<li class="fragment">`const` means can’t be reassigned</li>
+							<li class="fragment">`let` to reassign a variable.</li>
+							<li class="fragment">avoid using var</li>
 							<li class="fragment">Use const for all of your references</li>
 							<li class="fragment"> If you must reassign references, use let</li>
 							<li class="fragment">both let and const are block-scoped.</li>
 						</ul>
+					</section>
+					<section>
+						<h2>Variable decleration</h2>
+						<pre><code>
+// bad
+let i, len, dragonball,
+    items = getItems(),
+    goSportsTeam = true;
+
+// bad
+let i;
+const items = getItems();
+let dragonball;
+const goSportsTeam = true;
+let len;
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const goSportsTeam = true;
+const items = getItems();
+let dragonball;
+let i;
+let length;
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+// bad - unnecessary function call
+function checkName(hasName) {
+  const name = getName();
+
+  if (hasName === 'test') {
+    return false;
+  }
+
+  if (name === 'test') {
+    this.setName('');
+    return false;
+  }
+
+  return name;
+}</code></pre>
+					</section>
+					<section>
+						<pre><code>
+// good
+function checkName(hasName) {
+  if (hasName === 'test') {
+    return false;
+  }
+
+  const name = getName();
+
+  if (name === 'test') {
+    this.setName('');
+    return false;
+  }
+
+  return name;
+}</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Function</h1>
+					</section>
+					<section>
+						<h2>use Function Declaration</h2>
+						<ul>
+							<li class="fragment">Are named: easier to identify in call stack</li>
+							<li class="fragment">Whole body of function is hoisted</li>
+							<li class="fragment">Don't declare a function in a non-function block (if, while, etc)</li>
+						</ul>
+						<pre class="fragment"><code>
+// bad
+const foo = function () {
+};
+
+// good
+function foo() {
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>arguments</h2>
+						<ul>
+							<li class="fragment">Never name a parameter arguments</li>
+							<li class="fragment">Never use arguments, use rest syntax ...</li>
+							<li class="fragment">... is explicit about which arguments</li>
+							<li class="fragment">rest arguments are a real Array</li>
+							<li class="fragment">arguments is Array-like object</li>
+						</ul>
+						<pre class="fragment"><code>
+// bad
+function concatenateAll() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join('');
+}
+
+// good
+function concatenateAll(...args) {
+  return args.join('');
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>parameters</h2>
+						<ul>
+							<li class="fragment">Use default Parameter</li>
+							<li class="fragment">Put default parameters last</li>
+							<li class="fragment">Never Reassign or mutate parameter</li>
+							<pre class="fragment"><code>
+// bad
+function f1(obj) {
+  obj.key = 1;
+};
+
+// good
+function f2(obj) {
+  const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+};
+							</code></pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Arrow Function</h2>
+						<pre><code>
+var evens = [2,4,6];
+
+//es5
+var odds = evens.map(function(item){
+	return item + 1;
+})
+
+var pair = evens.map(function(item){
+	return {
+		even: item,
+		odd: item + 1
+	}
+});
+						</code></pre>
+						<pre class="fragment"><code>
+//es6
+var odds = evens.map(v => v + 1);
+
+var pairs = evens.map(v => ({even: v, odd: v + 1}));
+						</code></pre>
+					</section>
+					<section>
+						<h2>Arrow Function</h2>
+						<ul>
+							<li class="fragment">Talk what is arrow function</li>
+							<li class="fragment">creates own version of execution context, this</li>
+							<li class="fragment">In place of function expression</li>
+							<li class="fragment">anonymous function</li>
+							<pre class="fragment"><code>
+// bad
+[1, 2, 3].map(function (x) {
+  const y = x + 1;
+  return x * y;
+});
+
+// good
+[1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
+							</code></pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Don't use arrow function</h2>
+						<br>
+						<a href="http://rainsoft.io/when-not-to-use-arrow-functions-in-javascript/">When 'not' to use arrow functions</a>
 					</section>
 				</section>
 				<section>
@@ -614,11 +773,6 @@ for (var i = 0; i < 10; i += 1)
 					</section>
 				</section>
 				<section>
-					<section>
-						<h2>When 'not' to use arrow functions</h2>
-						<br>
-						<a href="http://rainsoft.io/when-not-to-use-arrow-functions-in-javascript/">When 'not' to use arrow functions</a>
-					</section>
 					<section>
 						<h2>Don't be clever</h2>
 						<pre><code>
