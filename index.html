@@ -59,15 +59,12 @@
 							<li>what specific about JS code quality</li>
 							<li>Manage large application</li>
 							<li>Few mistakes in JS</li>
-							<li>
 								<ul>
 									<li>Design/Architecture/Code review</li>
 									<li>Unit test</li>
 									<li>Code Analysis tools</li>
 									<li>Security</li>
-									<li></li>
 								</ul>
-							</li>
 						</ul>
 					</section>
 					<section>
@@ -79,9 +76,8 @@
 							<li>Modules</li>
 							<li>Iterators and Generators</li>
 							<li>Object: check for it</li>
-							
 							<li>Equality</li>
-						</ul>B
+						</ul>
 					</section>
 					<section>
 						<h2>Medium</h2>
@@ -105,6 +101,60 @@
 				</section>
 				<section>
 					<section>
+						<h2>Lay down the reality</h2>
+						<blockquote cite="https://www.sitepoint.com/write-maintainable-javascript/">
+						&ldquo;Almost every developer has had the experience of maintaining or taking over a legacy project. Or, maybe it’s an old project which got picked up again. Common first thoughts are to throw away the code base, and start from scratch. The code can be messy, undocumented and it can take days to fully understand everything. But, with proper planning, analysis, and a good workflow, it is possible to turn a spaghetti codebase into a clean, organised, and scalable one.&rdquo;
+					</blockquote>
+					</section>
+					<section>
+						<h2>Untangling Spaghetti Code</h2>
+						<h4>Very good</h4>
+						<p>How to Write Maintainable JavaScript</p>
+						<br>
+						<a href="https://www.sitepoint.com/write-maintainable-javascript/">Here is the link</a>
+					</section>
+					<section>
+						<h2>Analyze the project</h2>
+						<ul>
+							<li>Put your developer hat away for a moment, and be a user to see what it’s all about.
+							<li>Go through the codebase and make a list of the tools in use.
+							<li>Read up documentation and best practices of the tools.
+							<li>Go through the unit tests to get a feeling for the project on a higher level.
+						</ul>
+					</section>
+					<section>
+						<h2>Create a baseline</h2>
+						<ul>
+							<li>Introduce .editorconfig to keep the coding style guides consistent between different IDEs.
+							<li>Make indentation consistent; tabs or spaces, doesn’t matter.
+							<li>Enforce a naming convention.
+							<li>If not already present, add a linter like ESLint, JSLint, or JSHint.
+							<li>Update dependencies, but do it wisely and watch out for what exactly has been updated.
+						</ul>
+					</section>
+					<section>
+						<h2>Cleaning up</h2>
+						<ul>
+							<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
+							<li>Make sure the architecture and design pattern are consistent.
+							<li>Don’t mix design patterns, stick to the ones already there.
+							<li>Decide if you want to split up your codebase into modules. Each should only have one purpose and be unaware of the rest of your codebase logic.
+							<li>If you don’t want to do that, focus more on testable code and break it down into simpler blocks.
+							<li>Document your functions and code in a balanced way with properly named functions.
+							<li>Use JSDoc to generate documentation for your JavaScript.
+							<li>Commit regularly and after important changes. If something breaks, it’s easier to go back.
+						</ul>
+					</section>
+					<section>
+						<h2>Don’t lose your mind</h2>
+						<ul>
+							<li>Don’t get mad at the previous developer; negativity will only result in unnecessary refactoring and wasting time.
+							<li>There have been reasons why code is written like it is. Keep in mind that we’ve all been there.
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>Code Quality</h2>
 						<blockquote>Code quality is a loose approximation of how long-term usefulness and maintainability of code.</blockquote>
 						<br>
@@ -118,7 +168,7 @@
 							<li>Extensible, maintainable, readable.
 							<li>Clear Naming convention
 							<li>Can Jump straight in after few weekend off
-							<li>Documentation, better yet -- self-explaining code.
+							<li>Documentation -- self-explaining code.
 							<li>Unit tests are easy to write
 						</ul>
 						<ul class="fragment">
@@ -127,6 +177,21 @@
 						</ul>
 						<br>
 						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
+					</section>
+					<section>
+						<h2>Other code smells</h2>
+						<ul>
+							<li>Dead code
+							<li>Large classes
+							<li>God object
+							<li>Framework core modifications
+							<li>Circular dependency
+							<li>Circular references
+							<li>Sequential coupling
+							<li>Hard-coding
+						</ul>
+						<br>
+						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
 					</section>
 				</section>
 				<section>
@@ -792,28 +857,6 @@ console.log(NaN); // NaN
 }());
 						</code></pre>
 					</section>
-					<section>
-						<h2>Other code smells</h2>
-						<ul>
-							<li>Dead code
-							<li>Speculative Generality - no need “what if?”
-							<li>Large classes
-							<li>God object
-							<li>Multiple languages in one file
-							<li>Framework core modifications
-							<li>Overuse of static (especially when coding in Joomla!)
-							<li>Magic numbers - replace with const or var
-							<li>Long if conditions - replace with function
-							<li>Call super’s overwritten methods
-							<li>Circular dependency
-							<li>Circular references
-							<li>Sequential coupling
-							<li>Hard-coding
-							<li>Too much inheritance - composition is better than inheritance
-						</ul>
-						<br>
-						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
-					</section>
 				</section>
 				<section>
 					<section>
@@ -854,6 +897,7 @@ console.log(NaN); // NaN
 				<section>
 					<section>
 						<h2>Some pattern</h2>
+						<p>move with other parts</p>
 						<br>
 						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
 					</section>
@@ -904,61 +948,6 @@ for (var i = 0; i < 10; i += 1)
    alert(i); 
    alert(i + " is " + (i % 2 ? "odd" : "even"));
 						</code></pre>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Lay down the reality</h2>
-						<blockquote cite="https://www.sitepoint.com/write-maintainable-javascript/">
-						&ldquo;Almost every developer has had the experience of maintaining or taking over a legacy project. Or, maybe it’s an old project which got picked up again. Common first thoughts are to throw away the code base, and start from scratch. The code can be messy, undocumented and it can take days to fully understand everything. But, with proper planning, analysis, and a good workflow, it is possible to turn a spaghetti codebase into a clean, organised, and scalable one.&rdquo;
-					</blockquote>
-					</section>
-					<section>
-						<h2>Untangling Spaghetti Code</h2>
-						<h4>Very good</h4>
-						<p>How to Write Maintainable JavaScript</p>
-						<br>
-						<a href="https://www.sitepoint.com/write-maintainable-javascript/">Here is the link</a>
-					</section>
-					<section>
-						<h2>Analyze the project</h2>
-						<li>Put your developer hat away for a moment, and be a user to see what it’s all about.
-						<li>Go through the codebase and make a list of the tools in use.
-						<li>Read up documentation and best practices of the tools.
-						<li>Go through the unit tests to get a feeling for the project on a higher level.
-					</section>
-					<section>
-						<h2>Create a baseline</h2>
-						<li>Introduce .editorconfig to keep the coding style guides consistent between different IDEs.
-						<li>Make indentation consistent; tabs or spaces, doesn’t matter.
-						<li>Enforce a naming convention.
-						<li>If not already present, add a linter like ESLint, JSLint, or JSHint.
-						<li>Update dependencies, but do it wisely and watch out for what exactly has been updated.
-					</section>
-					<section>
-						<h2>Cleaning up</h2>
-						<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
-						<li>Make sure the architecture and design pattern are consistent.
-						<li>Don’t mix design patterns, stick to the ones already there.
-						<li>Decide if you want to split up your codebase into modules. Each should only have one purpose and be unaware of the <li>rest of your codebase logic.
-						<li>If you don’t want to do that, focus more on testable code and break it down into simpler blocks.
-						<li>Document your functions and code in a balanced way with properly named functions.
-						<li>Use JSDoc to generate documentation for your JavaScript.
-						<li>Commit regularly and after important changes. If something breaks, it’s easier to go back.
-					</section>
-					<section>
-						<h2>Don’t lose your mind</h2>
-						<li>Don’t get mad at the previous developer; negativity will only result in unnecessary refactoring and wasting time.
-						<li>There have been reasons why code is written like it is. Keep in mind that we’ve all been there.
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Facebook sixth sense</h2>
-						<p>Pick interesting part</p>
-						<p>Smooth: scroll</p>
-						<br>
-						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
 					</section>
 				</section>
 				<section>
@@ -1062,6 +1051,35 @@ return Math.round(x); // yes
 						<br>
 						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Advanced Testing and Debugging in AngularJS</a>
 					</section>
+					<section>
+						<div>
+							<h4>Does the page loads correctly</h4>
+							<ul>
+								<li>Web Driver</li>
+								<li>E2E test</li>
+								<li>Full integration test through given URL</li>
+								<li>multiple browser</li>
+							</ul>
+						</div>
+						<div class="fragment">
+							<h4>Server side testing</h4>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h4>Unit Testing</h4>
+							<ul>
+								<li>Jasmine or Mocha</li>
+								<li>Solid test spec for each feature</li>
+								<li>each block of code(functions, objects, methods, etc.)</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>Run and show unit test</h2>
+						<br>
+						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -1082,6 +1100,12 @@ return Math.round(x); // yes
 				<section>
 					<section>
 						<h2>security</h2>
+					</section>
+					<section>
+						<h2>Facebook sixth sense</h2>
+						<p>can use as an example</p>
+						<br>
+						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
 					</section>
 				</section>
 				<section>
