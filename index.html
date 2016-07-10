@@ -101,6 +101,13 @@
 				</section>
 				<section>
 					<section>
+						<h1>Code Quality</h1>
+						<br>
+						<br>
+						<br>
+						<small>(reality)</small>
+					</section>
+					<section>
 						<h2>Code Quality</h2>
 						<blockquote>
 							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
@@ -142,6 +149,7 @@
 							<li>Consistent architecture and design.Don’t mix design patterns
 							<li>Document your functions and code in a balanced way with properly named functions.
 							<li>Use JSDoc to generate documentation for your JavaScript.
+							<li>Can Jump straight in after few weekend off
 						</ul>
 						<br>
 						<a href="https://www.sitepoint.com/write-maintainable-javascript/">Untangling Spaghetti Code</a>
@@ -149,41 +157,45 @@
 				</section>
 				<section>
 					<section>
-						<h2>Code Quality</h2>
-						<blockquote>Code quality is a loose approximation of how long-term usefulness and maintainability of code.</blockquote>
+						<h1>Code Quality</h1>
 						<br>
-						<a href="https://www.quora.com/How-do-you-define-code-quality">define code quality</a>
+						<br>
+						<br>
+						<small>(While you are in a meeting)</small>
 					</section>
 					<section>
 						<h2>Code Quality</h2>
-						<ul>
-							<li>Clear and understandable design and implementation.
-							<li>Well defined interfaces.
-							<li>Extensible, maintainable, readable.
-							<li>Clear Naming convention
-							<li>Can Jump straight in after few weekend off
-							<li>Documentation -- self-explaining code.
-							<li>Unit tests are easy to write
-						</ul>
-						<ul class="fragment">
-							<li>Things could be clever, but not too clever
-							<li>Algorithms are optimal (fast and readable)
-						</ul>
+						<blockquote>oCde quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
 						<br>
-						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
+						
+					</section>
+					<section>
+						<h2>Code Quality</h2>
+						<ol>
+							<li>Clear and understandable design and architecture
+							<li>Clear Naming convention and coding style
+							<li>Documentation -- self-explaining code
+							<li>Automated Unit tests
+							<li>Code Review</li>
+						</ol>
+						<br>
+						<br>
+						<br>
+						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">how do you write Good code</a>
 					</section>
 					<section>
 						<h2>Other code smells</h2>
 						<ul>
-							<li>Dead code
-							<li>Large classes
-							<li>God object
+							<li>Large classes or God object
 							<li>Framework core modifications
-							<li>Circular dependency
+							<li>Avoid Circular dependency
+							<li>Clean Dead code</li>
 							<li>Circular references
 							<li>Sequential coupling
-							<li>Hard-coding
+							<li>Avoid Hard-coding
 						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
 					</section>
@@ -195,145 +207,6 @@
 							<li>Code Coverage: Istanbul</li>
 							<li>Package Management: Bower, npm</li>
 						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>pure function</h1>
-					</section>
-					<section>
-						<h2>pure function</h2>
-						<ul>
-							<li>doesn’t depend on or modify variables outside of its scope</li>
-						</ul>
-						<pre class="fragment"><code>
-function mouseOnLeftSide(mouseX) {
-    return mouseX < window.innerWidth / 2;
-}
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX));
-};
-						</code></pre>
-						<ul class="fragment">
-							<li>this piece of code works just fine</li>
-							<li>does the job expected</li>
-						</ul>
-						<br>
-						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
-						<aside class="notes">
-							<p>Not pure. </p>
-							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Why Pure Function?</h2>
-						<ul>
-							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
-							<li class="fragment">How do you test this?
-								<ul class="fragment">
-									<li>manually test by loading up your browser</li>
-									<li>write some unit tests</li>
-								</ul>
-							</li>
-							<li class="fragment">You cann't write unit test</li>
-							<li class="fragment">function relies on window.innerWidth</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Pure version</h2>
-						<pre><code>
-function mouseOnLeftSide(mouseX, windowWidth) {
-    return mouseX < windowWidth / 2;
-}
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
-};
-						</code></pre>
-						<pre class="fragment"><code>
-mouseOnLeftSide(5, 499);
-						</code></pre>
-					</section>
-					<section>
-						<h2>Why Pure</h2>
-						<ul>
-							<li class="fragment">Self-documenting</li>
-							<li class="fragment">Know dependency at declaration</li>
-							<li class="fragment">Avoid changes in global variables</li>
-							<li class="fragment">Referential transparency</li>
-							<pre class="fragment"><code>
-function mouseOnLeftSide(mouseX) {
-    return mouseX < window.innerWidth / 2;
-}
-
-</code></pre>
-						</ul>
-						<aside class="notes">
-							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
-							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
-							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
-						</aside>
-					</section>
-					<section>
-						<h2>How to Decide</h2>
-						<ul>
-							<li class="fragment">Impossible to avoid impure function
-								<ul class="fragment">
-									<li>fetch data</li>
-									<li>read DOM</li>
-								</ul>
-							</li>
-							<li class="fragment">Structure in a way to isolate impure function</li>
-							<li class="fragment">Try to use pure as many place as possible</li>
-						</ul>
-						<aside class="notes">
-							<p>It’s impossible to have pure functions consistently—there will always be a time when you need to reach out and fetch data, the most common example of which is reaching into the DOM to grab a specific element to interact with.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Read comment and change this example</h2>
-						<pre class="fragment"><code>
-function changeElementToRed() {
-    var foo = document.getElementById('foo');
-    foo.style.backgroundColor = "red";
-}
-
-changeElementToRed();
-
-</code></pre>
-						<ul>
-							<li class="fragment">This function is not reusable at all</li>
-							<li class="fragment">Hard to test</li>
-							<li class="fragment">Have to create element with specific ID</li>
-						</ul>
-						<aside class="notes">
-							<p>This function is not reusable at all; it’s directly tied to a specific DOM element. If we wanted to reuse it to change a different element, we couldn’t.</p>
-						</aside>
-					</section>
-					<section>
-						<h2></h2>
-						<pre><code>
-function changeElementToRed(elem) {
-    elem.style.backgroundColor = "red";
-}
-
-function changeFooToRed() {
-    var foo = document.getElementById('foo');
-    changeElementToRed(foo);
-}
-
-changeFooToRed();
-
-</code></pre>			
-						<ul>
-							<li class="fragment">Even though part is impure</li>
-							<li class="fragment">Can test core part</li>
-							<li class="fragment"> increase its readability, re-usability, and testability</li>
-						</ul>
-						<aside class="notes">
-							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
-						</aside>
 					</section>
 				</section>
 				<section>
@@ -414,121 +287,7 @@ function checkName(hasName) {
 				</section>
 				<section>
 					<section>
-						<h1>Function</h1>
-					</section>
-					<section>
-						<h2>use Function Declaration</h2>
-						<ul>
-							<li class="fragment">Are named: easier to identify in call stack</li>
-							<li class="fragment">Whole body of function is hoisted</li>
-							<li class="fragment">Don't declare a function in a non-function block (if, while, etc)</li>
-						</ul>
-						<pre class="fragment"><code>
-// bad
-const foo = function () {
-};
-
-// good
-function foo() {
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>arguments</h2>
-						<ul>
-							<li class="fragment">Never name a parameter arguments</li>
-							<li class="fragment">Never use arguments, use rest syntax ...</li>
-							<li class="fragment">... is explicit about which arguments</li>
-							<li class="fragment">rest arguments are a real Array</li>
-							<li class="fragment">arguments is Array-like object</li>
-						</ul>
-						<pre class="fragment"><code>
-// bad
-function concatenateAll() {
-  const args = Array.prototype.slice.call(arguments);
-  return args.join('');
-}
-
-// good
-function concatenateAll(...args) {
-  return args.join('');
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>parameters</h2>
-						<ul>
-							<li class="fragment">Use default Parameter</li>
-							<li class="fragment">Put default parameters last</li>
-							<li class="fragment">Never Reassign or mutate parameter</li>
-							<pre class="fragment"><code>
-// bad
-function f1(obj) {
-  obj.key = 1;
-};
-
-// good
-function f2(obj) {
-  const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
-};
-							</code></pre>
-						</ul>
-					</section>
-					<section>
-						<h2>Arrow Function</h2>
-						<pre><code>
-var evens = [2,4,6];
-
-//es5
-var odds = evens.map(function(item){
-	return item + 1;
-})
-
-var pair = evens.map(function(item){
-	return {
-		even: item,
-		odd: item + 1
-	}
-});
-						</code></pre>
-						<pre class="fragment"><code>
-//es6
-var odds = evens.map(v => v + 1);
-
-var pairs = evens.map(v => ({even: v, odd: v + 1}));
-						</code></pre>
-					</section>
-					<section>
-						<h2>Arrow Function</h2>
-						<ul>
-							<li class="fragment">Talk what is arrow function</li>
-							<li class="fragment">creates own version of execution context, this</li>
-							<li class="fragment">In place of function expression</li>
-							<li class="fragment">anonymous function</li>
-							<pre class="fragment"><code>
-// bad
-[1, 2, 3].map(function (x) {
-  const y = x + 1;
-  return x * y;
-});
-
-// good
-[1, 2, 3].map((x) => {
-  const y = x + 1;
-  return x * y;
-});
-							</code></pre>
-						</ul>
-					</section>
-					<section>
-						<h2>Don't use arrow function</h2>
-						<br>
-						<a href="http://rainsoft.io/when-not-to-use-arrow-functions-in-javascript/">When 'not' to use arrow functions</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>More code style</h1>
+						<h2>Common functionality</h2>
 						<br>
 						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
 					</section>
@@ -742,6 +501,260 @@ union(["foo"], ["bar"], ["foo"]);
 				</section>
 				<section>
 					<section>
+						<h1>Function</h1>
+					</section>
+					<section>
+						<h2>use Function Declaration</h2>
+						<ul>
+							<li class="fragment">Are named: easier to identify in call stack</li>
+							<li class="fragment">Whole body of function is hoisted</li>
+							<li class="fragment">Don't declare a function in a non-function block (if, while, etc)</li>
+						</ul>
+						<pre class="fragment"><code>
+// bad
+const foo = function () {
+};
+
+// good
+function foo() {
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>arguments</h2>
+						<ul>
+							<li class="fragment">Never name a parameter arguments</li>
+							<li class="fragment">Never use arguments, use rest syntax ...</li>
+							<li class="fragment">... is explicit about which arguments</li>
+							<li class="fragment">rest arguments are a real Array</li>
+							<li class="fragment">arguments is Array-like object</li>
+						</ul>
+						<pre class="fragment"><code>
+// bad
+function concatenateAll() {
+  const args = Array.prototype.slice.call(arguments);
+  return args.join('');
+}
+
+// good
+function concatenateAll(...args) {
+  return args.join('');
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>parameters</h2>
+						<ul>
+							<li class="fragment">Use default Parameter</li>
+							<li class="fragment">Put default parameters last</li>
+							<li class="fragment">Never Reassign or mutate parameter</li>
+							<pre class="fragment"><code>
+// bad
+function f1(obj) {
+  obj.key = 1;
+};
+
+// good
+function f2(obj) {
+  const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
+};
+							</code></pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Arrow Function</h2>
+						<pre><code>
+var evens = [2,4,6];
+
+//es5
+var odds = evens.map(function(item){
+	return item + 1;
+})
+
+var pair = evens.map(function(item){
+	return {
+		even: item,
+		odd: item + 1
+	}
+});
+						</code></pre>
+						<pre class="fragment"><code>
+//es6
+var odds = evens.map(v => v + 1);
+
+var pairs = evens.map(v => ({even: v, odd: v + 1}));
+						</code></pre>
+					</section>
+					<section>
+						<h2>Arrow Function</h2>
+						<ul>
+							<li class="fragment">Talk what is arrow function</li>
+							<li class="fragment">creates own version of execution context, this</li>
+							<li class="fragment">In place of function expression</li>
+							<li class="fragment">anonymous function</li>
+							<pre class="fragment"><code>
+// bad
+[1, 2, 3].map(function (x) {
+  const y = x + 1;
+  return x * y;
+});
+
+// good
+[1, 2, 3].map((x) => {
+  const y = x + 1;
+  return x * y;
+});
+							</code></pre>
+						</ul>
+					</section>
+					<section>
+						<h2>Don't use arrow function</h2>
+						<br>
+						<a href="http://rainsoft.io/when-not-to-use-arrow-functions-in-javascript/">When 'not' to use arrow functions</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>pure function</h1>
+					</section>
+					<section>
+						<h2>pure function</h2>
+						<ul>
+							<li>doesn’t depend on or modify variables outside of its scope</li>
+						</ul>
+						<pre class="fragment"><code>
+function mouseOnLeftSide(mouseX) {
+    return mouseX < window.innerWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX));
+};
+						</code></pre>
+						<ul class="fragment">
+							<li>this piece of code works just fine</li>
+							<li>does the job expected</li>
+						</ul>
+						<br>
+						<br>
+						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
+						<aside class="notes">
+							<p>Not pure. </p>
+							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Why Pure Function?</h2>
+						<ul>
+							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
+							<li class="fragment">How do you test this?
+								<ul class="fragment">
+									<li>manually test by loading up your browser</li>
+									<li>write some unit tests</li>
+								</ul>
+							</li>
+							<li class="fragment">You cann't write unit test</li>
+							<li class="fragment">function relies on window.innerWidth</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Pure version</h2>
+						<pre><code>
+function mouseOnLeftSide(mouseX, windowWidth) {
+    return mouseX < windowWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
+};
+						</code></pre>
+						<pre class="fragment"><code>
+mouseOnLeftSide(5, 499);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Why Pure</h2>
+						<ul>
+							<li class="fragment">Self-documenting</li>
+							<li class="fragment">Know dependency at declaration</li>
+							<li class="fragment">Avoid changes in global variables</li>
+							<li class="fragment">Referential transparency</li>
+							<pre class="fragment"><code>
+function mouseOnLeftSide(mouseX) {
+    return mouseX < window.innerWidth / 2;
+}
+
+</code></pre>
+						</ul>
+						<aside class="notes">
+							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
+							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
+							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
+						</aside>
+					</section>
+					<section>
+						<h2>How to Decide</h2>
+						<ul>
+							<li class="fragment">Impossible to avoid impure function
+								<ul class="fragment">
+									<li>fetch data</li>
+									<li>read DOM</li>
+								</ul>
+							</li>
+							<li class="fragment">Structure in a way to isolate impure function</li>
+							<li class="fragment">Try to use pure as many place as possible</li>
+						</ul>
+						<aside class="notes">
+							<p>It’s impossible to have pure functions consistently—there will always be a time when you need to reach out and fetch data, the most common example of which is reaching into the DOM to grab a specific element to interact with.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Read comment and change this example</h2>
+						<pre class="fragment"><code>
+function changeElementToRed() {
+    var foo = document.getElementById('foo');
+    foo.style.backgroundColor = "red";
+}
+
+changeElementToRed();
+
+</code></pre>
+						<ul>
+							<li class="fragment">This function is not reusable at all</li>
+							<li class="fragment">Hard to test</li>
+							<li class="fragment">Have to create element with specific ID</li>
+						</ul>
+						<aside class="notes">
+							<p>This function is not reusable at all; it’s directly tied to a specific DOM element. If we wanted to reuse it to change a different element, we couldn’t.</p>
+						</aside>
+					</section>
+					<section>
+						<h2></h2>
+						<pre><code>
+function changeElementToRed(elem) {
+    elem.style.backgroundColor = "red";
+}
+
+function changeFooToRed() {
+    var foo = document.getElementById('foo');
+    changeElementToRed(foo);
+}
+
+changeFooToRed();
+
+</code></pre>			
+						<ul>
+							<li class="fragment">Even though part is impure</li>
+							<li class="fragment">Can test core part</li>
+							<li class="fragment"> increase its readability, re-usability, and testability</li>
+						</ul>
+						<aside class="notes">
+							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h2>three dots</h2>
 						<br>
 						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
@@ -750,6 +763,7 @@ union(["foo"], ["bar"], ["foo"]);
 				<section>
 					<section>
 						<h2>naming this</h2>
+						<p>think about ES6 as well</p>
 						<br>
 						<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
 					</section>
@@ -940,6 +954,13 @@ for (var i = 0; i < 10; i += 1)
 					</section>
 				</section>
 				<section>
+					<section>
+						<h2>Cleverness</h2>
+						<ul>
+							<li>Things could be clever, but not too clever
+							<li>Algorithms are optimal (fast and readable)
+						</ul>
+					</section>
 					<section>
 						<h2>Don't be clever</h2>
 						<pre><code>
