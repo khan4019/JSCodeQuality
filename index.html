@@ -114,6 +114,15 @@
 						<small>(reality)</small>
 					</section>
 					<section>
+						<h2>Very good and funny</h2>
+						<p>
+							Must read those comment
+						</p>
+						<br>
+
+						<a href="http://scottberkun.com/2007/asshole-driven-development/">asshole driven development</a>
+					</section>
+					<section>
 						<h2>Code Quality</h2>
 						<blockquote>
 							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
@@ -173,7 +182,7 @@
 						<h2>Code Quality</h2>
 						<blockquote>oCde quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
 						<br>
-						
+
 					</section>
 					<section>
 						<h2>Code Quality</h2>
@@ -750,7 +759,7 @@ function changeFooToRed() {
 
 changeFooToRed();
 
-</code></pre>			
+</code></pre>
 						<ul>
 							<li class="fragment">Even though part is impure</li>
 							<li class="fragment">Can test core part</li>
@@ -790,7 +799,7 @@ changeFooToRed();
 						<h2>Naming Convention</h2>
 						<p>No body writes name like this</p>
 						<pre><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days 
+ var $d; //elapsed time in days
  var dsc; //description
 
  var god_damn_it_IE;
@@ -809,7 +818,7 @@ other language
 								<li>It starts working and you focus on checking</li>
 								<li>Become happy and push the code</li>
 							</ul>
-						</aside> 
+						</aside>
 					</section>
 					<section>
 						<h2>comment</h2>
@@ -913,7 +922,7 @@ console.log(NaN); // NaN
 						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
 					</section>
 					<section>
-			
+
 						<pre><code>
 document.getElementsByName()
 document.getElementsByClassName()
@@ -924,7 +933,7 @@ document.images
 document.links
 document.forms
 document.scripts
-document.styleSheets 
+document.styleSheets
 						</code></pre>
 						<aside class="notes">
 							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
@@ -933,15 +942,15 @@ document.styleSheets
 					<section>
 						<h2>Increase readability by using switch statement</h2>
 						<pre><code>
-var inspect_me = 0, 
+var inspect_me = 0,
     result = '';
-switch (inspect_me) { 
+switch (inspect_me) {
 case 0:
    result = "zero";
-   break; 
+   break;
 case 1:
    result = "one";
-   break; 
+   break;
 default:
    result = "unknown";
 }
@@ -954,9 +963,9 @@ default:
 					<section>
 						<h2>Curly braces</h2>
 						<pre><code>
-// bad practice 
+// bad practice
 for (var i = 0; i < 10; i += 1)
-   alert(i); 
+   alert(i);
    alert(i + " is " + (i % 2 ? "odd" : "even"));
 						</code></pre>
 					</section>
@@ -1199,7 +1208,7 @@ return Math.round(x); // yes
 						<ul>
 							<li><a href="https://github.com/airbnb/javascript">Airbnb Style Guide</a></li>
 							<li><a href="http://speakingjs.com/es5/ch26.html"> Meta Code Style Guide</a></li>
-							
+
 							<li><a href=""></a></li>
 							<li><br>
 						<a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
