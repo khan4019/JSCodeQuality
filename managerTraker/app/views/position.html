@@ -36,16 +36,20 @@
         </ul>
         <h3 class="text-muted">Absolute Traker</h3>
       </div>
-
       <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+        <h1>3</h1>
       </div>
-
       <div class="row marketing">
         <div class="col-lg-6">
+          <h1>Var</h1>
+          <button class="var">Click 1</button>
+          <button class="var">Click 2</button>
+          <button class="var">Click 3</button>
 
+          <h1>Let</h1>
+          <button class="let">Click 1</button>
+          <button class="let">Click 2</button>
+          <button class="let">Click 3</button>
 
         </div>
       </div>
@@ -55,6 +59,23 @@
       </div>
     </div>
 
+    <script type="text/javascript">
+    var varNodes = document.getElementsByClassName('var');
+      for (var i = 0; i < varNodes.length; i++) {
+       varNodes[i].addEventListener('click', function() {
+          alert('You clicked element #' + i);
+       });
+      }
+
+
+      var letNodes = document.getElementsByClassName('let');
+      for (var i = 0; i < letNodes.length; i++) {
+       let j = i;
+       letNodes[i].addEventListener('click', function() {
+          alert('You clicked element #' + j);
+       });
+      }
+    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->

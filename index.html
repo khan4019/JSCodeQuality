@@ -345,10 +345,13 @@
 								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
 							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
 							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)	
+							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
 							</ul>
-						    
+
 					</section>
+				</section>
+				<section>
+					<h2>Logging</h2>
 				</section>
 				<section>
 					<section>
@@ -372,7 +375,72 @@
 				</section>
 				<section>
 					<section>
-						<h1>Embrace ES6</h1>
+						<h1>Variable</h1>
+					</section>
+					<section>
+						<h2>Variable Decleration</h2>
+						<pre><code>
+var views = document.getElementsByClassName('view');
+for (var i = 0; i < views.length; i++) {
+  views[i].addEventListener('click', function() {
+  	window.location.href = i +'.html';
+ });
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Solve with IIFE</h2>
+						<pre><code>
+//IIFE
+						</code></pre>
+					</section>
+					<section>
+						<h2>Solve with Let</h2>
+						<pre><code>
+var letNodes = document.getElementsByClassName('let');
+for (var i = 0; i < letNodes.length; i++) {
+ let j = i;
+ letNodes[i].addEventListener('click', function() {
+		alert('You clicked element #' + j);
+ });
+}
+						</code></pre>
+						<br>
+						<a href="https://www.sitepoint.com/preparing-ecmascript-6-let-const/"></a>
+					</section>
+					<section>
+						<pre><code>
+(() => {
+    var count = 0;
+
+    for (var i = 0; i < 2; ++i) {
+        for (var i = 0; i < 2; ++i) {
+            for (var i = 0; i < 2; ++i) {
+                console.log(count++);
+            }
+        }
+    }
+})();
+//[0, 1]
+						</code></pre>
+						<br>
+						<a href="http://stackoverflow.com/a/38257233/1535443"></a>
+					</section>
+					<section>
+						<pre><code>
+(() => {
+    var count = 0;
+
+    for (let i = 0; i < 2; ++i) {
+        for (let i = 0; i < 2; ++i) {
+            for (let i = 0; i < 2; ++i) {
+                console.log(count++);
+            }
+        }
+    }
+})();
+//[0, 7]
+						</code></pre>
 					</section>
 					<section>
 						<h2>var, let, const</h2>
