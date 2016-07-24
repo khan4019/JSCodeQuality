@@ -115,30 +115,26 @@
 						<small>(reality)</small>
 					</section>
 					<section>
-						<h2>Plan for Quality</h2>
-						<ul>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-						</ul>
-						<aside class="notes">
-							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
-						</aside>
-
-						<br>
-
-						<a href="http://scottberkun.com/2007/asshole-driven-development/">asshole driven development</a>
-					</section>
-					<section>
 						<h2>Agile Driven Development</h2>
 						<ul>
-							<li class="fragment">Assh*le Driven development (ADD)</li>
-							<li class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">Biggest jerk makes all the big decisions</li>
 							<li class="fragment">GDD: Google Driven Development</li>
-							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
-							<li class="fragment">BDD: Bug Drriven Development</li>
+							<li class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">BDD: Bug Driven Development</li>
+							<li class="fragment">Every bug is created by the guy left</li>
 						</ul>
+						<br>
+						<br>
+						<br>
+						<a href="http://scottberkun.com/2007/asshole-driven-development/">asshole driven development</a>
+						<aside class="notes">
+							<p>All wisdom, logic or process goes out the window when Mr. Asshole is in the Architecture meeting</p>
+							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
+							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
+							<p>All customer request is out of scope</p>
+							<p> when you manager asks about the progress status</p>
+							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
+						</aside>
 						<aside class="notes">
 							<h4>We do everything but Agile</h4>
 							<p>Asshole Driven development (ADD) – Any team where the biggest jerk makes all the big decisions is asshole driven development. All wisdom, logic or process goes out the window when Mr. Asshole is in the room, doing whatever idiotic, selfish thing he thinks is best. There may rules and processes, but Mr. A breaks them and people follow anyway.</p>
@@ -147,19 +143,6 @@
 							<p>CDD – Crisis Driven Development By Crisis (Management By Crisis). Everything is a Crisis. Every task, you have to “Drop everything” and work all night long! Woe to the developer that mentions that the user acceptance testing doesn’t even begin for another 2 months… Everything is a disaster.</p>
 							<p>Bug Driven Development (BDD). Write code and features like crazy; once the features are complete push the product out the door and let the public do your QA.</p>
 							<p>My current situation – Demo Driven Development (DDD or D3). When a feature is designed with the prime use case being “It’ll look good in a demo!”</p>
-
-						</aside>
-					</section>
-					<section>
-						<h2></h2>
-						<ul>
-							<li class="fragment">Mark all change request as Out of scope</li>
-							<li class="fragment">Every bug is created by the guy left</li>
-
-							<li class="fragment">Alwasy report progress as “It’s Almost Done”</li>
-							<li class="fragment">GOD: Google Oriented Developer</li>
-						</ul>
-						<aside class="notes">
 							<p>Out of Scope Development (OSD) where every request or idea, no matter how unrelated gets approved and expedited as long as it might sell one more piece of software or make one customer happy already. This is despite the fact that any monetary gains will be offset by the rising development costs of maintaining a hodgepodge of unrelated features.</p>
 							<p>Blame The People Worked and Left (BTPWAL): When you see a glitch, doesn’t matter whether your code caused it or not…through it on the people worked on this project and left the organization. I see this frequently in consulting environments.</p>
 							<p>Google Oriented Development – The Engineers know nothing; they get everything from search engines like Google</p>
@@ -169,51 +152,35 @@
 						</aside>
 					</section>
 					<section>
+						<h2>How to write quality code</h2>
+						<ul>
+							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
+							<li class="fragment">Mark all change request as Out of Scope</li>
+							<li class="fragment">Always report progress as “It’s Almost Done”</li>
+							<li class="fragment">Don't finish the feature when there is code freeze.</li>
+							<li class="fragment">Don't push code on Friday</li>
+							<li class="fragment">If ask for mode comment, comment dead code</li>
+							<li class="fragment">Build: put green dot on project manager's monitor</li>
+							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
+						</ul>
+						<aside class="notes">
+							<p>Remember; The most common pattern for software development is CPM:</p>
+							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
+
+						</aside>
+					</section>
+					<section>
 						<h2>Code Quality</h2>
 						<blockquote>
 							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
 						</blockquote>
-						<blockquote>
+						<aside class="notes">
 							<p> Don't worry, project manager will allocate plenty of time to clean those mess and create some new mess.</p>
-						</blockquote>
+						</aside>
 					</section>
 					<section>
 						<h2>measure code quality</h2>
 						<img class="fragment" src="images/wtf.png" alt="">
-					</section>
-					<section>
-						<h2>How to write quality code</h2>
-						<ul>
-							<li>Some people (who dont have to write code and we call them manager) told us that we need five start for quality:</li>
-							<ol>
-								<li>documentation/comment</li>
-								<li>static analysis</li>
-								<li>unit test</li>
-								<li>no build fail on continuous deployment</li>
-								<li></li>
-							</ol>
-							<li>Don't finish the feature when there is code freeze. there will two more days for Really really code freeze</li>
-							<li>Don't push code on Friday</li>
-							<li>Old hamburger in the fridge</li>
-							<li>Comment: line code</li>
-							<li>Build: put green dot on project manager's monitor</li>
-							<li>static analysis: jslint, hint ignore file</li>
-							<li>If possible, blame the guy who left the job</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Cleaning up</h2>
-						<ul>
-							<li>Testable code and break it down into simpler blocks.
-							<li>split into modules. Each should only have one purpose and be unaware of the rest of your codebase logic.
-							<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
-							<li>Consistent architecture and design.Don’t mix design patterns
-							<li>Document your functions and code in a balanced way with properly named functions.
-							<li>Use JSDoc to generate documentation for your JavaScript.
-							<li>Can Jump straight in after few weekend off
-						</ul>
-						<br>
-						<a href="https://www.sitepoint.com/write-maintainable-javascript/">Untangling Spaghetti Code</a>
 					</section>
 				</section>
 				<section>
@@ -226,25 +193,34 @@
 					</section>
 					<section>
 						<h2>Code Quality</h2>
-						<blockquote>oCde quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
+						<blockquote>Code quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
 						<br>
-
 					</section>
 					<section>
 						<h2>Code Quality</h2>
 						<ol>
-							<li>Clear and understandable design and architecture
-							<li>Clear Naming convention and coding style
-							<li>Documentation -- self-explaining code
-							<li>Automated Unit tests
-							<li>Code Review</li>
+							<li class="fragment">Clear and understandable design and architecture
+							<li class="fragment">Split into modules. Each module should have one purpose
+							<li class="fragment">Clear Naming convention and coding style
+							<li class="fragment">Documentation -- self-explaining code
+							<li class="fragment">Testable code and break it down into simpler blocks.
+							<li class="fragment">Automated Unit tests
+							<li class="fragment">Code Review</li>
+							<li class="fragment">Can Jump straight in after few weekend off
 						</ol>
 						<br>
 						<br>
-						<br>
 						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">how do you write Good code</a>
+						<br>
+							<a href="https://www.sitepoint.com/write-maintainable-javascript/">Untangling Spaghetti Code</a>
+						<aside class="notes">
+							<li>split into modules. Each should only have one purpose and be unaware of the rest of your codebase logic.
+							<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
+							<li>Document your functions and code in a balanced way with properly named functions.
+							<li>Use JSDoc to generate documentation for your JavaScript.
+						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>Other code smells</h2>
 						<ul>
 							<li>Large classes or God object
@@ -268,6 +244,305 @@
 							<li>Code Coverage: Istanbul</li>
 							<li>Package Management: Bower, npm</li>
 						</ul>
+					</section> -->
+				</section>
+				<section>
+					<section>
+						<h2>Folder Structure</h2>
+					</section>
+					<section>
+						<h2>No common rule</h2>
+						<ul>
+							<li>But you need one</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/folderStructure.png" alt="">
+						<aside class="notes">
+							<p>Old Style: M, V, C style</p>
+							<p>Controller, service, directory</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/folderStructure2.png" alt="">
+						<br>
+						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
+					</section>
+					<section>
+						<img style="height:700px" src="images/folderStructure3.png" alt="">
+					</section>
+					<section>
+						<img src="images/folderStructure4.png" alt="">
+						<aside class="notes">
+							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
+						</aside>
+					</section>
+					<section>
+						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
+						<img src="images/folderStructure5.png" alt="">
+						<br>
+						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Modules</h1>
+					</section>
+					<section>
+						<h2>How to create module</h2>
+						<ul>
+							<li>Single Responsibility</li>
+							<li class="fragment">Have a top-level scope that is not the global scope</li>
+							<li>shared code together</li>
+							<li class="fragment">think reusability</li>
+							<li class="fragment">load with dependency order</li>
+						</ul>
+						<aside class="notes">
+							<p>not more than 500 line</p>
+							<p>one module per file</p>
+							<p>Good authors divide their books into chapters and sections; good programmers divide their programs into modules.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Plain simple JS</h2>
+						<pre><code>
+// salute.js
+var mySalute = 'Hello';
+						</code></pre>
+						<pre class="fragment"><code>
+// world.js
+var result = mySalute + ' world!';
+						</code></pre>
+					</section>
+					<section>
+						<h2>Common JS</h2>
+						<pre><code>
+// salute.js
+var mySalute = 'Hello;
+module.exports = mySalute;
+						</code></pre>
+						<pre class="fragment"><code>
+// world.js
+var mySalute = require('./salute');
+var Result = mySalute + 'world!';
+						</code></pre>
+						<aside class="notes">
+							<p>Note that we didn’t use the full filename salute.js but ./salute when calling require, so you can omit the extension of your scripts. ./ means that the salute module is in the same directory as the world module.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Export function</h2>
+						<pre><code>
+//content.js
+module.exports = function(){
+	return 'hello JS';
+};
+						</code></pre>
+						<pre class="fragment"><code>
+//entry.js
+var content = require('./content.js');
+console.log(content());
+						</code></pre>
+						<aside class="notes">
+							<p>Usually you will expose a single value</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Expose multiple value</h2>
+						<pre><code>
+//content.js
+module.exports = {
+	foo:'hello JS',
+	bar:'Beer JS'
+};
+						</code></pre>
+						<pre class="fragment"><code>
+//entry.js
+var content = require('./content.js');
+console.log(content.foo);
+console.log(content.bar);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Common JS</h2>
+						<pre><code>
+//bar.js
+exports.bar = "JS";
+						</code></pre>
+						<pre class="fragment"><code>
+//foo.js
+var bar = require( "./bar" );
+exports.foo = function(){
+    return "Hello" + bar;
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//app.js
+var foo = require('./foo');
+console.log(foo);
+						</code></pre>
+					</section>
+					<section>
+						<h2>CommonJS</h2>
+						<ul>
+							<li>require to load dependencies</li>
+							<li class="fragment">export</li>
+							<li class="fragment">module</li>
+							<li class="fragment">exports vs module.exports</li>
+							<li class="fragment">require can be called anywhere</li>
+							<li class="fragment">circular dependency is allowed</li>
+							<li class="fragment">Browsers require a loader library or transpiling.</li>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+						</ul>
+						<br>
+						<a href="http://know.cujojs.com/tutorials/modules/authoring-cjs-modules"></a>
+					</section>
+					<section>
+						<h2>ES6 module</h2>
+						<ul>
+							<li>Support synchronous and asynchronous loading</li>
+							<li>Support for cyclic dependencies between modules</li>
+						</ul>
+						<br>
+						<a href="http://www.2ality.com/2014/09/es6-modules-final.html">es6 modules</a>
+					</section>
+					<section>
+						<h2>ES2015</h2>
+						<pre><code>
+// library.js
+export function square(x) {
+  return x * x;
+}
+
+export function cube(x) {
+  return x * x * x;
+}
+
+//or
+export { square, cube };
+						</code></pre>
+						<pre class="fragment"><code>
+import { square, cube } from 'foo';
+console.log(cube(4)); // 16
+						</code></pre>
+					</section>
+					<section>
+						<h2>es6</h2>
+						<pre><code>
+// --file.js--
+function getJSON(url, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.onload = function () { 
+    callback(this.responseText) 
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+}
+
+export function getUsefulContents(url, callback) {
+  getJSON(url, data => callback(JSON.parse(data)));
+}
+						</code></pre>
+						<pre class="fragment"><code>
+// --main.js--
+import { getUsefulContents } from "file";
+getUsefulContents("http://www.example.com", data => {
+  doSomethingUseful(data);
+});
+						</code></pre>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
+					</section>
+					<section>
+						<h2>es6 export</h2>
+						<pre><code>
+// export a named variable
+export var x = 42;                      
+
+// export a named function
+export function foo() {};               
+
+// export the default export
+export default 42;                      
+
+// export the default export as a function
+export default function foo() {};       
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>es6 export</h2>
+						<pre><code>
+// export an existing variable
+export { encrypt };           
+
+// export a variable as a new name
+export { decrypt as dec };        
+
+// export an export from another module
+export { encrypt as en } from 'crypto';
+
+// export all exports from another module 
+export * from 'crypto';                 
+						</code></pre>
+						<br>
+						<a href="https://github.com/ModuleLoader/es6-module-loader/wiki/Brief-Overview-of-ES6-Module-syntax">overview of es6 module</a>
+					</section>
+					<section>
+						<h2>import</h2>
+						<pre><code>
+import * as myModule from "my-module";
+
+import {foo, bar} from "my-module";
+
+
+import {reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short} from "my-module";
+						</code></pre>
+						<pre class="fragment"><code>
+// import a module without any import bindings
+import 'jquery';                        
+
+// import the default export of a module
+import $ from 'jquery';                 
+
+// import a named export of a module
+import { $ } from 'jquery';             
+
+// import a named export to a different name
+import { $ as jQuery } from 'jquery';   
+						</code></pre>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
+					</section>
+					<section>
+						<h2>default</h2>
+
+					</section>
+					<section>
+						<h2>commonJS vs ES6</h2>
+						<pre><code>
+//commonJS
+exports.someMethod = function() {
+
+  };
+
+exports.another = {};
+						</code></pre>
+						<pre class="fragment"><code>
+//es6
+export function someMethod() {
+
+ }
+
+export var another = {};
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>or just use this as an example</h2>
+						<br>
+						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">music streaming</a>
 					</section>
 				</section>
 				<section>
@@ -1099,31 +1374,6 @@ console.log(NaN); // NaN
 	console.log(NaN); // 42
 }());
 						</code></pre>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Modules</h1>
-					</section>
-					<section>
-						<h2></h2>
-						<br>
-						<a href="https://plot.ly/javascript/modularizing-monolithic-javascript-projects/">three types</a>
-					</section>
-					<section>
-						<h2>have good example</h2>
-						<br>
-						<a href="http://enterprisewebbook.com/ch6_large_js_apps.html">check this</a>
-					</section>
-					<section>
-						<h2>get examples</h2>
-						<br>
-						<a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">addy osmani book</a>
-					</section>
-					<section>
-						<h2>or just use this as an example</h2>
-						<br>
-						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">music streaming</a>
 					</section>
 				</section>
 				<section>
