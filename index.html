@@ -47,9 +47,9 @@
 			<div class="slides">
 				<section>
 					<h1>JS Code Quality</h1>
-					<h3>How to create Large JS Application</h3>
+					<h4>for Large JS Application</h4>
 					<p>
-						<small><a href="http://hakim.se">thatjsdude.com</a> / <a href="http://twitter.com/hakimel">@mdkhan005</a></small>
+						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
 					</p>
 				</section>
 				<section>
@@ -59,10 +59,6 @@
 					<section>
 						<h2>TODO: Very good</h2>
 						<ul>
-							<li>What do you mean by code quality</li>
-							<li>How we can measure code quality</li>
-							<li>what specific about JS code quality</li>
-							<li>Manage large application</li>
 							<li>Few mistakes in JS</li>
 								<ul>
 									<li>Design/Architecture/Code review</li>
@@ -253,6 +249,7 @@
 					<section>
 						<h2>No common rule</h2>
 						<ul>
+							<li>Whatever works for your project</li>
 							<li>But you need one</li>
 						</ul>
 					</section>
@@ -305,10 +302,10 @@
 						<ul>
 							<li>Single Responsibility</li>
 							<li class="fragment">Have a top-level scope that is not the global scope</li>
-							<li>Shared code together</li>
+							<li class="fragment">Shared code together</li>
 							<li class="fragment">Think reusability</li>
 							<li class="fragment">Load with dependency order</li>
-							<li>avoid global conflicts</li>
+							<li class="fragment">avoid global conflicts</li>
 						</ul>
 						<aside class="notes">
 							<p>not more than 500 line</p>
@@ -403,10 +400,8 @@ console.log(foo);
 							<li class="fragment">module</li>
 							<li class="fragment">exports vs module.exports</li>
 							<li class="fragment">require can be called anywhere</li>
-							<li class="fragment">circular dependency is allowed</li>
+							<li class="fragment">Circular dependency is allowed</li>
 							<li class="fragment">Browsers require a loader library or transpiling.</li>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
 						</ul>
 						<br>
 						<a href="http://know.cujojs.com/tutorials/modules/authoring-cjs-modules"></a>
@@ -529,11 +524,7 @@ import { $ as jQuery } from 'jquery';
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
 					</section>
 					<section>
-						<h2>default</h2>
-
-					</section>
-					<section>
-						<h2>commonJS vs ES6</h2>
+						<h2>CommonJS vs ES6</h2>
 						<pre><code>
 //commonJS
 exports.someMethod = function() {
@@ -551,11 +542,8 @@ export function someMethod() {
 export var another = {};
 
 						</code></pre>
-					</section>
-					<section>
-						<h2>or just use this as an example</h2>
 						<br>
-						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">music streaming</a>
+						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
 					</section>
 				</section>
 				<section>
@@ -575,12 +563,12 @@ export var another = {};
 					<section>
 						<h2>Webpack</h2>
 						<ul>
-							<li>split your app into multiple files</li>
+							<li>Split your app into multiple files</li>
 							<li>Load asynchronously on demand</li>
 							<li class="fragment">Keep initial load time low</li>
 							<li class="fragment">Module all static resources</li>
-							<li class="fragment">handles style, image, fonts, templates, etc.</li>
-							<li class="fragment">create single or multiple chunks</li>
+							<li class="fragment">Handles style, image, fonts, templates, etc.</li>
+							<li class="fragment">Create single or multiple chunks</li>
 							<li class="fragment">Dependencies are resolved during compilation</li>
 							<li class="fragment">Integrate with build system Grunt/gulp</li>
 						</ul>
@@ -705,62 +693,314 @@ module.exports = {
 						<br>
 						<a href="https://www.npmjs.com/package/babel-loader">babel loader</a>
 					</section>
+					<section>
+						<h2>Multi-compiler</h2>
+						<pre><code>
+// webpack.config.js
+module.exports = [{
+		name: "mobile",
+		entry: "./example",
+		output: "mobile.js",
+		plugins: [
+			new webpack.DefinePlugin({
+				ENV: JSON.stringify("mobile")
+			})
+		]
+	},
+	{
+		name: "desktop",
+		entry: "./example",
+		output: "desktop.js",
+		plugins: [
+			new webpack.DefinePlugin({
+				ENV: JSON.stringify("desktop")
+			})
+		]
+	}
+]		
+						</code></pre>
+						<br>
+						<a href="http://okonet.ru/viennajs-webpack-introduction/?full#multiCompiler">webpack introduction</a>
+					</section>
+					<section>
+						<h2>Multi-compiler</h2>
+						<pre><code>
+// in your code
+$ = if (ENV === "desktop") {
+	require('jquery');
+} else {
+	require('zepto');
+}
+						</code></pre>
+						<small>Will produce 2 separate bundles with different dependencies...</small>
+					</section>
+					<section>
+						<h2>Hot Module Replacement</h2>
+						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
+						<br>
+						<a href="http://webpack.github.io/docs/hot-module-replacement-with-webpack.html">hot module replacement</a>
+					</section>
 				</section>
 				<section>
 					<section>
 						<h1>Make things testable</h1>
 					</section>
 					<section>
-						<h2>good example at bottom</h2>
+						<h2>Single Purpose</h2>
+						<pre><code>
+// hard to test
+function createGreeting(name, location, age) {
+    let greeting;
+    if (location === 'Mexico') {
+        greeting = '!Hola';
+    } else {
+        greeting = 'Hello';
+    }
+
+    greeting += ' ' + name.toUpperCase() + '! ';
+
+    greeting += 'You are ' + age + ' years old.';
+
+    return greeting;
+}
+						</code></pre>
 						<br>
 						<a href="https://www.toptal.com/javascript/writing-testable-code-in-javascript">testable JS</a>
 						<br>
 						<a href="http://www.adequatelygood.com/Writing-Testable-JavaScript.html">testable JS</a>
 					</section>
 					<section>
-						<h2>when to test</h2>
-						<p>very good: make it generic</p>
+						<h2>Break it down</h2>
+						<pre><code>
+function getBeginning(location) {
+    if (location === 'Mexico') {
+        return '¡Hola';
+    } else {
+        return 'Hello';
+    }
+}
+						</code></pre>
+						<pre class="fragment"><code>
+function getMiddle(name) {
+    return ' ' + name.toUpperCase() + '! ';
+}
+
+function getEnd(age) {
+    return 'You are ' + age + ' years old.';
+}
+
+function createGreeting(name, location, age) {
+    return getBeginning(location) + getMiddle(name) + getEnd(age);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Make function Pure</h2>
+						
+						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
+						<ul class="fragment">
+							<li>Given the same input, will always return the same output</li>
+							<li>Produces no side effects</li>
+							<li>Relies on no external state</li>
+						</ul>
+						
+						<pre class="fragment"><code>
+function mouseOnLeftSide(mouseX) {
+    return mouseX < window.innerWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX));
+};
+						</code></pre>
+						
 						<br>
-						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Advanced Testing and Debugging in AngularJS</a>
-					</section>
-					<section>
-						<div>
-							<h4>Does the page loads correctly</h4>
-							<ul>
-								<li>Web Driver</li>
-								<li>E2E test</li>
-								<li>Full integration test through given URL</li>
-								<li>multiple browser</li>
-							</ul>
-						</div>
-						<div class="fragment">
-							<h4>Server side testing</h4>
-						</div>
-					</section>
-					<section>
-						<div>
-							<h4>Unit Testing</h4>
-							<ul>
-								<li>Jasmine or Mocha</li>
-								<li>Solid test spec for each feature</li>
-								<li>each block of code(functions, objects, methods, etc.)</li>
-							</ul>
-						</div>
-					</section>
-					<section>
-						<h2>Run and show unit test</h2>
 						<br>
-						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
+						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
+						<aside class="notes">
+							<p>Not pure. </p>
+							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Impure is not testable</h2>
+						<ul>
+							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
+							<li class="fragment">How do you test this?
+								<ul class="fragment">
+									<li>manually test by loading up your browser</li>
+									<li>write some unit tests</li>
+								</ul>
+							</li>
+							<li class="fragment">You cann't write unit test</li>
+							<li class="fragment">function relies on window.innerWidth</li>
+						</ul>
+					</section>
+					<!-- <section>
+						<h2>Pure version</h2>
+						<pre><code>
+function mouseOnLeftSide(mouseX, windowWidth) {
+    return mouseX < windowWidth / 2;
+}
+
+document.onmousemove = function(e) {
+    console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
+};
+						</code></pre>
+						<pre class="fragment"><code>
+mouseOnLeftSide(5, 499);
+						</code></pre>
+					</section> -->
+					<section>
+						<h2>Why Pure</h2>
+						<ul>
+							<li class="fragment">Self-documenting</li>
+							<li class="fragment">Know dependency at declaration</li>
+							<li class="fragment">Avoid changes in global variables</li>
+							<li class="fragment">Referential transparency</li>
+						</ul>
+						<pre class="fragment"><code>
+function square(x) {
+    return x * x;
+}
+
+function squareThemAll(items){
+	return items.map(square);
+}
+						</code></pre>
+						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
+						<aside class="notes">
+							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
+							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
+							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
+						</aside>
+					</section>
+					<!-- <section>
+						<h2>How to Decide</h2>
+						<ul>
+							<li class="fragment">Impossible to avoid impure function
+								<ul class="fragment">
+									<li>fetch data</li>
+									<li>read DOM</li>
+								</ul>
+							</li>
+							<li class="fragment">Structure in a way to isolate impure function</li>
+							<li class="fragment">Try to use pure as many place as possible</li>
+						</ul>
+						<aside class="notes">
+							<p>It’s impossible to have pure functions consistently—there will always be a time when you need to reach out and fetch data, the most common example of which is reaching into the DOM to grab a specific element to interact with.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Read comment and change this example</h2>
+						<pre class="fragment"><code>
+function changeElementToRed() {
+    var foo = document.getElementById('foo');
+    foo.style.backgroundColor = "red";
+}
+
+changeElementToRed();
+
+</code></pre>
+						<ul>
+							<li class="fragment">This function is not reusable at all</li>
+							<li class="fragment">Hard to test</li>
+							<li class="fragment">Have to create element with specific ID</li>
+						</ul>
+						<aside class="notes">
+							<p>This function is not reusable at all; it’s directly tied to a specific DOM element. If we wanted to reuse it to change a different element, we couldn’t.</p>
+						</aside>
 					</section>
 					<section>
 						<h2></h2>
+						<pre><code>
+function changeElementToRed(elem) {
+    elem.style.backgroundColor = "red";
+}
+
+function changeFooToRed() {
+    var foo = document.getElementById('foo');
+    changeElementToRed(foo);
+}
+
+changeFooToRed();
+
+</code></pre>
+						<ul>
+							<li class="fragment">Even though part is impure</li>
+							<li class="fragment">Can test core part</li>
+							<li class="fragment"> increase its readability, re-usability, and testability</li>
+						</ul>
+						<aside class="notes">
+							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
+						</aside>
+					</section> -->
+				</section>
+				<section>
+					<section>
+						<h1>Testing</h1>
+					</section>
+					<section>
+						<h2>Static Analysis</h2>
+						<ul>
+							<li>JSLint</li>
+							<li>JSHint</li>
+							<li>ESLint</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Unit Testing</h2>
+						<ul>
+							<li>Test Framework: Jasmine, mocha</li>
+							<li>Test Runner: Karma, Protractor</li>
+							<li>Browser or PhantomJS</li>
+							<li>Test Coverage</li>
+							<li>Continuous Integration</li>
+							<li>Test Debug</li>
+						</ul>
 						<br>
-						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">could find something</a>
+						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
+						<br>
+						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">Automated Unit test</a>
+						<br>
+						<br>
+						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Angular Testing</a>
+					</section>
+					<section>
+						<pre><code>
+describe("A spec using beforeEach and afterEach", function() {
+  var foo = 0;
+
+  beforeEach(function() {
+    foo += 1;
+  });
+
+  afterEach(function() {
+    foo = 0;
+  });
+
+  it("is just a function, so it can contain any code", function() {
+    expect(foo).toEqual(1);
+  });
+
+  it("can have more than one expectation", function() {
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+});
+						</code></pre>
+						<br>
+						<a href="http://jasmine.github.io/edge/introduction.html">Jasmine</a>
+					</section>
+					<section>
+						<h2>Test Ajax call</h2>
+						<br>
+						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h1>Variable</h1>
+						<h1>Coding Style</h1>
 					</section>
 					<section>
 						<h2>Variable Decleration</h2>
@@ -905,220 +1145,6 @@ function checkName(hasName) {
 				</section>
 				<section>
 					<section>
-						<h2>Common functionality</h2>
-						<br>
-						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
-					</section>
-					<section>
-						<h2>Performance vs Readability</h2>
-						<pre><code>
-// bad (albeit way faster)
-const arr = [1, 2, 3, 4];
-const len = arr.length;
-var i = -1;
-var result = [];
-while (++i < len) {
-  var n = arr[i];
-  if (n % 2 > 0) continue;
-  result.push(n * n);
-}
-						</code></pre>
-						<pre class="fragment"><code>
-const isEven = n => n % 2 == 0;
-const square = n => n * n;
-
-const result = arr.filter(isEven).map(square);
-						</code></pre>
-						<aside class="notes">
-							<p>Favor readability, correctness and expressiveness over performance. JavaScript will basically never be your performance bottleneck. Optimize things like image compression, network access and DOM reflows instead. If you remember just one guideline from this document, choose this one.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>coercion</h2>
-						<pre><code>
-// bad
-if (x === undefined || x === null) { ... }
-
-// good
-if (x == undefined) { ... }
-						</code></pre>
-					</section>
-					<section>
-						<h2>Loop</h2>
-						<pre><code>
-const sum = arr => {
-  var sum = 0;
-  var i = -1;
-  for (;arr[++i];) {
-    sum += arr[i];
-  }
-  return sum;
-};
-
-sum([1, 2, 3]); // => 6
-						</code></pre>
-						<pre class="fragment"><code>
-const sum = arr =>
-  arr.reduce((x, y) => x + y);
-
-sum([1, 2, 3]); // => 6
-						</code></pre>
-					</section>
-					<section>
-						<h2>apply</h2>
-						<pre><code>
-const greet = (first, last) => `Hi ${first} ${last}`;
-const person = ["John", "Doe"];
-
-// bad
-greet.apply(null, person);
-
-// good
-greet(...person);
-						</code></pre>
-						<aside class="notes">
-							<p>Forget about apply(). Use the spread operator instead.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>bind</h2>
-						<pre><code>
-const person = {
-  first: "John",
-  last: "Doe",
-  greet() {
-    const full = function() {
-      return `${this.first} ${this.last}`;
-    }.bind(this);
-    return `Hello ${full()}`;
-  }
-}
-
-						</code></pre>
-						<pre class="fragment"><code>
-const person = {
-  first: "John",
-  last: "Doe",
-  greet() {
-    const full = () => `${this.first} ${this.last}`;
-    return `Hello ${full()}`;
-  }
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>nested function</h2>
-						<pre><code>
-const plus1 = a => a + 1;
-const mult2 = a => a * 2;
-
-// bad
-mult2(plus1(5)); // => 12
-						</code></pre>
-						<pre class="fragment"><code>
-// good
-const pipeline = (...funcs) => val => funcs.reduce((a, b) => b(a), val);
-const addThenMult = pipeline(plus1, mult2);
-addThenMult(5); // => 12
-						</code></pre>
-					</section>
-					<section>
-						<h2>caching</h2>
-						<pre><code>
-const contains = (arr, value) =>
-  Array.prototype.includes
-    ? arr.includes(value)
-    : arr.some(el => el === value);
-contains(["foo", "bar"], "baz"); // => false
-						</code></pre>
-						<pre class="fragment"><code>
-// good
-const contains = (() =>
-  Array.prototype.includes
-    ? (arr, value) => arr.includes(value)
-    : (arr, value) => arr.some(el => el === value)
-)();
-contains(["foo", "bar"], "baz"); // => false
-						</code></pre>
-					</section>
-					<section>
-						<h2>for...in</h2>
-						<pre><code>
-const shared = { foo: "foo" };
-const obj = Object.create(shared, {
-  bar: {
-    value: "bar",
-    enumerable: true
-  }
-});
-
-// bad
-for (var prop in obj) {
-  if (obj.hasOwnProperty(prop))
-    console.log(prop);
-}
-						</code></pre>
-						<pre class="fragment"><code>
-// good
-Object.keys(obj).forEach(prop => console.log(prop));
-						</code></pre>
-					</section>
-					<section>
-						<h2>Objects as Maps</h2>
-						<pre><code>
-// bad
-const me = {
-  name: "Ben",
-  age: 30
-};
-var meSize = Object.keys(me).length;
-meSize; // => 2
-me.country = "Belgium";
-meSize++;
-meSize; // => 3
-						</code></pre>
-						<pre class="fragment"><code>
-// good
-const me = new Map();
-me.set("name", "Ben");
-me.set("age", 30);
-me.size; // => 2
-me.set("country", "Belgium");
-me.size; // => 3
-						</code></pre>
-					</section>
-					<section>
-						<h2>Dependencies</h2>
-						<pre><code>
-// bad
-var _ = require("underscore");
-_.compact(["foo", 0]));
-_.unique(["foo", "foo"]);
-_.union(["foo"], ["bar"], ["foo"]);
-						</code></pre>
-						<pre class="fragment"><code>
-// good
-const compact = arr => arr.filter(el => el);
-const unique = arr => [...Set(arr)];
-const union = (...arr) => unique([].concat(...arr));
-
-compact(["foo", 0]);
-unique(["foo", "foo"]);
-union(["foo"], ["bar"], ["foo"]);
-						</code></pre>
-						<aside class="notes">
-							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Architecture</h2>
-						<p>Doesn't look very good: can read if have time</p>
-						<br>
-						<a href="https://robots.thoughtbot.com/architecting-front-end-styles">architecting front end</a>
-					</section>
-				</section>
-				<section>
-					<section>
 						<h1>Function</h1>
 					</section>
 					<section>
@@ -1240,150 +1266,24 @@ var pairs = evens.map(v => ({even: v, odd: v + 1}));
 				</section>
 				<section>
 					<section>
-						<h1>pure function</h1>
-					</section>
-					<section>
-						<h2>pure function</h2>
-						<ul>
-							<li>doesn’t depend on or modify variables outside of its scope</li>
-						</ul>
-						<pre class="fragment"><code>
-function mouseOnLeftSide(mouseX) {
-    return mouseX < window.innerWidth / 2;
-}
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX));
-};
-						</code></pre>
-						<ul class="fragment">
-							<li>this piece of code works just fine</li>
-							<li>does the job expected</li>
-						</ul>
-						<br>
-						<br>
-						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
-						<aside class="notes">
-							<p>Not pure. </p>
-							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Why Pure Function?</h2>
-						<ul>
-							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
-							<li class="fragment">How do you test this?
-								<ul class="fragment">
-									<li>manually test by loading up your browser</li>
-									<li>write some unit tests</li>
-								</ul>
-							</li>
-							<li class="fragment">You cann't write unit test</li>
-							<li class="fragment">function relies on window.innerWidth</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Pure version</h2>
-						<pre><code>
-function mouseOnLeftSide(mouseX, windowWidth) {
-    return mouseX < windowWidth / 2;
-}
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX, window.innerWidth));
-};
-						</code></pre>
-						<pre class="fragment"><code>
-mouseOnLeftSide(5, 499);
-						</code></pre>
-					</section>
-					<section>
-						<h2>Why Pure</h2>
-						<ul>
-							<li class="fragment">Self-documenting</li>
-							<li class="fragment">Know dependency at declaration</li>
-							<li class="fragment">Avoid changes in global variables</li>
-							<li class="fragment">Referential transparency</li>
-							<pre class="fragment"><code>
-function mouseOnLeftSide(mouseX) {
-    return mouseX < window.innerWidth / 2;
-}
-
-</code></pre>
-						</ul>
-						<aside class="notes">
-							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
-							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
-							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
-						</aside>
-					</section>
-					<section>
-						<h2>How to Decide</h2>
-						<ul>
-							<li class="fragment">Impossible to avoid impure function
-								<ul class="fragment">
-									<li>fetch data</li>
-									<li>read DOM</li>
-								</ul>
-							</li>
-							<li class="fragment">Structure in a way to isolate impure function</li>
-							<li class="fragment">Try to use pure as many place as possible</li>
-						</ul>
-						<aside class="notes">
-							<p>It’s impossible to have pure functions consistently—there will always be a time when you need to reach out and fetch data, the most common example of which is reaching into the DOM to grab a specific element to interact with.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Read comment and change this example</h2>
-						<pre class="fragment"><code>
-function changeElementToRed() {
-    var foo = document.getElementById('foo');
-    foo.style.backgroundColor = "red";
-}
-
-changeElementToRed();
-
-</code></pre>
-						<ul>
-							<li class="fragment">This function is not reusable at all</li>
-							<li class="fragment">Hard to test</li>
-							<li class="fragment">Have to create element with specific ID</li>
-						</ul>
-						<aside class="notes">
-							<p>This function is not reusable at all; it’s directly tied to a specific DOM element. If we wanted to reuse it to change a different element, we couldn’t.</p>
-						</aside>
-					</section>
-					<section>
-						<h2></h2>
-						<pre><code>
-function changeElementToRed(elem) {
-    elem.style.backgroundColor = "red";
-}
-
-function changeFooToRed() {
-    var foo = document.getElementById('foo');
-    changeElementToRed(foo);
-}
-
-changeFooToRed();
-
-</code></pre>
-						<ul>
-							<li class="fragment">Even though part is impure</li>
-							<li class="fragment">Can test core part</li>
-							<li class="fragment"> increase its readability, re-usability, and testability</li>
-						</ul>
-						<aside class="notes">
-							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
-						</aside>
-					</section>
-				</section>
-				<section>
-					<section>
 						<h1>Cleverness</h1>
 						
 						<p>Things could be clever, but code doesn't have to</p>
 						
+					</section>
+					<section>
+						<h2>Be Generous to New Hire</h2>
+						<pre><code>
+const plus1 = a => a + 1;
+const mult2 = a => a * 2;
+
+// bad
+mult2(plus1(5)); // => 12
+						</code></pre>
+						<pre class="fragment"><code>
+return x >> 0; // no
+return Math.round(x); // yes
+						</code></pre>
 					</section>
 					<section>
 						<h2>Don't be clever</h2>
@@ -1399,7 +1299,8 @@ if (x === 0) {
 } else {
     return 'blue';
 }
-
+						</code></pre>
+						<pre class="fragment"><code>
 // Best:
 switch (x) {
     case 0:
@@ -1413,7 +1314,7 @@ switch (x) {
 						<br>
 						<a href="http://speakingjs.com/es5/ch26.html">Speaking JavaScript</a>
 					</section>
-					<section>
+					<!-- <section>
 						<pre><code>
 foo && bar(); // no
 if (foo) bar(); // yes
@@ -1421,9 +1322,6 @@ if (foo) bar(); // yes
 foo || bar(); // no
 if (!foo) bar(); // yes
 						</code></pre>
-					</section>
-					<section>
-						<h2>don't be clever</h2>
 						<pre><code>
 // Unsure: what is happening?
 return ++foo;
@@ -1432,11 +1330,8 @@ return ++foo;
 ++foo;
 return foo;
 						</code></pre>
-						<pre class="fargment"><code>
-return x >> 0; // no
-return Math.round(x); // yes
-						</code></pre>
-					</section>
+					</section> 
+					
 					<section>
 						<pre><code>
 > +'123'  // no
@@ -1451,6 +1346,16 @@ return Math.round(x); // yes
 						</code></pre>
 					</section>
 					<section>
+						<h2>coercion</h2>
+						<pre><code>
+// bad
+if (x === undefined || x === null) { ... }
+
+// good
+if (x == undefined) { ... }
+						</code></pre>
+					</section>
+					<section>
 						<h2>other links</h2>
 						<ul>
 							<li><a href="http://rainsoft.io/power-up-the-array-creation-in-javascript/">Power up the array creation</a></li>
@@ -1458,6 +1363,199 @@ return Math.round(x); // yes
 							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
 							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
 						</ul>
+					</section>-->
+					<section>
+						<h2>Performance vs Readability</h2>
+						<pre><code>
+// bad (albeit way faster)
+const arr = [1, 2, 3, 4];
+const len = arr.length;
+var i = -1;
+var result = [];
+while (++i < len) {
+  var n = arr[i];
+  if (n % 2 > 0) continue;
+  result.push(n * n);
+}
+						</code></pre>
+						<pre class="fragment"><code>
+const isEven = n => n % 2 == 0;
+const square = n => n * n;
+
+const result = arr.filter(isEven).map(square);
+						</code></pre>
+						<br>
+						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
+						<aside class="notes">
+							<p>Favor readability, correctness and expressiveness over performance. JavaScript will basically never be your performance bottleneck. Optimize things like image compression, network access and DOM reflows instead. If you remember just one guideline from this document, choose this one.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Loop</h2>
+						<pre><code>
+const sum = arr => {
+  var sum = 0;
+  var i = -1;
+  for (;arr[++i];) {
+    sum += arr[i];
+  }
+  return sum;
+};
+
+sum([1, 2, 3]); // => 6
+						</code></pre>
+						<pre class="fragment"><code>
+const sum = arr =>
+  arr.reduce((x, y) => x + y);
+
+sum([1, 2, 3]); // => 6
+						</code></pre>
+					</section>
+					<!--<section>
+						<h2>apply</h2>
+						<pre><code>
+const greet = (first, last) => `Hi ${first} ${last}`;
+const person = ["John", "Doe"];
+
+// bad
+greet.apply(null, person);
+
+// good
+greet(...person);
+						</code></pre>
+						<aside class="notes">
+							<p>Forget about apply(). Use the spread operator instead.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>bind</h2>
+						<pre><code>
+const person = {
+  first: "John",
+  last: "Doe",
+  greet() {
+    const full = function() {
+      return `${this.first} ${this.last}`;
+    }.bind(this);
+    return `Hello ${full()}`;
+  }
+}
+
+						</code></pre>
+						<pre class="fragment"><code>
+const person = {
+  first: "John",
+  last: "Doe",
+  greet() {
+    const full = () => `${this.first} ${this.last}`;
+    return `Hello ${full()}`;
+  }
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>nested function</h2>
+						<pre><code>
+const plus1 = a => a + 1;
+const mult2 = a => a * 2;
+
+// bad
+mult2(plus1(5)); // => 12
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const pipeline = (...funcs) => val => funcs.reduce((a, b) => b(a), val);
+const addThenMult = pipeline(plus1, mult2);
+addThenMult(5); // => 12
+						</code></pre>
+					</section>
+					<section>
+						<h2>caching</h2>
+						<pre><code>
+const contains = (arr, value) =>
+  Array.prototype.includes
+    ? arr.includes(value)
+    : arr.some(el => el === value);
+contains(["foo", "bar"], "baz"); // => false
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const contains = (() =>
+  Array.prototype.includes
+    ? (arr, value) => arr.includes(value)
+    : (arr, value) => arr.some(el => el === value)
+)();
+contains(["foo", "bar"], "baz"); // => false
+						</code></pre>
+					</section>
+					<section>
+						<h2>for...in</h2>
+						<pre><code>
+const shared = { foo: "foo" };
+const obj = Object.create(shared, {
+  bar: {
+    value: "bar",
+    enumerable: true
+  }
+});
+
+// bad
+for (var prop in obj) {
+  if (obj.hasOwnProperty(prop))
+    console.log(prop);
+}
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+Object.keys(obj).forEach(prop => console.log(prop));
+						</code></pre>
+					</section>
+					<section>
+						<h2>Objects as Maps</h2>
+						<pre><code>
+// bad
+const me = {
+  name: "Ben",
+  age: 30
+};
+var meSize = Object.keys(me).length;
+meSize; // => 2
+me.country = "Belgium";
+meSize++;
+meSize; // => 3
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const me = new Map();
+me.set("name", "Ben");
+me.set("age", 30);
+me.size; // => 2
+me.set("country", "Belgium");
+me.size; // => 3
+						</code></pre>
+					</section> -->
+					<section>
+						<h2>Minimize Dependencies</h2>
+						<pre><code>
+// bad
+var _ = require("underscore");
+_.compact(["foo", 0]));
+_.unique(["foo", "foo"]);
+_.union(["foo"], ["bar"], ["foo"]);
+						</code></pre>
+						<pre class="fragment"><code>
+// good
+const compact = arr => arr.filter(el => el);
+const unique = arr => [...Set(arr)];
+const union = (...arr) => unique([].concat(...arr));
+
+compact(["foo", 0]);
+unique(["foo", "foo"]);
+union(["foo"], ["bar"], ["foo"]);
+						</code></pre>
+						<aside class="notes">
+							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -1647,79 +1745,6 @@ console.log(NaN); // NaN
 						<h2>5. Strict Mode</h2>
 						<p></p>
 					</section>
-				</section> -->
-				<section>
-					<section>
-						<h1>Others</h1>
-					</section>
-					<section>
-						<pre><code>
-document.getElementsByName()
-document.getElementsByClassName()
-document.getElementsByTagName()
-						</code></pre>
-						<pre class="fragment"><code>
-document.images
-document.links
-document.forms
-document.scripts
-document.styleSheets
-						</code></pre>
-						<br>
-						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
-						<aside class="notes">
-							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Increase readability by using switch statement</h2>
-						<pre><code>
-var inspect_me = 0,
-    result = '';
-switch (inspect_me) {
-case 0:
-   result = "zero";
-   break;
-case 1:
-   result = "one";
-   break;
-default:
-   result = "unknown";
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>Indentation</h2>
-
-					</section>
-					<section>
-						<h2>Curly braces</h2>
-						<pre><code>
-// bad practice
-for (var i = 0; i < 10; i += 1)
-   alert(i);
-   alert(i + " is " + (i % 2 ? "odd" : "even"));
-						</code></pre>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Other Other</h2>
-					</section>
-					<section>
-						<h2>three dots</h2>
-						<br>
-						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
-					</section>
-					<section>
-						<h2>Single Page Application</h2>
-					</section>
-					<section>
-						<h2>Forward conf talk</h2>
-						<p>Watch video</p>
-						<br>
-						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
-					</section>
 				</section>
 				<section>
 					<section>
@@ -1729,24 +1754,16 @@ for (var i = 0; i < 10; i += 1)
 						<br>
 						<a href="https://developers.google.com/web/updates/2016/06/performance-observer">Access Performance data</a>
 					</section>
-				</section>
+				</section> -->
 				<section>
 					<section>
-						<h2>security</h2>
+						<h1>security</h1>
 					</section>
 					<section>
 						<h2>Facebook sixth sense</h2>
 						<p>can use as an example</p>
 						<br>
 						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Others</h1>
-					</section>
-					<section>
-						<h2>git pre commit hook</h2>
 					</section>
 				</section>
 				<section>
@@ -1820,19 +1837,94 @@ for (var i = 0; i < 10; i += 1)
 						<a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
 						</ul>
 					</section>
+					<section>
+						<h1>Others</h1>
+					</section>
+					<section>
+						<pre><code>
+document.getElementsByName()
+document.getElementsByClassName()
+document.getElementsByTagName()
+						</code></pre>
+						<pre class="fragment"><code>
+document.images
+document.links
+document.forms
+document.scripts
+document.styleSheets
+						</code></pre>
+						<br>
+						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
+						<aside class="notes">
+							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Increase readability by using switch statement</h2>
+						<pre><code>
+var inspect_me = 0,
+    result = '';
+switch (inspect_me) {
+case 0:
+   result = "zero";
+   break;
+case 1:
+   result = "one";
+   break;
+default:
+   result = "unknown";
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Indentation</h2>
+					</section>
+					<section>
+						<h2>Curly braces</h2>
+						<pre><code>
+// bad practice
+for (var i = 0; i < 10; i += 1)
+   alert(i);
+   alert(i + " is " + (i % 2 ? "odd" : "even"));
+						</code></pre>
+					</section>
+					<section>
+						<h1>Other Other</h1>
+					</section>
+					<section>
+						<h2>three dots</h2>
+						<br>
+						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
+					</section>
+					<section>
+						<h2>Single Page Application</h2>
+					</section>
+					<section>
+						<h2>Forward conf talk</h2>
+						<p>Watch video</p>
+						<br>
+						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
+					</section>
+					<section>
+						<h2>git pre commit hook</h2>
+					</section>
 				</section>
 				<section>
 					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
+					<p>Press B or . on your keyboard to pause the presentation.</p>
+				</section>
+				<section>
+					<h2>Summary</h2>
+					<ul>
+						<li class="fragment">Folder Structure</li>
+						<li class="fragment">Module</li>
+						<li class="fragment">Build System</li>
+						<li class="fragment">Coding Style</li>
+						<li class="fragment">Unit Test</li>
+					</ul>
 				</section>
 				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
+					<h2>Thank you</h2>
 				</section>
 
 			</div>
