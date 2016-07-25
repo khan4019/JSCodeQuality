@@ -1,0 +1,1 @@
+module.exports = 'hello from content js in common js';

@@ -575,120 +575,187 @@ export var another = {};
 					<section>
 						<h2>Webpack</h2>
 						<ul>
+							<li>split your app into multiple files</li>
 							<li>Load asynchronously on demand</li>
 							<li class="fragment">Keep initial load time low</li>
 							<li class="fragment">Module all static resources</li>
 							<li class="fragment">handles style, image, fonts, templates, etc.</li>
 							<li class="fragment">create single or multiple chunks</li>
 							<li class="fragment">Dependencies are resolved during compilation</li>
-							<li class="fragment"></li>
+							<li class="fragment">Integrate with build system Grunt/gulp</li>
 						</ul>
+						<aside class="notes">
+							<p>If you have multiple pages in a single-page app, the user only downloads code for just that page. If they go to another page, they don't redownload common code.</p>
+							<p>It often replaces grunt or gulp</p>
+						</aside>
 					</section>
 					<section>
 						<h2>getting started</h2>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Refactor</h2>
-					</section>
-					<section>
-						<h2>Read this</h2>
+						<pre><code>
+ npm install webpack -g
+						</code></pre>
+						<pre class="fragment"><code>
+webpack main.js bundle.js
+						</code></pre>
+						<pre class="fragment"><code>
+npm install css-loader style-loader
+						</code></pre>
 						<br>
-						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
-					</section>
-					<section>
-						<h2>Good one</h2>
+						<a href="http://webpack.github.io/docs/tutorials/getting-started/">webpack</a>
 						<br>
-						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
-					</section>
-					<section>
-						<h2>Similar to prevous one</h2>
-						<p>Check whether it has different example</p>
-						<br>
-						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
+						<a href="https://www.youtube.com/watch?v=TaWKUpahFZM">getting started with webpack</a>
+						<aside class="notes">
+							<p></p>
+						</aside>
 					</section>
 					<section>
-						<h2>Promise</h2>
-						<br>
-						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom</a>
-						<br>
-						or	
-						<br>
-						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
+						<h2>config</h2>
+						<pre><code>
+module.exports = {
+    entry: "./main.js",
+    output: {
+        path: __dirname,
+        filename: "bundle.js"
+    },
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style!css" }
+        ]
+    }
+};
+						</code></pre>
+						<pre class="fragment"><code>
+webpack
 
-					</section>
-					<section>
-						<h2>Refactor like this</h2>
-						<br>
-						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
-					</section>
-					<section>
-						<h2>Start with this egghead.io</h2>
-						<p>Create a page for this</p>
-						<br>
-						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
-					</section>
-					<section>
-						<h2>Big and large example by Marting Fowler</h2>
-						<br>
-						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
-					</section>
-					<section>
-						<h2>Superhero</h2>
-						<br>
-						<a href="http://superherojs.com/#language">Super hero</a>
-					</section>
-					<section>
-						<h2>Extra</h2>
-						<ul>
-							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
-							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
-						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Review</h2>
-					</section>
-					<section>
-						<h2>Time zone example</h2>
-					</section>
-					<section>
-						<h2>Review Checklist</h2>
-					</section>
-					<section>
-						<h2>Review tools</h2>
-							<ul>
-								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
-							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
-							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
-							</ul>
+//for production
+webpack -p
 
+//for continuous incremental
+webpack --watch  
+						</code></pre>
 					</section>
-				</section>
-				<section>
-					<h2>Logging</h2>
+					<section>
+						<h2>multi page</h2>
+						<pre><code>
+// webpack.config.js
+module.exports = {
+  entry: {
+    Profile: './profile.js',
+    Feed: './feed.js'
+  },
+  output: {
+    path: 'build',
+    filename: '[name].js' // Template based on keys in entry above
+  }
+};
+						</code></pre>
+						<aside class="notes">
+							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
+							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>async loading</h2>
+						<pre><code>
+if (window.location.pathname === '/feed') {
+  showLoadingState();
+  require.ensure([], function() { // this syntax is weird but it works
+    hideLoadingState();
+    require('./feed').show(); // when this function is called, the module is guaranteed to be synchronously available.
+  });
+} else if (window.location.pathname === '/profile') {
+  showLoadingState();
+  require.ensure([], function() {
+    hideLoadingState();
+    require('./profile').show();
+  });
+}
+						</code></pre>
+						<br>
+						<a href="https://github.com/petehunt/webpack-howto">webpack how-to</a>
+						<aside class="notes">
+							<p>CommonJS is synchronous but webpack provides a way to asynchronously specify dependencies. This is useful for client-side routers, where you want the router on every page, but you don't want to have to download features until you actually need them.</p>
+							<p>Specify the split point where you want to load asynchronously. For example:</p>
+							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>webpack es6</h2>
+						<pre><code>
+// webpack.config.js
+module.exports = {
+  entry: './main.js',
+  output: {
+    filename: 'bundle.js'       
+  },
+  module: {
+    loaders: [
+      { test: /\.coffee$/, loader: 'coffee-loader' },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  }
+};
+						</code></pre>
+						<br>
+						<a href="https://www.npmjs.com/package/babel-loader">babel loader</a>
+					</section>
 				</section>
 				<section>
 					<section>
 						<h1>Make things testable</h1>
 					</section>
 					<section>
-						<h2></h2>
-						<br>
-						<a href="https://www.smashingmagazine.com/2012/06/introduction-to-javascript-unit-testing/">JS Unit testing</a>
-					</section>
-					<section>
 						<h2>good example at bottom</h2>
 						<br>
 						<a href="https://www.toptal.com/javascript/writing-testable-code-in-javascript">testable JS</a>
-					</section>
-					<section>
-						<h2>very old and could be useful</h2>
 						<br>
 						<a href="http://www.adequatelygood.com/Writing-Testable-JavaScript.html">testable JS</a>
+					</section>
+					<section>
+						<h2>when to test</h2>
+						<p>very good: make it generic</p>
+						<br>
+						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Advanced Testing and Debugging in AngularJS</a>
+					</section>
+					<section>
+						<div>
+							<h4>Does the page loads correctly</h4>
+							<ul>
+								<li>Web Driver</li>
+								<li>E2E test</li>
+								<li>Full integration test through given URL</li>
+								<li>multiple browser</li>
+							</ul>
+						</div>
+						<div class="fragment">
+							<h4>Server side testing</h4>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h4>Unit Testing</h4>
+							<ul>
+								<li>Jasmine or Mocha</li>
+								<li>Solid test spec for each feature</li>
+								<li>each block of code(functions, objects, methods, etc.)</li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>Run and show unit test</h2>
+						<br>
+						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
+					</section>
+					<section>
+						<h2></h2>
+						<br>
+						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">could find something</a>
 					</section>
 				</section>
 				<section>
@@ -1313,27 +1380,148 @@ changeFooToRed();
 				</section>
 				<section>
 					<section>
-						<h2>three dots</h2>
+						<h1>Cleverness</h1>
+						
+						<p>Things could be clever, but code doesn't have to</p>
+						
+					</section>
+					<section>
+						<h2>Don't be clever</h2>
+						<pre><code>
+// Don’t:
+return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
+
+// Better:
+if (x === 0) {
+    return 'red';
+} else if (x === 1) {
+    return 'green';
+} else {
+    return 'blue';
+}
+
+// Best:
+switch (x) {
+    case 0:
+        return 'red';
+    case 1:
+        return 'green';
+    default:
+        return 'blue';
+}
+						</code></pre>
 						<br>
-						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
+						<a href="http://speakingjs.com/es5/ch26.html">Speaking JavaScript</a>
+					</section>
+					<section>
+						<pre><code>
+foo && bar(); // no
+if (foo) bar(); // yes
+
+foo || bar(); // no
+if (!foo) bar(); // yes
+						</code></pre>
+					</section>
+					<section>
+						<h2>don't be clever</h2>
+						<pre><code>
+// Unsure: what is happening?
+return ++foo;
+
+// Easy to understand
+++foo;
+return foo;
+						</code></pre>
+						<pre class="fargment"><code>
+return x >> 0; // no
+return Math.round(x); // yes
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+> +'123'  // no
+123
+> Number('123')  // yes
+123
+
+> ''+true  // no
+'true'
+> String(true)  // yes
+'true'
+						</code></pre>
+					</section>
+					<section>
+						<h2>other links</h2>
+						<ul>
+							<li><a href="http://rainsoft.io/power-up-the-array-creation-in-javascript/">Power up the array creation</a></li>
+							<li><a href="http://rainsoft.io/understanding-constructor-property/">Inheritance in JavaScript</a></li>
+							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
+							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
+						</ul>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>naming this</h2>
-						<p>think about ES6 as well</p>
+						<h2>JS Self-documenting</h2>
 						<br>
-						<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
+						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>Simple Rules</h2>
-						<p>Simple rules that all of us know</p>
+						<h1>Refactor</h1>
 					</section>
 					<section>
+						<h2>Read and extract from these</h2>
+						<br>
+						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
+						<br>
+						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
+						<br>
+						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
+						<br>
+						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
+						<br>
+						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
+						<br>
+						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
+						<br>
+						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
+						<br>
+						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
+							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
+							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Code Review</h1>
+					</section>
+					<section>
+						<h2>Time zone example</h2>
+					</section>
+					<section>
+						<h2>Review Checklist</h2>
+					</section>
+					<section>
+						<h2>Review tools</h2>
+							<ul>
+								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
+							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
+							    <li>Review Board - used at VMWare (http://www.review-board.org/)
+							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+							</ul>
+
+					</section>
+				</section>
+				<section>
+					<h1>Logging</h1>
+				</section>
+				<section>
+					<section>
+						<h1>naming things</h1>
 						<blockquote>
-							“There are only 2 hard things in CS: cache invalidation and naming things”
+							“There are only 2 hard things in front end: fix IE bugs and naming things”
 						</blockquote>
 					</section>
 					<section>
@@ -1417,9 +1605,14 @@ console.log(NaN); // NaN
 	console.log(NaN); // 42
 }());
 						</code></pre>
+						<section>
+							<p>think about ES6 as well</p>
+							<br>
+							<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
+						</section>
 					</section>
 				</section>
-				<section>
+				<!-- <section>
 					<section>
 						<h4>5 JavaScript “Bad” Parts That Are Fixed In ES6</h4>
 						<br>
@@ -1454,16 +1647,12 @@ console.log(NaN); // NaN
 						<h2>5. Strict Mode</h2>
 						<p></p>
 					</section>
-				</section>
+				</section> -->
 				<section>
 					<section>
-						<h2>Some pattern</h2>
-						<p>move with other parts</p>
-						<br>
-						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
+						<h1>Others</h1>
 					</section>
 					<section>
-
 						<pre><code>
 document.getElementsByName()
 document.getElementsByClassName()
@@ -1476,6 +1665,8 @@ document.forms
 document.scripts
 document.styleSheets
 						</code></pre>
+						<br>
+						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
 						<aside class="notes">
 							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
 						</aside>
@@ -1513,152 +1704,21 @@ for (var i = 0; i < 10; i += 1)
 				</section>
 				<section>
 					<section>
-						<h2>Cleverness</h2>
-						<ul>
-							<li>Things could be clever, but not too clever
-							<li>Algorithms are optimal (fast and readable)
-						</ul>
+						<h2>Other Other</h2>
 					</section>
 					<section>
-						<h2>Don't be clever</h2>
-						<pre><code>
-// Don’t:
-return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
-
-// Better:
-if (x === 0) {
-    return 'red';
-} else if (x === 1) {
-    return 'green';
-} else {
-    return 'blue';
-}
-
-// Best:
-switch (x) {
-    case 0:
-        return 'red';
-    case 1:
-        return 'green';
-    default:
-        return 'blue';
-}
-						</code></pre>
+						<h2>three dots</h2>
 						<br>
-						<a href="http://speakingjs.com/es5/ch26.html">Speaking JavaScript</a>
+						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
 					</section>
-					<section>
-						<pre><code>
-foo && bar(); // no
-if (foo) bar(); // yes
-
-foo || bar(); // no
-if (!foo) bar(); // yes
-						</code></pre>
-					</section>
-					<section>
-						<h2>don't be clever</h2>
-						<pre><code>
-// Unsure: what is happening?
-return ++foo;
-
-// Easy to understand
-++foo;
-return foo;
-						</code></pre>
-						<pre class="fargment"><code>
-return x >> 0; // no
-return Math.round(x); // yes
-						</code></pre>
-					</section>
-					<section>
-						<pre><code>
-> +'123'  // no
-123
-> Number('123')  // yes
-123
-
-> ''+true  // no
-'true'
-> String(true)  // yes
-'true'
-						</code></pre>
-					</section>
-					<section>
-						<h2>other links</h2>
-						<ul>
-							<li><a href="http://rainsoft.io/power-up-the-array-creation-in-javascript/">Power up the array creation</a></li>
-							<li><a href="http://rainsoft.io/understanding-constructor-property/">Inheritance in JavaScript</a></li>
-							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
-							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
-						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Memory Leak</h2>
-					</section>
-				</section>
-				<section>
 					<section>
 						<h2>Single Page Application</h2>
 					</section>
-				</section>
-				<section>
 					<section>
 						<h2>Forward conf talk</h2>
 						<p>Watch video</p>
 						<br>
 						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>when to test</h2>
-						<p>very good: make it generic</p>
-						<br>
-						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Advanced Testing and Debugging in AngularJS</a>
-					</section>
-					<section>
-						<div>
-							<h4>Does the page loads correctly</h4>
-							<ul>
-								<li>Web Driver</li>
-								<li>E2E test</li>
-								<li>Full integration test through given URL</li>
-								<li>multiple browser</li>
-							</ul>
-						</div>
-						<div class="fragment">
-							<h4>Server side testing</h4>
-						</div>
-					</section>
-					<section>
-						<div>
-							<h4>Unit Testing</h4>
-							<ul>
-								<li>Jasmine or Mocha</li>
-								<li>Solid test spec for each feature</li>
-								<li>each block of code(functions, objects, methods, etc.)</li>
-							</ul>
-						</div>
-					</section>
-					<section>
-						<h2>Run and show unit test</h2>
-						<br>
-						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
-					</section>
-					<section>
-						<h2></h2>
-						<br>
-						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">could find something</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>JS Self-documenting</h2>
-						<br>
-						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
 				</section>
 				<section>
