@@ -108,84 +108,6 @@
 						<br>
 						<br>
 						<br>
-						<small>(reality)</small>
-					</section>
-					<section>
-						<h2>Real Development Process</h2>
-						<ul>
-							<li class="fragment">Biggest jerk makes all the big decisions</li>
-							<li class="fragment">GDD: Google Driven Development</li>
-							<li class="fragment">SDD: Stackoverflow Driven Development</li>
-							<li class="fragment">BDD: Bug Driven Development</li>
-							<li class="fragment">Every bug is created by the guy left</li>
-						</ul>
-						<br>
-						<br>
-						<br>
-						<a href="http://scottberkun.com/2007/asshole-driven-development/">development process</a>
-						<aside class="notes">
-							<p>All wisdom, logic or process goes out the window when Mr. Asshole is in the Architecture meeting</p>
-							<p>We encourage everyone to have an opinion. But his opinion is the final decision</p>
-							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
-							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
-							<p>All customer request is out of scope</p>
-							<p> when you manager asks about the progress status</p>
-							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
-						</aside>
-						<aside class="notes">
-							<h4>We do everything but Agile</h4>
-							<p>Asshole Driven development (ADD) – Any team where the biggest jerk makes all the big decisions is asshole driven development. All wisdom, logic or process goes out the window when Mr. Asshole is in the room, doing whatever idiotic, selfish thing he thinks is best. There may rules and processes, but Mr. A breaks them and people follow anyway.</p>
-							<p>SDD: Stackoverflow Driven Development. (modify this) Developers who are constantly thinking about the subject of their next blog post. Nearly every somewhat interesting line of code they write is extracted into a blog post.</p>
-							<p> “Duct-tape Driven Design” are similar patchwork style methodologies LHFD (Low Hanging Fruit Development) </p>
-							<p>CDD – Crisis Driven Development By Crisis (Management By Crisis). Everything is a Crisis. Every task, you have to “Drop everything” and work all night long! Woe to the developer that mentions that the user acceptance testing doesn’t even begin for another 2 months… Everything is a disaster.</p>
-							<p>Bug Driven Development (BDD). Write code and features like crazy; once the features are complete push the product out the door and let the public do your QA.</p>
-							<p>My current situation – Demo Driven Development (DDD or D3). When a feature is designed with the prime use case being “It’ll look good in a demo!”</p>
-							<p>Out of Scope Development (OSD) where every request or idea, no matter how unrelated gets approved and expedited as long as it might sell one more piece of software or make one customer happy already. This is despite the fact that any monetary gains will be offset by the rising development costs of maintaining a hodgepodge of unrelated features.</p>
-							<p>Blame The People Worked and Left (BTPWAL): When you see a glitch, doesn’t matter whether your code caused it or not…through it on the people worked on this project and left the organization. I see this frequently in consulting environments.</p>
-							<p>Google Oriented Development – The Engineers know nothing; they get everything from search engines like Google</p>
-							<p>CVDD : CV Driven Development – A variant of NDD – Nerd Driven Development and Must Use Specific Technology Development (MUSTP), places the coolness/shininess of the chosen methodology/technology as seen on the CV of the architect above all other requirements. Project collapses as soon as it is realized the method doesn’t work, the architect leaves or the next new technology arrives (refactoring time).</p>
-							<p>ADD – “It’s Almost Done” Development. This Development methodology is common in small to medium development houses where certain procedures and policies are not set entirely and you are assigned a team with one or more “dead weight” developers.</p>
-							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>How to write quality code</h2>
-						<ul>
-							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
-							<li class="fragment">Mark all change request as Out of Scope</li>
-							<li class="fragment">Always report progress as “It’s Almost Done”</li>
-							<li class="fragment">Don't finish the feature when there is code freeze.</li>
-							<li class="fragment">Don't push code on Friday</li>
-							<li class="fragment">If ask for mode comment, comment dead code</li>
-							<li class="fragment">Build: put green dot on project manager's monitor</li>
-							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
-						</ul>
-						<aside class="notes">
-							<p>Remember; The most common pattern for software development is CPM:</p>
-							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
-
-						</aside>
-					</section>
-					<section>
-						<h2>Code Quality</h2>
-						<blockquote>
-							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
-						</blockquote>
-						<aside class="notes">
-							<p> Don't worry, project manager will allocate plenty of time to clean those mess and create some new mess.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>measure code quality</h2>
-						<img class="fragment" src="images/wtf.png" alt="">
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Code Quality</h1>
-						<br>
-						<br>
-						<br>
 						<small>(While you are in a meeting)</small>
 					</section>
 					<section>
@@ -279,6 +201,18 @@
 						<br>
 						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
 					</section>
+					<section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -318,7 +252,7 @@
 var mySalute = 'Hello';
 						</code></pre>
 						<pre class="fragment"><code>
-// world.js
+// app.js
 var result = mySalute + ' world!';
 						</code></pre>
 					</section>
@@ -326,11 +260,11 @@ var result = mySalute + ' world!';
 						<h2>Common JS</h2>
 						<pre><code>
 // salute.js
-var mySalute = 'Hello;
+var mySalute = 'Hello';
 module.exports = mySalute;
 						</code></pre>
 						<pre class="fragment"><code>
-// world.js
+// app.js
 var mySalute = require('./salute');
 var Result = mySalute + 'world!';
 						</code></pre>
@@ -341,15 +275,15 @@ var Result = mySalute + 'world!';
 					<section>
 						<h2>Export function</h2>
 						<pre><code>
-//content.js
+//salute.js
 module.exports = function(){
-  return 'hello JS';
+  return 'Hello JS';
 };
 						</code></pre>
 						<pre class="fragment"><code>
-//entry.js
-var content = require('./content.js');
-console.log(content());
+//app.js
+var salute = require('./salute');
+console.log(salute());
 						</code></pre>
 						<aside class="notes">
 							<p>Usually you will expose a single value</p>
@@ -358,30 +292,35 @@ console.log(content());
 					<section>
 						<h2>Expose multiple value</h2>
 						<pre><code>
-//content.js
+//salute.js
 module.exports = {
-  foo:'hello JS',
+  foo:'Hello JS',
   bar:'Beer JS'
 };
 						</code></pre>
 						<pre class="fragment"><code>
-//entry.js
-var content = require('./content.js');
-console.log(content.foo);
-console.log(content.bar);
+//salute.js
+module.exports.foo = 'Hello JS';
+module.exports.bar = 'Beer JS';
+						</code></pre>
+						<pre class="fragment"><code>
+//app.js
+var salute = require('./salute');
+console.log(salute.foo);
+console.log(salute.bar);
 						</code></pre>
 					</section>
 					<section>
 						<h2>Tree Dependency</h2>
 						<pre><code>
 //bar.js
-exports.bar = "JS";
+exports.bar = 'JS';
 						</code></pre>
 						<pre class="fragment"><code>
 //foo.js
-var bar = require( "./bar" );
+var bar = require( './bar' );
 exports.foo = function(){
-    return "Hello" + bar;
+    return 'Hello ' + bar;
 }
 						</code></pre>
 						<pre class="fragment"><code>
@@ -435,10 +374,10 @@ import { square, cube } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>es6</h2>
 						<pre><code>
-// --file.js--
+//file.js
 function getJSON(url, callback) {
   let xhr = new XMLHttpRequest();
   xhr.onload = function () { 
@@ -461,7 +400,7 @@ getUsefulContents("http://www.example.com", data => {
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
-					</section>
+					</section> -->
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
@@ -831,9 +770,9 @@ function createGreeting(name, location, age) {
 						
 						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
 						<ul class="fragment">
-							<li>Given the same input, will always return the same output</li>
 							<li>Produces no side effects</li>
 							<li>Relies on no external state</li>
+							<li>Given the same input, will always return the same output</li>
 						</ul>
 						
 						<pre class="fragment"><code>
@@ -981,6 +920,9 @@ changeFooToRed();
 						</ul>
 					</section>
 					<section>
+						<img src="images/unitTest.jpg" alt="">
+					</section>
+					<section>
 						<h2>Unit Testing</h2>
 						<ul>
 							<li>Test Framework: Jasmine, mocha</li>
@@ -988,8 +930,10 @@ changeFooToRed();
 							<li>Automate Browser testing: PhantomJS, Selenium</li>
 							<li>Test Coverage: Istanbul, blanketJS</li>
 							<li>Continuous Integration</li>
-							<li>Test Debug</li>
+							<li>Continuous Delivery</li>
 						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
 						<br>
@@ -1032,6 +976,31 @@ describe("A spec using beforeEach and afterEach", function() {
 				<section>
 					<section>
 						<h1>Coding Style</h1>
+					</section>
+					<section>
+						<h2>naming convention</h2>
+						<br>
+						<small class="fragment">
+							There are only 2 hard things in front end: fix IE bugs and naming things
+						</small>
+						<br>
+						<br>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+ var $d; //elapsed time in days
+ var dsc; //description
+
+ var god_damn_its_IE;
+						</code></pre>
+ 						<aside class="notes">
+							<p class="">But</p>
+							<ul>
+								<li>When things are not working as expecting</li>
+								<li>You starts trying different things</li>
+								<li>After trying a lot of things.</li>
+								<li>It starts working and you focus on checking</li>
+								<li>Become happy and push the code</li>
+							</ul>
+						</aside>
 					</section>
 					<!-- <section>
 						<h2>Variable Decleration</h2>
@@ -1305,24 +1274,31 @@ var pairs = evens.map(v => ({even: v, odd: v + 1}));
 					<section>
 						<h2>Be Generous to New Hire</h2>
 						<pre><code>
+// Magic. Do not touch.
+function magic(x){
+  return x >> 0; 
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//be generous
+return Math.floor(x);
+						</code></pre>
+						<pre class="fragment"><code>
 const plus1 = a => a + 1;
 const mult2 = a => a * 2;
 
-// bad
+// little confusing
 mult2(plus1(5)); // => 12
 						</code></pre>
-						<pre class="fragment"><code>
-return x >> 0; // no
-return Math.round(x); // yes
-						</code></pre>
+						
 					</section>
 					<section>
 						<h2>Don't be clever</h2>
 						<pre><code>
-// Don’t:
+// bad
 return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
 
-// Better:
+// ok
 if (x === 0) {
     return 'red';
 } else if (x === 1) {
@@ -1332,7 +1308,7 @@ if (x === 0) {
 }
 						</code></pre>
 						<pre class="fragment"><code>
-// Best:
+// good
 switch (x) {
     case 0:
         return 'red';
@@ -1397,8 +1373,8 @@ if (x == undefined) { ... }
 					</section>-->
 					<section>
 						<h2>Performance vs Readability</h2>
-						<pre><code>
-// bad (albeit way faster)
+						<pre><code class="hljs javascript">
+//You are not meant to understand this
 const arr = [1, 2, 3, 4];
 const len = arr.length;
 var i = -1;
@@ -1424,6 +1400,10 @@ const result = arr.filter(isEven).map(square);
 					<section>
 						<h2>Loop</h2>
 						<pre><code>
+	
+// no comments for you
+// it was hard to write
+// so it should be hard to read
 const sum = arr => {
   var sum = 0;
   var i = -1;
@@ -1569,6 +1549,7 @@ me.size; // => 3
 						<h2>Minimize Dependencies</h2>
 						<pre><code>
 // bad
+// I have to find a better job
 var _ = require("underscore");
 _.compact(["foo", 0]));
 _.unique(["foo", "foo"]);
@@ -1591,100 +1572,30 @@ union(["foo"], ["bar"], ["foo"]);
 				</section>
 				<section>
 					<section>
-						<h2>JS Self-documenting</h2>
+						<h1>Document</h1>
+					</section>
+					<section>
+						<h2>JS-Doc</h2>
 						<br>
 						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
-						
-					</section>
-					<section>
-						<h2>Find others</h2>
+						<br>
 						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
-				</section>
-				<section>
 					<section>
-						<h1>Refactor</h1>
-					</section>
-					<section>
-						<h2>Read and extract from these</h2>
-						<br>
-						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
-						<br>
-						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
-						<br>
-						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
-						<br>
-						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
-						<br>
-						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
-						<br>
-						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
-						<br>
-						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
-						<br>
-						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
-							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
-							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Code Review</h1>
-					</section>
-					<section>
-						<img src="images/codeReviews.jpg" alt="">
-					</section>
-					<section>
-						<h2>Time zone example</h2>
-					</section>
-					<section>
-						<h2>Review Checklist</h2>
-					</section>
-					<section>
-						<h2>Review tools</h2>
-							<ul>
-								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
-							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
-							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
-							</ul>
-
-					</section>
-				</section>
-				<section>
-					<h1>Logging</h1>
-				</section>
-				<section>
-					<section>
-						<h1>naming things</h1>
-						<blockquote>
-							“There are only 2 hard things in front end: fix IE bugs and naming things”
-						</blockquote>
-					</section>
-					<section>
-						<h2>Naming Convention</h2>
-						<p>No body writes name like this</p>
-						<pre><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days
- var dsc; //description
-
- var god_damn_it_IE;
-						</code></pre>
-						<p>Google weird variable name</p>
-
+						<h2>comment</h2>
 						<pre><code>
-other language
+// 
+// Dear maintainer:
+// 
+// Once you are done trying to 'optimize' this routine,
+// and have realized what a terrible mistake that was,
+// please increment the following counter as a warning
+// to the next guy:
+// 
+// total_hours_wasted_here = 42
 						</code></pre>
- 						<aside class="notes">
-							<p class="">But</p>
-							<ul>
-								<li>When things are not working as expecting</li>
-								<li>You starts trying different things</li>
-								<li>After trying a lot of things.</li>
-								<li>It starts working and you focus on checking</li>
-								<li>Become happy and push the code</li>
-							</ul>
-						</aside>
+						<br>
+						<a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered">code comment</a>
 					</section>
 					<section>
 						<h2>comment</h2>
@@ -1749,6 +1660,33 @@ console.log(NaN); // NaN
 						</section>
 					</section>
 				</section>
+				<section>
+					<h1>Logging</h1>
+				</section>
+				<section>
+					<section>
+						<h1>Code Review</h1>
+					</section>
+					<section>
+						<img src="images/codeReviews.jpg" alt="">
+					</section>
+					<section>
+						<h2>Time zone example</h2>
+					</section>
+					<section>
+						<h2>Review Checklist</h2>
+					</section>
+					<section>
+						<h2>Review tools</h2>
+							<ul>
+								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
+							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
+							    <li>Review Board - used at VMWare (http://www.review-board.org/)
+							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+							</ul>
+
+					</section>
+				</section>
 				<!-- <section>
 					<section>
 						<h4>5 JavaScript “Bad” Parts That Are Fixed In ES6</h4>
@@ -1794,23 +1732,6 @@ console.log(NaN); // NaN
 						<a href="https://developers.google.com/web/updates/2016/06/performance-observer">Access Performance data</a>
 					</section>
 				</section> -->
-				<section>
-					<section>
-						<h1>Architecture</h1>
-					</section>
-					<section>
-						<h2>BEM</h2>
-						<ul>
-							<li>logically and functionally independent page component</li>
-							<li class="fragment">equivalent of a component in Web Components</li>
-							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
-							<li class="fragment">Element: a small part of block</li>
-							<li class="fragment">Modifier: Block looks due to behavior</li>
-							<li class="fragment"></li>
-						</ul>
-						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
-					</section>
-				</section>
 				<section>
 					<section>
 						<h1>security</h1>
@@ -1880,6 +1801,32 @@ console.log(NaN); // NaN
 							<li><a href="http://www.testmycss.com/">test css</a></li>
 							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
 						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Refactor</h1>
+					</section>
+					<section>
+						<h2>Read and extract from these</h2>
+						<br>
+						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
+						<br>
+						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
+						<br>
+						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
+						<br>
+						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
+						<br>
+						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
+						<br>
+						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
+						<br>
+						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
+						<br>
+						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
+							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
+							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
 					</section>
 				</section>
 				<section>
@@ -1974,14 +1921,127 @@ for (var i = 0; i < 10; i += 1)
 					<p>Press B or . on your keyboard to pause the presentation.</p>
 				</section>
 				<section>
-					<h2>Summary</h2>
-					<ul>
-						<li class="fragment">Folder Structure</li>
-						<li class="fragment">Module</li>
-						<li class="fragment">Build System</li>
-						<li class="fragment">Coding Style</li>
-						<li class="fragment">Unit Test</li>
-					</ul>
+					<section>
+						<h1>Ten Things</h1>
+					</section>
+					<section>
+						<h2>Summary</h2>
+						<ol>
+							<li class="fragment">Folder Structure</li>
+							<li class="fragment">Module</li>
+							<li class="fragment">Build System</li>
+							<li class="fragment">Make things testable</li>
+							<li class="fragment">Automate Test</li>
+							<li class="fragment">Coding Style</li>
+							<li class="fragment">Document</li>
+							<li class="fragment">Logging</li>
+							<li class="fragment">Code Review</li>
+							<li class="fragment">Security</li>
+						</ol>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Code Quality</h1>
+						<br>
+						<br>
+						<br>
+						<small>(reality)</small>
+					</section>
+					<section>
+						<img src="images/design.jpg" alt="">
+					</section>
+					<section>
+						<img style="height:600px;" src="images/expect.jpg" alt="">
+					</section>
+					<section>
+						<h2>Code Quality</h2>
+						<blockquote>
+							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
+						</blockquote>
+						<aside class="notes">
+							<p> Don't worry, project manager will allocate plenty of time to clean those mess and create some new mess.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Real Development Process</h2>
+						<ul>
+							<li class="fragment">Biggest jerk makes all the big decisions</li>
+							<li class="fragment">GDD: Google Driven Development</li>
+							<li class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">BDD: Bug Driven Development</li>
+							<li class="fragment">Every bug is created by the guy left</li>
+						</ul>
+						<br>
+						<br>
+						<br>
+						<a href="http://scottberkun.com/2007/asshole-driven-development/">development process</a>
+						<aside class="notes">
+							<p>All wisdom, logic or process goes out the window when Mr. Asshole is in the Architecture meeting</p>
+							<p>We encourage everyone to have an opinion. But his opinion is the final decision</p>
+							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
+							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
+							<p>All customer request is out of scope</p>
+							<p> when you manager asks about the progress status</p>
+							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
+						</aside>
+						<aside class="notes">
+							<h4>We do everything but Agile</h4>
+							<p>Asshole Driven development (ADD) – Any team where the biggest jerk makes all the big decisions is asshole driven development. All wisdom, logic or process goes out the window when Mr. Asshole is in the room, doing whatever idiotic, selfish thing he thinks is best. There may rules and processes, but Mr. A breaks them and people follow anyway.</p>
+							<p>SDD: Stackoverflow Driven Development. (modify this) Developers who are constantly thinking about the subject of their next blog post. Nearly every somewhat interesting line of code they write is extracted into a blog post.</p>
+							<p> “Duct-tape Driven Design” are similar patchwork style methodologies LHFD (Low Hanging Fruit Development) </p>
+							<p>CDD – Crisis Driven Development By Crisis (Management By Crisis). Everything is a Crisis. Every task, you have to “Drop everything” and work all night long! Woe to the developer that mentions that the user acceptance testing doesn’t even begin for another 2 months… Everything is a disaster.</p>
+							<p>Bug Driven Development (BDD). Write code and features like crazy; once the features are complete push the product out the door and let the public do your QA.</p>
+							<p>My current situation – Demo Driven Development (DDD or D3). When a feature is designed with the prime use case being “It’ll look good in a demo!”</p>
+							<p>Out of Scope Development (OSD) where every request or idea, no matter how unrelated gets approved and expedited as long as it might sell one more piece of software or make one customer happy already. This is despite the fact that any monetary gains will be offset by the rising development costs of maintaining a hodgepodge of unrelated features.</p>
+							<p>Blame The People Worked and Left (BTPWAL): When you see a glitch, doesn’t matter whether your code caused it or not…through it on the people worked on this project and left the organization. I see this frequently in consulting environments.</p>
+							<p>Google Oriented Development – The Engineers know nothing; they get everything from search engines like Google</p>
+							<p>CVDD : CV Driven Development – A variant of NDD – Nerd Driven Development and Must Use Specific Technology Development (MUSTP), places the coolness/shininess of the chosen methodology/technology as seen on the CV of the architect above all other requirements. Project collapses as soon as it is realized the method doesn’t work, the architect leaves or the next new technology arrives (refactoring time).</p>
+							<p>ADD – “It’s Almost Done” Development. This Development methodology is common in small to medium development houses where certain procedures and policies are not set entirely and you are assigned a team with one or more “dead weight” developers.</p>
+							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>How to write quality code</h2>
+						<ul>
+							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
+							<li class="fragment">Mark all change request as Out of Scope</li>
+							<li class="fragment">Always report progress as “It’s Almost Done”</li>
+							<li class="fragment">Don't finish the feature when there is code freeze.</li>
+							<li class="fragment">Don't push code on Friday</li>
+							<li class="fragment">If ask for mode comment, comment dead code</li>
+							<li class="fragment">Build: put green dot on project manager's monitor</li>
+							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
+						</ul>
+						<aside class="notes">
+							<p>Remember; The most common pattern for software development is CPM:</p>
+							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
+
+						</aside>
+					</section>
+					<section>
+						<h2>measure code quality</h2>
+						<img class="fragment" src="images/wtf.png" alt="">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Free Tip</h1>
+					</section>
+					<section>
+						<h2>Travel Tips</h2>
+						<img src="images/tips/socks.jpg" alt="">
+					</section>
+					<section>
+						<h2>belt in collar</h2>
+						<img src="images/tips/belt2.jpg" alt="">
+					</section>
+					<section>
+						<h2>Avoid luggage check in</h2>
+						<img class="fragment" src="images/tips/wearClothes.jpg" alt="">
+						<br>
+						<a href="http://www.dailymail.co.uk/travel/travel_news/article-2722591/Passengers-wear-clothes-check-staff-say-luggage-overweight.html">avoid check in fee</a>
+					</section>
 				</section>
 				<section style="text-align: left;">
 					<h2>Thank you</h2>
