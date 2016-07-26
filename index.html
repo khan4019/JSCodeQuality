@@ -279,6 +279,18 @@
 						<br>
 						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
 					</section>
+					<section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -318,7 +330,7 @@
 var mySalute = 'Hello';
 						</code></pre>
 						<pre class="fragment"><code>
-// world.js
+// app.js
 var result = mySalute + ' world!';
 						</code></pre>
 					</section>
@@ -326,11 +338,11 @@ var result = mySalute + ' world!';
 						<h2>Common JS</h2>
 						<pre><code>
 // salute.js
-var mySalute = 'Hello;
+var mySalute = 'Hello';
 module.exports = mySalute;
 						</code></pre>
 						<pre class="fragment"><code>
-// world.js
+// app.js
 var mySalute = require('./salute');
 var Result = mySalute + 'world!';
 						</code></pre>
@@ -341,15 +353,15 @@ var Result = mySalute + 'world!';
 					<section>
 						<h2>Export function</h2>
 						<pre><code>
-//content.js
+//salute.js
 module.exports = function(){
-  return 'hello JS';
+  return 'Hello JS';
 };
 						</code></pre>
 						<pre class="fragment"><code>
-//entry.js
-var content = require('./content.js');
-console.log(content());
+//app.js
+var salute = require('./salute');
+console.log(salute());
 						</code></pre>
 						<aside class="notes">
 							<p>Usually you will expose a single value</p>
@@ -358,30 +370,35 @@ console.log(content());
 					<section>
 						<h2>Expose multiple value</h2>
 						<pre><code>
-//content.js
+//salute.js
 module.exports = {
-  foo:'hello JS',
+  foo:'Hello JS',
   bar:'Beer JS'
 };
 						</code></pre>
 						<pre class="fragment"><code>
-//entry.js
-var content = require('./content.js');
-console.log(content.foo);
-console.log(content.bar);
+//salute.js
+module.exports.foo = 'Hello JS';
+module.exports.bar = 'Beer JS';
+						</code></pre>
+						<pre class="fragment"><code>
+//app.js
+var salute = require('./salute');
+console.log(salute.foo);
+console.log(salute.bar);
 						</code></pre>
 					</section>
 					<section>
 						<h2>Tree Dependency</h2>
 						<pre><code>
 //bar.js
-exports.bar = "JS";
+exports.bar = 'JS';
 						</code></pre>
 						<pre class="fragment"><code>
 //foo.js
-var bar = require( "./bar" );
+var bar = require( './bar' );
 exports.foo = function(){
-    return "Hello" + bar;
+    return 'Hello ' + bar;
 }
 						</code></pre>
 						<pre class="fragment"><code>
@@ -435,10 +452,10 @@ import { square, cube } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>es6</h2>
 						<pre><code>
-// --file.js--
+//file.js
 function getJSON(url, callback) {
   let xhr = new XMLHttpRequest();
   xhr.onload = function () { 
@@ -461,7 +478,7 @@ getUsefulContents("http://www.example.com", data => {
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
-					</section>
+					</section> -->
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
@@ -831,9 +848,9 @@ function createGreeting(name, location, age) {
 						
 						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
 						<ul class="fragment">
-							<li>Given the same input, will always return the same output</li>
 							<li>Produces no side effects</li>
 							<li>Relies on no external state</li>
+							<li>Given the same input, will always return the same output</li>
 						</ul>
 						
 						<pre class="fragment"><code>
@@ -988,8 +1005,10 @@ changeFooToRed();
 							<li>Automate Browser testing: PhantomJS, Selenium</li>
 							<li>Test Coverage: Istanbul, blanketJS</li>
 							<li>Continuous Integration</li>
-							<li>Test Debug</li>
+							<li>Continuous Delivery</li>
 						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
 						<br>
@@ -1032,6 +1051,31 @@ describe("A spec using beforeEach and afterEach", function() {
 				<section>
 					<section>
 						<h1>Coding Style</h1>
+					</section>
+					<section>
+						<h1>naming convention</h1>
+						<br>
+						<small class="fragment">
+							There are only 2 hard things in front end: fix IE bugs and naming things
+						</small>
+						<br>
+						<br>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+ var $d; //elapsed time in days
+ var dsc; //description
+
+ var god_damn_its_IE;
+						</code></pre>
+ 						<aside class="notes">
+							<p class="">But</p>
+							<ul>
+								<li>When things are not working as expecting</li>
+								<li>You starts trying different things</li>
+								<li>After trying a lot of things.</li>
+								<li>It starts working and you focus on checking</li>
+								<li>Become happy and push the code</li>
+							</ul>
+						</aside>
 					</section>
 					<!-- <section>
 						<h2>Variable Decleration</h2>
@@ -1305,24 +1349,31 @@ var pairs = evens.map(v => ({even: v, odd: v + 1}));
 					<section>
 						<h2>Be Generous to New Hire</h2>
 						<pre><code>
+// Magic. Do not touch.
+function magic(x){
+  return x >> 0; 
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//be generous
+return Math.floor(x);
+						</code></pre>
+						<pre class="fragment"><code>
 const plus1 = a => a + 1;
 const mult2 = a => a * 2;
 
-// bad
+// little confusing
 mult2(plus1(5)); // => 12
 						</code></pre>
-						<pre class="fragment"><code>
-return x >> 0; // no
-return Math.round(x); // yes
-						</code></pre>
+						
 					</section>
 					<section>
 						<h2>Don't be clever</h2>
 						<pre><code>
-// Don’t:
+// bad
 return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
 
-// Better:
+// ok
 if (x === 0) {
     return 'red';
 } else if (x === 1) {
@@ -1332,7 +1383,7 @@ if (x === 0) {
 }
 						</code></pre>
 						<pre class="fragment"><code>
-// Best:
+// good
 switch (x) {
     case 0:
         return 'red';
@@ -1397,8 +1448,8 @@ if (x == undefined) { ... }
 					</section>-->
 					<section>
 						<h2>Performance vs Readability</h2>
-						<pre><code>
-// bad (albeit way faster)
+						<pre><code class="hljs javascript">
+//You are not meant to understand this
 const arr = [1, 2, 3, 4];
 const len = arr.length;
 var i = -1;
@@ -1424,6 +1475,10 @@ const result = arr.filter(isEven).map(square);
 					<section>
 						<h2>Loop</h2>
 						<pre><code>
+	
+// no comments for you
+// it was hard to write
+// so it should be hard to read
 const sum = arr => {
   var sum = 0;
   var i = -1;
@@ -1569,6 +1624,7 @@ me.size; // => 3
 						<h2>Minimize Dependencies</h2>
 						<pre><code>
 // bad
+// I have to find a better job
 var _ = require("underscore");
 _.compact(["foo", 0]));
 _.unique(["foo", "foo"]);
@@ -1591,100 +1647,30 @@ union(["foo"], ["bar"], ["foo"]);
 				</section>
 				<section>
 					<section>
-						<h2>JS Self-documenting</h2>
+						<h1>Document</h1>
+					</section>
+					<section>
+						<h2>JS-Doc</h2>
 						<br>
 						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
-						
-					</section>
-					<section>
-						<h2>Find others</h2>
+						<br>
 						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
-				</section>
-				<section>
 					<section>
-						<h1>Refactor</h1>
-					</section>
-					<section>
-						<h2>Read and extract from these</h2>
-						<br>
-						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
-						<br>
-						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
-						<br>
-						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
-						<br>
-						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
-						<br>
-						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
-						<br>
-						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
-						<br>
-						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
-						<br>
-						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
-							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
-							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Code Review</h1>
-					</section>
-					<section>
-						<img src="images/codeReviews.jpg" alt="">
-					</section>
-					<section>
-						<h2>Time zone example</h2>
-					</section>
-					<section>
-						<h2>Review Checklist</h2>
-					</section>
-					<section>
-						<h2>Review tools</h2>
-							<ul>
-								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
-							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
-							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
-							</ul>
-
-					</section>
-				</section>
-				<section>
-					<h1>Logging</h1>
-				</section>
-				<section>
-					<section>
-						<h1>naming things</h1>
-						<blockquote>
-							“There are only 2 hard things in front end: fix IE bugs and naming things”
-						</blockquote>
-					</section>
-					<section>
-						<h2>Naming Convention</h2>
-						<p>No body writes name like this</p>
-						<pre><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days
- var dsc; //description
-
- var god_damn_it_IE;
-						</code></pre>
-						<p>Google weird variable name</p>
-
+						<h2>comment</h2>
 						<pre><code>
-other language
+// 
+// Dear maintainer:
+// 
+// Once you are done trying to 'optimize' this routine,
+// and have realized what a terrible mistake that was,
+// please increment the following counter as a warning
+// to the next guy:
+// 
+// total_hours_wasted_here = 42
 						</code></pre>
- 						<aside class="notes">
-							<p class="">But</p>
-							<ul>
-								<li>When things are not working as expecting</li>
-								<li>You starts trying different things</li>
-								<li>After trying a lot of things.</li>
-								<li>It starts working and you focus on checking</li>
-								<li>Become happy and push the code</li>
-							</ul>
-						</aside>
+						<br>
+						<a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered">code comment</a>
 					</section>
 					<section>
 						<h2>comment</h2>
@@ -1749,6 +1735,33 @@ console.log(NaN); // NaN
 						</section>
 					</section>
 				</section>
+				<section>
+					<h1>Logging</h1>
+				</section>
+				<section>
+					<section>
+						<h1>Code Review</h1>
+					</section>
+					<section>
+						<img src="images/codeReviews.jpg" alt="">
+					</section>
+					<section>
+						<h2>Time zone example</h2>
+					</section>
+					<section>
+						<h2>Review Checklist</h2>
+					</section>
+					<section>
+						<h2>Review tools</h2>
+							<ul>
+								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
+							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
+							    <li>Review Board - used at VMWare (http://www.review-board.org/)
+							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+							</ul>
+
+					</section>
+				</section>
 				<!-- <section>
 					<section>
 						<h4>5 JavaScript “Bad” Parts That Are Fixed In ES6</h4>
@@ -1794,23 +1807,6 @@ console.log(NaN); // NaN
 						<a href="https://developers.google.com/web/updates/2016/06/performance-observer">Access Performance data</a>
 					</section>
 				</section> -->
-				<section>
-					<section>
-						<h1>Architecture</h1>
-					</section>
-					<section>
-						<h2>BEM</h2>
-						<ul>
-							<li>logically and functionally independent page component</li>
-							<li class="fragment">equivalent of a component in Web Components</li>
-							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
-							<li class="fragment">Element: a small part of block</li>
-							<li class="fragment">Modifier: Block looks due to behavior</li>
-							<li class="fragment"></li>
-						</ul>
-						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
-					</section>
-				</section>
 				<section>
 					<section>
 						<h1>security</h1>
@@ -1880,6 +1876,32 @@ console.log(NaN); // NaN
 							<li><a href="http://www.testmycss.com/">test css</a></li>
 							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
 						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Refactor</h1>
+					</section>
+					<section>
+						<h2>Read and extract from these</h2>
+						<br>
+						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
+						<br>
+						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
+						<br>
+						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
+						<br>
+						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
+						<br>
+						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
+						<br>
+						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
+						<br>
+						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
+						<br>
+						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
+							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
+							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
 					</section>
 				</section>
 				<section>
@@ -1974,14 +1996,24 @@ for (var i = 0; i < 10; i += 1)
 					<p>Press B or . on your keyboard to pause the presentation.</p>
 				</section>
 				<section>
-					<h2>Summary</h2>
-					<ul>
-						<li class="fragment">Folder Structure</li>
-						<li class="fragment">Module</li>
-						<li class="fragment">Build System</li>
-						<li class="fragment">Coding Style</li>
-						<li class="fragment">Unit Test</li>
-					</ul>
+					<section>
+						<h1>Ten Things</h1>
+					</section>
+					<section>
+						<h2>Summary</h2>
+						<ol>
+							<li class="fragment">Folder Structure</li>
+							<li class="fragment">Module</li>
+							<li class="fragment">Build System</li>
+							<li class="fragment">Make things testable</li>
+							<li class="fragment">Automate Test</li>
+							<li class="fragment">Coding Style</li>
+							<li class="fragment">Document</li>
+							<li class="fragment">Logging</li>
+							<li class="fragment">Code Review</li>
+							<li class="fragment">Security</li>
+						</ol>
+					</section>
 				</section>
 				<section style="text-align: left;">
 					<h2>Thank you</h2>
