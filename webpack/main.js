@@ -1,3 +1,2 @@
-var foo = require('./foo')
-require('./style.css')
+var foo = require('./foo');
 document.write(foo);

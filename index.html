@@ -623,20 +623,50 @@ webpack --watch
 						</code></pre>
 					</section>
 					<section>
-						<h2>multi page</h2>
+						<h2>Code Splitting</h2>
 						<pre><code>
-// webpack.config.js
-module.exports = {
-  entry: {
-    Profile: './profile.js',
-    Feed: './feed.js'
-  },
-  output: {
-    path: 'build',
-    filename: '[name].js' // Template based on keys in entry above
-  }
-};
+require.ensure(dependencies, callback)
 						</code></pre>
+						<pre class="fragment"><code>
+require.ensure(["module-a", "module-b"], function(require) {
+    var a = require("module-a");
+    // ...
+});
+						</code></pre>
+						<ul>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+							<li class="fragment">If two chunks contain the same modules, they are merged into one.</li>
+						</ul>
+						<br>
+						<a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a>
+					</section>
+					<section>
+						<h2>Single page App</h2>
+						<ul>
+							<li>entry chunk
+								<ul>
+									<li>async require -> chunk X
+									<li>async require -> chunk Y
+								</ul>
+							</li>
+							<li>Chunk X
+								<ul>
+									<li>module a
+									<li>module b
+									<li>module c</li>
+								</ul>
+							</li>
+							<li>Chunk Y
+								<ul>
+									<li>module a
+									<li>module b
+									<li>module d</li>
+								</ul>
+							</li>
+						</ul>
+						<br>
+						<a href="https://github.com/webpack/webpack/tree/master/examples/extra-async-chunk">async chunk</a>
 						<aside class="notes">
 							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
 							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
@@ -667,7 +697,7 @@ if (window.location.pathname === '/feed') {
 							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>webpack es6</h2>
 						<pre><code>
 // webpack.config.js
@@ -733,7 +763,7 @@ $ = if (ENV === "desktop") {
 }
 						</code></pre>
 						<small>Will produce 2 separate bundles with different dependencies...</small>
-					</section>
+					</section> -->
 					<section>
 						<h2>Hot Module Replacement</h2>
 						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
@@ -1106,6 +1136,8 @@ let dragonball;
 let i;
 let length;
 						</code></pre>
+						<br>
+						<a href="https://github.com/airbnb/javascript">Airbnb JS style</a>
 					</section>
 					<section>
 						<pre><code>
