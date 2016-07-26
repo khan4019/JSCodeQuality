@@ -21,6 +21,11 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
+		<style>
+			.hide{
+				display:none !important;
+			}
+		</style>
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
@@ -42,56 +47,37 @@
 			<div class="slides">
 				<section>
 					<h1>JS Code Quality</h1>
-					<h3>How to create Large JS Application</h3>
+					<h4>for Large JS Application</h4>
 					<p>
-						<small><a href="http://hakim.se">thatjsdude.com</a> / <a href="http://twitter.com/hakimel">@mdkhan005</a></small>
+						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
 					</p>
 				</section>
-				<section>
+				<!--<section>
 					<section>
 						<h1>TODO</h1>
 					</section>
 					<section>
 						<h2>TODO: Very good</h2>
 						<ul>
-							<li>What do you mean by code quality</li>
-							<li>How we can measure code quality</li>
-							<li>what specific about JS code quality</li>
-							<li>Manage large application</li>
 							<li>Few mistakes in JS</li>
-							<li>
 								<ul>
 									<li>Design/Architecture/Code review</li>
 									<li>Unit test</li>
 									<li>Code Analysis tools</li>
 									<li>Security</li>
-									<li></li>
 								</ul>
-							</li>
 						</ul>
 					</section>
 					<section>
 						<h2>Things from style guide</h2>
 						<ul>
-							<li>Hoisting</li>
 							<li>Rest</li>
 							<li>Array Spread</li>
 							<li>Modules</li>
 							<li>Iterators and Generators</li>
-							<li>Object: check for it</li>
-							
-							<li>Equality</li>
-						</ul>B
-					</section>
-					<section>
-						<h2>Medium</h2>
-						<ul>
-							<li><a href="https://github.com/bendc/frontend-guidelines">Front end guideline</a></li>
-							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
-							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
 					</section>
-					<section>
+					 <section>
 						<h2>Less important</h2>
 						<ul>
 							<li><a href="http://kellegous.com/j/2013/01/26/layout-performance/">on layout and web performance</a></li>
@@ -100,58 +86,756 @@
 							<li><a href="http://developer.telerik.com/featured/web-going-2016/">what to expect</a></li>
 							<a href="https://www.sitepoint.com/javascript-object-creation-patterns-best-practises/">Object Creation: Patterns: not very good</a>
 							<li><a href="https://www.youtube.com/watch?v=xbZzahWakGs">Making Javascript Initialize Faster</a></li>
+							<li><a href="https://www.youtube.com/watch?v=sjyJBL5fkp8">Funny var let const: video</a></li>
+							<li><a href="https://facebook.github.io/react/blog/2016/07/11/introducing-reacts-error-code-system.html">Reacts Error System</a></li>
+							<li><a href="http://devbryce.com/use-cases-for-es6-proxies/?utm_source=javascriptweekly&utm_medium=email">ES6 Proxy</a></li>
+							<li><a href="http://blog.runnable.com/post/147262856601/5-reasons-why-you-should-be-using-promises">Promise</a></li>
+							<li><a href="http://sobit.me/2016/07/08/amazon-software-engineer-interview/">Amazon hiring process</a></li>
 						</ul>
 					</section>
-				</section>
-				<section>
 					<section>
-						<h2>Code Quality</h2>
-						<blockquote>Code quality is a loose approximation of how long-term usefulness and maintainability of code.</blockquote>
-						<br>
-						<a href="https://www.quora.com/How-do-you-define-code-quality">define code quality</a>
-					</section>
-					<section>
-						<h2>Code Quality</h2>
+						<h2>Use less</h2>
 						<ul>
-							<li>Clear and understandable design and implementation.
-							<li>Well defined interfaces.
-							<li>Extensible, maintainable, readable.
-							<li>Clear Naming convention
-							<li>Can Jump straight in after few weekend off
-							<li>Documentation, better yet -- self-explaining code.
-							<li>Unit tests are easy to write
+							<li><a href="https://github.com/bendc/frontend-guidelines">Front end guideline</a></li>
+							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
+							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
-						<ul class="fragment">
-							<li>Things could be clever, but not too clever
-							<li>Algorithms are optimal (fast and readable)
+					</section> 
+				</section>-->
+				<section>
+					<section>
+						<h1>Code Quality</h1>
+						<br>
+						<br>
+						<br>
+						<small>(reality)</small>
+					</section>
+					<section>
+						<h2>Real Development Process</h2>
+						<ul>
+							<li class="fragment">Biggest jerk makes all the big decisions</li>
+							<li class="fragment">GDD: Google Driven Development</li>
+							<li class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">BDD: Bug Driven Development</li>
+							<li class="fragment">Every bug is created by the guy left</li>
 						</ul>
 						<br>
-						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">Good code</a>
+						<br>
+						<br>
+						<a href="http://scottberkun.com/2007/asshole-driven-development/">development process</a>
+						<aside class="notes">
+							<p>All wisdom, logic or process goes out the window when Mr. Asshole is in the Architecture meeting</p>
+							<p>We encourage everyone to have an opinion. But his opinion is the final decision</p>
+							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
+							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
+							<p>All customer request is out of scope</p>
+							<p> when you manager asks about the progress status</p>
+							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
+						</aside>
+						<aside class="notes">
+							<h4>We do everything but Agile</h4>
+							<p>Asshole Driven development (ADD) – Any team where the biggest jerk makes all the big decisions is asshole driven development. All wisdom, logic or process goes out the window when Mr. Asshole is in the room, doing whatever idiotic, selfish thing he thinks is best. There may rules and processes, but Mr. A breaks them and people follow anyway.</p>
+							<p>SDD: Stackoverflow Driven Development. (modify this) Developers who are constantly thinking about the subject of their next blog post. Nearly every somewhat interesting line of code they write is extracted into a blog post.</p>
+							<p> “Duct-tape Driven Design” are similar patchwork style methodologies LHFD (Low Hanging Fruit Development) </p>
+							<p>CDD – Crisis Driven Development By Crisis (Management By Crisis). Everything is a Crisis. Every task, you have to “Drop everything” and work all night long! Woe to the developer that mentions that the user acceptance testing doesn’t even begin for another 2 months… Everything is a disaster.</p>
+							<p>Bug Driven Development (BDD). Write code and features like crazy; once the features are complete push the product out the door and let the public do your QA.</p>
+							<p>My current situation – Demo Driven Development (DDD or D3). When a feature is designed with the prime use case being “It’ll look good in a demo!”</p>
+							<p>Out of Scope Development (OSD) where every request or idea, no matter how unrelated gets approved and expedited as long as it might sell one more piece of software or make one customer happy already. This is despite the fact that any monetary gains will be offset by the rising development costs of maintaining a hodgepodge of unrelated features.</p>
+							<p>Blame The People Worked and Left (BTPWAL): When you see a glitch, doesn’t matter whether your code caused it or not…through it on the people worked on this project and left the organization. I see this frequently in consulting environments.</p>
+							<p>Google Oriented Development – The Engineers know nothing; they get everything from search engines like Google</p>
+							<p>CVDD : CV Driven Development – A variant of NDD – Nerd Driven Development and Must Use Specific Technology Development (MUSTP), places the coolness/shininess of the chosen methodology/technology as seen on the CV of the architect above all other requirements. Project collapses as soon as it is realized the method doesn’t work, the architect leaves or the next new technology arrives (refactoring time).</p>
+							<p>ADD – “It’s Almost Done” Development. This Development methodology is common in small to medium development houses where certain procedures and policies are not set entirely and you are assigned a team with one or more “dead weight” developers.</p>
+							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>How to write quality code</h2>
+						<ul>
+							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
+							<li class="fragment">Mark all change request as Out of Scope</li>
+							<li class="fragment">Always report progress as “It’s Almost Done”</li>
+							<li class="fragment">Don't finish the feature when there is code freeze.</li>
+							<li class="fragment">Don't push code on Friday</li>
+							<li class="fragment">If ask for mode comment, comment dead code</li>
+							<li class="fragment">Build: put green dot on project manager's monitor</li>
+							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
+						</ul>
+						<aside class="notes">
+							<p>Remember; The most common pattern for software development is CPM:</p>
+							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
+
+						</aside>
+					</section>
+					<section>
+						<h2>Code Quality</h2>
+						<blockquote>
+							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
+						</blockquote>
+						<aside class="notes">
+							<p> Don't worry, project manager will allocate plenty of time to clean those mess and create some new mess.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>measure code quality</h2>
+						<img class="fragment" src="images/wtf.png" alt="">
 					</section>
 				</section>
 				<section>
 					<section>
-						<h1>Project Setup</h1>
+						<h1>Code Quality</h1>
+						<br>
+						<br>
+						<br>
+						<small>(While you are in a meeting)</small>
 					</section>
 					<section>
-						<h2>Setup for quality</h2>
+						<h2>Code Quality</h2>
+						<blockquote>Code quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
+						<br>
+					</section>
+					<section>
+						<h2>Code Quality</h2>
+						<ol>
+							<li class="fragment">Clear and understandable design and architecture
+							<li class="fragment">Clear Naming convention and coding style
+							<li class="fragment">Documentation -- self-explaining code
+							<li class="fragment">Split into Testable modules
+							<li class="fragment">Bug captured by Automated tests
+							<li class="fragment">Can Jump straight in after few weekend off
+						</ol>
+						<br>
+						<br>
+						<a href="http://programmers.stackexchange.com/questions/61655/how-do-you-know-youre-writing-good-code">how do you write Good code</a>
+						<br>
+							<a href="https://www.sitepoint.com/write-maintainable-javascript/">Untangling Spaghetti Code</a>
+						<aside class="notes">
+							<li>split into modules. Each should only have one purpose and be unaware of the rest of your codebase logic.
+							<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
+							<li>Document your functions and code in a balanced way with properly named functions.
+							<li>Use JSDoc to generate documentation for your JavaScript.
+						</aside>
+					</section>
+					<!-- <section>
+						<h2>Other code smells</h2>
+						<ul>
+							<li>Large classes or God object
+							<li>Framework core modifications
+							<li>Avoid Circular dependency
+							<li>Clean Dead code</li>
+							<li>Circular references
+							<li>Sequential coupling
+							<li>Avoid Hard-coding
+						</ul>
+						<br>
+						<br>
+						<br>
+						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
+					</section>
+					<section>
+						<h2>Project Setup for quality</h2>
 						<ul>
 							<li>Build tool: Grunt, Gulp, WebPack</li>
 							<li>Unit test: Jasmine, Mocha, karma</li>
 							<li>Code Coverage: Istanbul</li>
 							<li>Package Management: Bower, npm</li>
 						</ul>
+					</section> -->
+				</section>
+				<section>
+					<section>
+						<h1>App Structure</h1>
+					</section>
+					<section>
+						<h2>No common rule</h2>
+						<ul>
+							<li>Whatever works for your project</li>
+							<li>But you need one</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/folderStructure.png" alt="">
+						<aside class="notes">
+							<p>Old Style: M, V, C style</p>
+							<p>Controller, service, directory</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/folderStructure2.png" alt="">
+						<br>
+						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
+					</section>
+					<section>
+						<img style="height:700px" src="images/folderStructure3.png" alt="">
+					</section>
+					<section>
+						<img src="images/folderStructure4.png" alt="">
+						<aside class="notes">
+							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
+						</aside>
+					</section>
+					<section>
+						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
+						<img src="images/folderStructure5.png" alt="">
+						<br>
+						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h1>pure function</h1>
+						<h1>Modules</h1>
 					</section>
 					<section>
-						<h2>pure function</h2>
+						<img src="images/spagett.jpg" alt="">
+					</section>
+					<section>
+						<img src="images/spagett2.jpg" alt="">
+					</section>
+					<section>
+						<img src="images/spagett4.png" alt="">
+					</section>
+					<section>
+						<img src="images/module.jpg" alt="">
+					</section>
+					<section>
+						<h2>How to create module</h2>
 						<ul>
-							<li>doesn’t depend on or modify variables outside of its scope</li>
+							<li>Single Responsibility</li>
+							<li class="fragment">Have a top-level scope that is not the global scope</li>
+							<li class="fragment">Shared code together</li>
+							<li class="fragment">Think reusability</li>
+							<li class="fragment">Load with dependency order</li>
 						</ul>
+						<aside class="notes">
+							<p>not more than 500 line</p>
+							<p>one module per file</p>
+							<p>Good authors divide their books into chapters and sections; good programmers divide their programs into modules.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Plain simple JS</h2>
+						<pre><code>
+// salute.js
+var mySalute = 'Hello';
+						</code></pre>
+						<pre class="fragment"><code>
+// world.js
+var result = mySalute + ' world!';
+						</code></pre>
+					</section>
+					<section>
+						<h2>Common JS</h2>
+						<pre><code>
+// salute.js
+var mySalute = 'Hello;
+module.exports = mySalute;
+						</code></pre>
+						<pre class="fragment"><code>
+// world.js
+var mySalute = require('./salute');
+var Result = mySalute + 'world!';
+						</code></pre>
+						<aside class="notes">
+							<p>Note that we didn’t use the full filename salute.js but ./salute when calling require, so you can omit the extension of your scripts. ./ means that the salute module is in the same directory as the world module.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Export function</h2>
+						<pre><code>
+//content.js
+module.exports = function(){
+  return 'hello JS';
+};
+						</code></pre>
+						<pre class="fragment"><code>
+//entry.js
+var content = require('./content.js');
+console.log(content());
+						</code></pre>
+						<aside class="notes">
+							<p>Usually you will expose a single value</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Expose multiple value</h2>
+						<pre><code>
+//content.js
+module.exports = {
+  foo:'hello JS',
+  bar:'Beer JS'
+};
+						</code></pre>
+						<pre class="fragment"><code>
+//entry.js
+var content = require('./content.js');
+console.log(content.foo);
+console.log(content.bar);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Tree Dependency</h2>
+						<pre><code>
+//bar.js
+exports.bar = "JS";
+						</code></pre>
+						<pre class="fragment"><code>
+//foo.js
+var bar = require( "./bar" );
+exports.foo = function(){
+    return "Hello" + bar;
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//app.js
+var foo = require('./foo');
+console.log(foo);
+						</code></pre>
+					</section>
+					<section>
+						<h2>CommonJS</h2>
+						<ul>
+							<li>exports</li>
+							<li class="fragment">require</li>
+							<li class="fragment">module.exports</li>
+							<li class="fragment">require can be called anywhere</li>
+							<li class="fragment">Circular dependency is allowed</li>
+							<li class="fragment">Browsers require a loader library or transpiling.</li>
+						</ul>
+						<br>
+						<a href="http://know.cujojs.com/tutorials/modules/authoring-cjs-modules"></a>
+						<aside class="notes">
+							<p>exports vs module.exports <a href="http://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js">stackoverflow</a></p>
+						</aside>
+					</section>
+					<section>
+						<h2>ES6 module</h2>
+						<ul>
+							<li>Support synchronous and asynchronous loading</li>
+							<li>Support for cyclic dependencies between modules</li>
+						</ul>
+						<br>
+						<a href="http://www.2ality.com/2014/09/es6-modules-final.html">es6 modules</a>
+					</section>
+					<section>
+						<h2>ES2015</h2>
+						<pre><code>
+// library.js
+export function square(x) {
+  return x * x;
+}
+
+export function cube(x) {
+  return x * x * x;
+}
+
+//or
+export { square, cube };
+						</code></pre>
+						<pre class="fragment"><code>
+import { square, cube } from 'library';
+console.log(cube(4)); // 16
+						</code></pre>
+					</section>
+					<section>
+						<h2>es6</h2>
+						<pre><code>
+// --file.js--
+function getJSON(url, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.onload = function () { 
+    callback(this.responseText) 
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+}
+
+export function getUsefulContents(url, callback) {
+  getJSON(url, data => callback(JSON.parse(data)));
+}
+						</code></pre>
+						<pre class="fragment"><code>
+// --main.js--
+import { getUsefulContents } from "file";
+getUsefulContents("http://www.example.com", data => {
+  doSomethingUseful(data);
+});
+						</code></pre>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
+					</section>
+					<section>
+						<h2>es6 export</h2>
+						<pre><code>
+// export a named variable
+export var x = 42;                      
+
+// export a named function
+export function foo() {};               
+
+// export the default export
+export default 42;                      
+
+// export the default export as a function
+export default function foo() {};       
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>es6 export</h2>
+						<pre><code>
+// export an existing variable
+export { encrypt };           
+
+// export a variable as a new name
+export { decrypt as dec };        
+
+// export an export from another module
+export { encrypt as en } from 'crypto';
+
+// export all exports from another module 
+export * from 'crypto';                 
+						</code></pre>
+						<br>
+						<a href="https://github.com/ModuleLoader/es6-module-loader/wiki/Brief-Overview-of-ES6-Module-syntax">overview of es6 module</a>
+					</section>
+					<section>
+						<h2>import</h2>
+						<pre class=""><code>
+// import a module without any import bindings
+import 'jquery';                        
+
+// import the default export of a module
+import $ from 'jquery';                 
+
+// import a named export of a module
+import { $ } from 'jquery';             
+
+// import a named export to a different name
+import { $ as jQuery } from 'jquery';   
+						</code></pre>
+						<pre class="fragment"><code>
+import * as myModule from "my-module";
+
+import {foo, bar} from "my-module";
+
+
+import {reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short} from "my-module";
+						</code></pre>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
+					</section>
+					<section>
+						<h2>CommonJS vs ES6</h2>
+						<pre><code>
+//commonJS
+exports.someMethod = function() {
+
+  };
+
+exports.another = {};
+						</code></pre>
+						<pre class="fragment"><code>
+//es6
+export function someMethod() {
+
+ }
+
+export var another = {};
+
+						</code></pre>
+						<br>
+						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Module bundler</h1>
+					</section>
+					<section>
+						<h2>module bundler</h2>
+						<ul>
+							<li><a href="">Webpack</a></li>
+							<li><a href="">Browserify</a></li>
+							<li><a href="">jspm</a></li>
+							<li><a href="">rollup</a></li>
+							<li><a href="">grunt/gulp</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Webpack</h2>
+						<ul>
+							<li>Split your app into multiple files</li>
+							<li>Load asynchronously on demand</li>
+							<li class="fragment">Keep initial load time low</li>
+							<li class="fragment">Module all static resources</li>
+							<li class="fragment">Handles style, image, fonts, templates, etc.</li>
+							<li class="fragment">Create single or multiple chunks</li>
+							<li class="fragment">Dependencies are resolved during compilation</li>
+							<li class="fragment">Integrate with build system Grunt/gulp</li>
+						</ul>
+						<aside class="notes">
+							<p>If you have multiple pages in a single-page app, the user only downloads code for just that page. If they go to another page, they don't redownload common code.</p>
+							<p>It often replaces grunt or gulp</p>
+						</aside>
+					</section>
+					<section>
+						<h2>getting started</h2>
+						<pre><code>
+ npm install webpack -g
+						</code></pre>
+						<pre class="fragment"><code>
+webpack main.js bundle.js
+						</code></pre>
+						<pre class="fragment"><code>
+npm install css-loader style-loader
+						</code></pre>
+						<br>
+						<a href="http://webpack.github.io/docs/tutorials/getting-started/">webpack</a>
+						<br>
+						<a href="https://www.youtube.com/watch?v=TaWKUpahFZM">getting started with webpack</a>
+						<aside class="notes">
+							<p></p>
+						</aside>
+					</section>
+					<section>
+						<h2>webpack.config.js</h2>
+						<pre><code>
+module.exports = {
+    entry: "./main.js",
+    output: {
+        path: __dirname,
+        filename: "bundle.js"
+    },
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: "style!css" }
+        ]
+    }
+};
+						</code></pre>
+						<pre class="fragment"><code>
+webpack
+
+//for production
+webpack -p
+
+//for continuous incremental
+webpack --watch  
+						</code></pre>
+					</section>
+					<section>
+						<h2>Code Splitting</h2>
+						<pre><code>
+require.ensure(dependencies, callback)
+						</code></pre>
+						<pre class="fragment"><code>
+require.ensure(["module-a", "module-b"], function(require) {
+    var a = require("module-a");
+    // ...
+});
+						</code></pre>
+						<ul>
+							<li class="fragment"></li>
+							<li class="fragment"></li>
+							<li class="fragment">If two chunks contain the same modules, they are merged into one.</li>
+						</ul>
+						<br>
+						<a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a>
+					</section>
+					<section>
+						<h2>Single page App</h2>
+						<ul>
+							<li>entry chunk
+								<ul>
+									<li>async require -> chunk X
+									<li>async require -> chunk Y
+								</ul>
+							</li>
+							<li>Chunk X
+								<ul>
+									<li>module a
+									<li>module b
+									<li>module c</li>
+								</ul>
+							</li>
+							<li>Chunk Y
+								<ul>
+									<li>module a
+									<li>module b
+									<li>module d</li>
+								</ul>
+							</li>
+						</ul>
+						<br>
+						<a href="https://github.com/webpack/webpack/tree/master/examples/extra-async-chunk">async chunk</a>
+						<aside class="notes">
+							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
+							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>async loading</h2>
+						<pre><code>
+if (window.location.pathname === '/feed') {
+  showLoadingState();
+  require.ensure([], function() { // this syntax is weird but it works
+    hideLoadingState();
+    require('./feed').show(); // when this function is called, the module is guaranteed to be synchronously available.
+  });
+} else if (window.location.pathname === '/profile') {
+  showLoadingState();
+  require.ensure([], function() {
+    hideLoadingState();
+    require('./profile').show();
+  });
+}
+						</code></pre>
+						<br>
+						<a href="https://github.com/petehunt/webpack-howto">webpack how-to</a>
+						<aside class="notes">
+							<p>CommonJS is synchronous but webpack provides a way to asynchronously specify dependencies. This is useful for client-side routers, where you want the router on every page, but you don't want to have to download features until you actually need them.</p>
+							<p>Specify the split point where you want to load asynchronously. For example:</p>
+							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
+						</aside>
+					</section>
+					<!-- <section>
+						<h2>webpack es6</h2>
+						<pre><code>
+// webpack.config.js
+module.exports = {
+  entry: './main.js',
+  output: {
+    filename: 'bundle.js'       
+  },
+  module: {
+    loaders: [
+      { test: /\.coffee$/, loader: 'coffee-loader' },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  }
+};
+						</code></pre>
+						<br>
+						<a href="https://www.npmjs.com/package/babel-loader">babel loader</a>
+					</section>
+					<section>
+						<h2>Multi-compiler</h2>
+						<pre><code>
+// webpack.config.js
+module.exports = [{
+		name: "mobile",
+		entry: "./example",
+		output: "mobile.js",
+		plugins: [
+			new webpack.DefinePlugin({
+				ENV: JSON.stringify("mobile")
+			})
+		]
+	},
+	{
+		name: "desktop",
+		entry: "./example",
+		output: "desktop.js",
+		plugins: [
+			new webpack.DefinePlugin({
+				ENV: JSON.stringify("desktop")
+			})
+		]
+	}
+]		
+						</code></pre>
+						<br>
+						<a href="http://okonet.ru/viennajs-webpack-introduction/?full#multiCompiler">webpack introduction</a>
+					</section>
+					<section>
+						<h2>Multi-compiler</h2>
+						<pre><code>
+// in your code
+$ = if (ENV === "desktop") {
+	require('jquery');
+} else {
+	require('zepto');
+}
+						</code></pre>
+						<small>Will produce 2 separate bundles with different dependencies...</small>
+					</section> -->
+					<section>
+						<h2>Hot Module Replacement</h2>
+						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
+						<br>
+						<a href="http://webpack.github.io/docs/hot-module-replacement-with-webpack.html">hot module replacement</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Make things testable</h1>
+					</section>
+					<section>
+						<h2>Single Purpose</h2>
+						<pre><code>
+function createGreeting(name, location, age) {
+    let greeting;
+    if (location === 'Mexico') {
+        greeting = '!Hola';
+    } else {
+        greeting = 'Hello';
+    }
+
+    greeting += ' ' + name.toUpperCase() + '! ';
+
+    greeting += 'You are ' + age + ' years old.';
+
+    return greeting;
+}
+						</code></pre>
+						<br>
+						<a href="https://www.toptal.com/javascript/writing-testable-code-in-javascript">Write Testable JS</a>
+						<br>
+						<a href="http://www.adequatelygood.com/Writing-Testable-JavaScript.html"></a>
+						<aside class="notes">
+							<p>It works but it's not easy to test</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Break it down</h2>
+						<pre><code>
+function getBeginning(location) {
+    if (location === 'Mexico') {
+        return '¡Hola';
+    } else {
+        return 'Hello';
+    }
+}
+						</code></pre>
+						<pre class="fragment"><code>
+function getMiddle(name) {
+    return ' ' + name.toUpperCase() + '! ';
+}
+
+function getEnd(age) {
+    return 'You are ' + age + ' years old.';
+}
+
+function createGreeting(name, location, age) {
+    return getBeginning(location) + getMiddle(name) + getEnd(age);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Make function Pure</h2>
+						
+						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
+						<ul class="fragment">
+							<li>Given the same input, will always return the same output</li>
+							<li>Produces no side effects</li>
+							<li>Relies on no external state</li>
+						</ul>
+						
 						<pre class="fragment"><code>
 function mouseOnLeftSide(mouseX) {
     return mouseX < window.innerWidth / 2;
@@ -161,10 +845,8 @@ document.onmousemove = function(e) {
     console.log(mouseOnLeftSide(e.pageX));
 };
 						</code></pre>
-						<ul class="fragment">
-							<li>this piece of code works just fine</li>
-							<li>does the job expected</li>
-						</ul>
+						
+						<br>
 						<br>
 						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
 						<aside class="notes">
@@ -173,7 +855,7 @@ document.onmousemove = function(e) {
 						</aside>
 					</section>
 					<section>
-						<h2>Why Pure Function?</h2>
+						<h2>Impure is not testable</h2>
 						<ul>
 							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
 							<li class="fragment">How do you test this?
@@ -186,7 +868,7 @@ document.onmousemove = function(e) {
 							<li class="fragment">function relies on window.innerWidth</li>
 						</ul>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>Pure version</h2>
 						<pre><code>
 function mouseOnLeftSide(mouseX, windowWidth) {
@@ -200,7 +882,7 @@ document.onmousemove = function(e) {
 						<pre class="fragment"><code>
 mouseOnLeftSide(5, 499);
 						</code></pre>
-					</section>
+					</section> -->
 					<section>
 						<h2>Why Pure</h2>
 						<ul>
@@ -208,20 +890,24 @@ mouseOnLeftSide(5, 499);
 							<li class="fragment">Know dependency at declaration</li>
 							<li class="fragment">Avoid changes in global variables</li>
 							<li class="fragment">Referential transparency</li>
-							<pre class="fragment"><code>
-function mouseOnLeftSide(mouseX) {
-    return mouseX < window.innerWidth / 2;
+						</ul>
+						<pre class="fragment"><code>
+function square(x) {
+    return x * x;
 }
 
-</code></pre>
-						</ul>
+function squareThemAll(items){
+  return items.map(square);
+}
+						</code></pre>
+						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
 						<aside class="notes">
 							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
 							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
 							<p>Referential transparency:given the same inputs, the output is always the same. In the impure version, same input can return 5 different results</p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>How to Decide</h2>
 						<ul>
 							<li class="fragment">Impossible to avoid impure function
@@ -271,7 +957,7 @@ function changeFooToRed() {
 
 changeFooToRed();
 
-</code></pre>			
+</code></pre>
 						<ul>
 							<li class="fragment">Even though part is impure</li>
 							<li class="fragment">Can test core part</li>
@@ -280,11 +966,137 @@ changeFooToRed();
 						<aside class="notes">
 							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
 						</aside>
+					</section> -->
+				</section>
+				<section>
+					<section>
+						<h1>Testing</h1>
+					</section>
+					<section>
+						<h2>Static Analysis</h2>
+						<ul>
+							<li>JSLint</li>
+							<li>JSHint</li>
+							<li>ESLint</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Unit Testing</h2>
+						<ul>
+							<li>Test Framework: Jasmine, mocha</li>
+							<li>Test Runner: Karma, Protractor</li>
+							<li>Automate Browser testing: PhantomJS, Selenium</li>
+							<li>Test Coverage: Istanbul, blanketJS</li>
+							<li>Continuous Integration</li>
+							<li>Test Debug</li>
+						</ul>
+						<br>
+						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
+						<br>
+						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">Automated Unit test</a>
+						<br>
+						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Angular Testing</a>
+					</section>
+					<section>
+						<pre><code>
+describe("A spec using beforeEach and afterEach", function() {
+  var foo = 0;
+
+  beforeEach(function() {
+    foo += 1;
+  });
+
+  afterEach(function() {
+    foo = 0;
+  });
+
+  it("is just a function, so it can contain any code", function() {
+    expect(foo).toEqual(1);
+  });
+
+  it("can have more than one expectation", function() {
+    expect(foo).toEqual(1);
+    expect(true).toEqual(true);
+  });
+});
+						</code></pre>
+						<br>
+						<a href="http://jasmine.github.io/edge/introduction.html">Jasmine</a>
+					</section>
+					<section>
+						<h2>Test Ajax call</h2>
+						<br>
+						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h1>Embrace ES6</h1>
+						<h1>Coding Style</h1>
+					</section>
+					<!-- <section>
+						<h2>Variable Decleration</h2>
+						<pre><code>
+var views = document.getElementsByClassName('view');
+for (var i = 0; i < views.length; i++) {
+  views[i].addEventListener('click', function() {
+  	window.location.href = i +'.html';
+ });
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Solve with IIFE</h2>
+						<pre><code>
+//IIFE
+						</code></pre>
+					</section>
+					<section>
+						<h2>Solve with Let</h2>
+						<pre><code>
+var letNodes = document.getElementsByClassName('let');
+for (var i = 0; i < letNodes.length; i++) {
+ let j = i;
+ letNodes[i].addEventListener('click', function() {
+		alert('You clicked element #' + j);
+ });
+}
+						</code></pre>
+						<br>
+						<a href="https://www.sitepoint.com/preparing-ecmascript-6-let-const/"></a>
+					</section>
+					<section>
+						<pre><code>
+(() => {
+    var count = 0;
+
+    for (var i = 0; i < 2; ++i) {
+        for (var i = 0; i < 2; ++i) {
+            for (var i = 0; i < 2; ++i) {
+                console.log(count++);
+            }
+        }
+    }
+})();
+//[0, 1]
+						</code></pre>
+						<br>
+						<a href="http://stackoverflow.com/a/38257233/1535443"></a>
+					</section>
+					<section>
+						<pre><code>
+(() => {
+    var count = 0;
+
+    for (let i = 0; i < 2; ++i) {
+        for (let i = 0; i < 2; ++i) {
+            for (let i = 0; i < 2; ++i) {
+                console.log(count++);
+            }
+        }
+    }
+})();
+//[0, 7]
+						</code></pre>
 					</section>
 					<section>
 						<h2>var, let, const</h2>
@@ -296,7 +1108,11 @@ changeFooToRed();
 							<li class="fragment"> If you must reassign references, use let</li>
 							<li class="fragment">both let and const are block-scoped.</li>
 						</ul>
-					</section>
+						<aside class="notes">
+							<p>The main reason why let and const are useful is to use up less memory. If the JS engine knows something will not change it can allocate the least amount of memory and use cached values. With a var things can change all the time. I do agree with you though that for a lot of our code this can feel like overkill.</p>
+							<p>let, const and block scoped bindings come into their own when we talk about large applications that need to scale, or libraries that need to have a very low memory footprint. It can be useful for smaller scripts, too, but you shouldn't feel that you need to use it just because it is the new thing to do. </p>
+						</aside>
+					</section> -->
 					<section>
 						<h2>Variable decleration</h2>
 						<pre><code>
@@ -320,6 +1136,8 @@ let dragonball;
 let i;
 let length;
 						</code></pre>
+						<br>
+						<a href="https://github.com/airbnb/javascript">Airbnb JS style</a>
 					</section>
 					<section>
 						<pre><code>
@@ -357,8 +1175,6 @@ function checkName(hasName) {
   return name;
 }</code></pre>
 					</section>
-				</section>
-				<section>
 					<section>
 						<h1>Function</h1>
 					</section>
@@ -419,6 +1235,13 @@ function f2(obj) {
 };
 							</code></pre>
 						</ul>
+						<br>
+						<a href="https://www.sitepoint.com/es6-default-parameters/">Read this</a>
+					</section>
+					<section>
+						<h2>see this</h2>
+						<br>
+						<a href="https://www.smashingmagazine.com/2016/07/how-to-use-arguments-and-parameters-in-ecmascript-6/">es6 parameter</a>
 					</section>
 					<section>
 						<h2>Arrow Function</h2>
@@ -474,10 +1297,104 @@ var pairs = evens.map(v => ({even: v, odd: v + 1}));
 				</section>
 				<section>
 					<section>
-						<h1>More code style</h1>
-						<br>
-						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
+						<h1>Cleverness</h1>
+						
+						<p>Things could be clever, but code doesn't have to</p>
+						
 					</section>
+					<section>
+						<h2>Be Generous to New Hire</h2>
+						<pre><code>
+const plus1 = a => a + 1;
+const mult2 = a => a * 2;
+
+// bad
+mult2(plus1(5)); // => 12
+						</code></pre>
+						<pre class="fragment"><code>
+return x >> 0; // no
+return Math.round(x); // yes
+						</code></pre>
+					</section>
+					<section>
+						<h2>Don't be clever</h2>
+						<pre><code>
+// Don’t:
+return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
+
+// Better:
+if (x === 0) {
+    return 'red';
+} else if (x === 1) {
+    return 'green';
+} else {
+    return 'blue';
+}
+						</code></pre>
+						<pre class="fragment"><code>
+// Best:
+switch (x) {
+    case 0:
+        return 'red';
+    case 1:
+        return 'green';
+    default:
+        return 'blue';
+}
+						</code></pre>
+						<br>
+						<a href="http://speakingjs.com/es5/ch26.html">Speaking JavaScript</a>
+					</section>
+					<!-- <section>
+						<pre><code>
+foo && bar(); // no
+if (foo) bar(); // yes
+
+foo || bar(); // no
+if (!foo) bar(); // yes
+						</code></pre>
+						<pre><code>
+// Unsure: what is happening?
+return ++foo;
+
+// Easy to understand
+++foo;
+return foo;
+						</code></pre>
+					</section> 
+					
+					<section>
+						<pre><code>
+> +'123'  // no
+123
+> Number('123')  // yes
+123
+
+> ''+true  // no
+'true'
+> String(true)  // yes
+'true'
+						</code></pre>
+					</section>
+					<section>
+						<h2>coercion</h2>
+						<pre><code>
+// bad
+if (x === undefined || x === null) { ... }
+
+// good
+if (x == undefined) { ... }
+						</code></pre>
+					</section>
+					<section>
+						<h2>other links</h2>
+						<ul>
+							<li><a href="http://rainsoft.io/power-up-the-array-creation-in-javascript/">Power up the array creation</a></li>
+							<li><a href="http://rainsoft.io/understanding-constructor-property/">Inheritance in JavaScript</a></li>
+							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
+							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
+						</ul>
+					</section>-->
 					<section>
 						<h2>Performance vs Readability</h2>
 						<pre><code>
@@ -498,19 +1415,11 @@ const square = n => n * n;
 
 const result = arr.filter(isEven).map(square);
 						</code></pre>
+						<br>
+						<a href="https://github.com/bendc/frontend-guidelines">JavaScript guideline</a>
 						<aside class="notes">
 							<p>Favor readability, correctness and expressiveness over performance. JavaScript will basically never be your performance bottleneck. Optimize things like image compression, network access and DOM reflows instead. If you remember just one guideline from this document, choose this one.</p>
 						</aside>
-					</section>
-					<section>
-						<h2>coercion</h2>
-						<pre><code>
-// bad
-if (x === undefined || x === null) { ... }
-
-// good
-if (x == undefined) { ... }
-						</code></pre>
 					</section>
 					<section>
 						<h2>Loop</h2>
@@ -533,7 +1442,7 @@ const sum = arr =>
 sum([1, 2, 3]); // => 6
 						</code></pre>
 					</section>
-					<section>
+					<!--<section>
 						<h2>apply</h2>
 						<pre><code>
 const greet = (first, last) => `Hi ${first} ${last}`;
@@ -655,9 +1564,9 @@ me.size; // => 2
 me.set("country", "Belgium");
 me.size; // => 3
 						</code></pre>
-					</section>
+					</section> -->
 					<section>
-						<h2>Dependencies</h2>
+						<h2>Minimize Dependencies</h2>
 						<pre><code>
 // bad
 var _ = require("underscore");
@@ -679,42 +1588,84 @@ union(["foo"], ["bar"], ["foo"]);
 							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
 						</aside>
 					</section>
+				</section>
+				<section>
 					<section>
-						<h2>Architecture</h2>
-						<p>Doesn't look very good: can read if have time</p>
+						<h2>JS Self-documenting</h2>
 						<br>
-						<a href="https://robots.thoughtbot.com/architecting-front-end-styles">architecting front end</a>
+						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
+						
+					</section>
+					<section>
+						<h2>Find others</h2>
+						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>three dots</h2>
+						<h1>Refactor</h1>
+					</section>
+					<section>
+						<h2>Read and extract from these</h2>
 						<br>
-						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
+						<a href="http://crushlovely.com/journal/7-patterns-to-refactor-javascript-applications-value-objects/">Reactor Value object</a>
+						<br>
+						<a href="http://victorsavkin.com/post/63551894251/functional-refactoring-in-javascript">function refactoring JS</a>
+						<br>
+						<a href="https://blog.engineyard.com/2015/7-patterns-refactor-javascript-service-objects">Refactor JS</a>
+						<br>
+						<a href="http://rebootjeff.github.io/blog/2015/06/14/refactoring-towards-functional-programming-in-javascript/">good example at the bottom: Promise</a>
+						<br>
+						<a href="https://bitsofco.de/javascript-promises-101">promise 101</a>
+						<br>
+						<a href="http://www.bradoncode.com/tutorials/javascript-refactoring-tutorial-part-1/">JS refactoring</a>
+						<br>
+						<a href="https://egghead.io/lessons/javascript-refactoring-array-prototype-by-example-filter-some-foreach">good example</a>
+						<br>
+						<a href="http://martinfowler.com/articles/refactoring-video-store-js/">Refactoring a video store</a>
+							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
+							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
 					</section>
 				</section>
 				<section>
 					<section>
-						<h2>naming this</h2>
-						<br>
-						<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
+						<h1>Code Review</h1>
+					</section>
+					<section>
+						<img src="images/codeReviews.jpg" alt="">
+					</section>
+					<section>
+						<h2>Time zone example</h2>
+					</section>
+					<section>
+						<h2>Review Checklist</h2>
+					</section>
+					<section>
+						<h2>Review tools</h2>
+							<ul>
+								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
+							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
+							    <li>Review Board - used at VMWare (http://www.review-board.org/)
+							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+							</ul>
+
 					</section>
 				</section>
 				<section>
+					<h1>Logging</h1>
+				</section>
+				<section>
 					<section>
-						<h2>Simple Rules</h2>
-						<p>Simple rules that all of us know</p>
-					</section>
-					<section>
+						<h1>naming things</h1>
 						<blockquote>
-							“There are only 2 hard things in CS: cache invalidation and naming things”
+							“There are only 2 hard things in front end: fix IE bugs and naming things”
 						</blockquote>
 					</section>
 					<section>
 						<h2>Naming Convention</h2>
 						<p>No body writes name like this</p>
 						<pre><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days 
+ var $d; //elapsed time in days
  var dsc; //description
 
  var god_damn_it_IE;
@@ -733,7 +1684,7 @@ other language
 								<li>It starts working and you focus on checking</li>
 								<li>Become happy and push the code</li>
 							</ul>
-						</aside> 
+						</aside>
 					</section>
 					<section>
 						<h2>comment</h2>
@@ -791,31 +1742,14 @@ console.log(NaN); // NaN
 	console.log(NaN); // 42
 }());
 						</code></pre>
-					</section>
-					<section>
-						<h2>Other code smells</h2>
-						<ul>
-							<li>Dead code
-							<li>Speculative Generality - no need “what if?”
-							<li>Large classes
-							<li>God object
-							<li>Multiple languages in one file
-							<li>Framework core modifications
-							<li>Overuse of static (especially when coding in Joomla!)
-							<li>Magic numbers - replace with const or var
-							<li>Long if conditions - replace with function
-							<li>Call super’s overwritten methods
-							<li>Circular dependency
-							<li>Circular references
-							<li>Sequential coupling
-							<li>Hard-coding
-							<li>Too much inheritance - composition is better than inheritance
-						</ul>
-						<br>
-						<a href="https://www.butterfly.com.au/thinking/blog/entry/clean-high-quality-code-a-guide-on-how-to-become-a-better-programmer">Clean, high quality code</a>
+						<section>
+							<p>think about ES6 as well</p>
+							<br>
+							<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
+						</section>
 					</section>
 				</section>
-				<section>
+				<!-- <section>
 					<section>
 						<h4>5 JavaScript “Bad” Parts That Are Fixed In ES6</h4>
 						<br>
@@ -853,235 +1787,99 @@ console.log(NaN); // NaN
 				</section>
 				<section>
 					<section>
-						<h2>Some pattern</h2>
-						<br>
-						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
-					</section>
-					<section>
-			
-						<pre><code>
-document.getElementsByName()
-document.getElementsByClassName()
-document.getElementsByTagName()
-						</code></pre>
-						<pre class="fragment"><code>
-document.images
-document.links
-document.forms
-document.scripts
-document.styleSheets 
-						</code></pre>
-						<aside class="notes">
-							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Increase readability by using switch statement</h2>
-						<pre><code>
-var inspect_me = 0, 
-    result = '';
-switch (inspect_me) { 
-case 0:
-   result = "zero";
-   break; 
-case 1:
-   result = "one";
-   break; 
-default:
-   result = "unknown";
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>Indentation</h2>
-
-					</section>
-					<section>
-						<h2>Curly braces</h2>
-						<pre><code>
-// bad practice 
-for (var i = 0; i < 10; i += 1)
-   alert(i); 
-   alert(i + " is " + (i % 2 ? "odd" : "even"));
-						</code></pre>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Lay down the reality</h2>
-						<blockquote cite="https://www.sitepoint.com/write-maintainable-javascript/">
-						&ldquo;Almost every developer has had the experience of maintaining or taking over a legacy project. Or, maybe it’s an old project which got picked up again. Common first thoughts are to throw away the code base, and start from scratch. The code can be messy, undocumented and it can take days to fully understand everything. But, with proper planning, analysis, and a good workflow, it is possible to turn a spaghetti codebase into a clean, organised, and scalable one.&rdquo;
-					</blockquote>
-					</section>
-					<section>
-						<h2>Untangling Spaghetti Code</h2>
-						<h4>Very good</h4>
-						<p>How to Write Maintainable JavaScript</p>
-						<br>
-						<a href="https://www.sitepoint.com/write-maintainable-javascript/">Here is the link</a>
-					</section>
-					<section>
-						<h2>Analyze the project</h2>
-						<li>Put your developer hat away for a moment, and be a user to see what it’s all about.
-						<li>Go through the codebase and make a list of the tools in use.
-						<li>Read up documentation and best practices of the tools.
-						<li>Go through the unit tests to get a feeling for the project on a higher level.
-					</section>
-					<section>
-						<h2>Create a baseline</h2>
-						<li>Introduce .editorconfig to keep the coding style guides consistent between different IDEs.
-						<li>Make indentation consistent; tabs or spaces, doesn’t matter.
-						<li>Enforce a naming convention.
-						<li>If not already present, add a linter like ESLint, JSLint, or JSHint.
-						<li>Update dependencies, but do it wisely and watch out for what exactly has been updated.
-					</section>
-					<section>
-						<h2>Cleaning up</h2>
-						<li>Establish unit tests and browser automation with tools like Karma, Jasmine, or Nightwatch.js.
-						<li>Make sure the architecture and design pattern are consistent.
-						<li>Don’t mix design patterns, stick to the ones already there.
-						<li>Decide if you want to split up your codebase into modules. Each should only have one purpose and be unaware of the <li>rest of your codebase logic.
-						<li>If you don’t want to do that, focus more on testable code and break it down into simpler blocks.
-						<li>Document your functions and code in a balanced way with properly named functions.
-						<li>Use JSDoc to generate documentation for your JavaScript.
-						<li>Commit regularly and after important changes. If something breaks, it’s easier to go back.
-					</section>
-					<section>
-						<h2>Don’t lose your mind</h2>
-						<li>Don’t get mad at the previous developer; negativity will only result in unnecessary refactoring and wasting time.
-						<li>There have been reasons why code is written like it is. Keep in mind that we’ve all been there.
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Facebook sixth sense</h2>
-						<p>Pick interesting part</p>
-						<p>Smooth: scroll</p>
-						<br>
-						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Don't be clever</h2>
-						<pre><code>
-// Don’t:
-return x === 0 ? 'red' : x === 1 ? 'green' : 'blue';
-
-// Better:
-if (x === 0) {
-    return 'red';
-} else if (x === 1) {
-    return 'green';
-} else {
-    return 'blue';
-}
-
-// Best:
-switch (x) {
-    case 0:
-        return 'red';
-    case 1:
-        return 'green';
-    default:
-        return 'blue';
-}
-						</code></pre>
-						<br>
-						<a href="http://speakingjs.com/es5/ch26.html">Speaking JavaScript</a>
-					</section>
-					<section>
-						<pre><code>
-foo && bar(); // no
-if (foo) bar(); // yes
-
-foo || bar(); // no
-if (!foo) bar(); // yes
-						</code></pre>
-					</section>
-					<section>
-						<h2>don't be clever</h2>
-						<pre><code>
-// Unsure: what is happening?
-return ++foo;
-
-// Easy to understand
-++foo;
-return foo;
-						</code></pre>
-						<pre class="fargment"><code>
-return x >> 0; // no
-return Math.round(x); // yes
-						</code></pre>
-					</section>
-					<section>
-						<pre><code>
-> +'123'  // no
-123
-> Number('123')  // yes
-123
-
-> ''+true  // no
-'true'
-> String(true)  // yes
-'true'
-						</code></pre>
-					</section>
-					<section>
-						<h2>other links</h2>
-						<ul>
-							<li><a href="http://rainsoft.io/power-up-the-array-creation-in-javascript/">Power up the array creation</a></li>
-							<li><a href="http://rainsoft.io/understanding-constructor-property/">Inheritance in JavaScript</a></li>
-							<li><a href="http://rainsoft.io/catch-the-xmlhttp-request-in-plain-javascript/">Catch the XMLHttpRequest</a></li>
-							<li><a href="http://rainsoft.io/javascriptss-addition-operator-demystified/">addition operator in details</a></li>
-						</ul>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Memory Leak</h2>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Single Page Application</h2>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>Forward conf talk</h2>
-						<p>Watch video</p>
-						<br>
-						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>when to test</h2>
-						<p>very good: make it generic</p>
-						<br>
-						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Advanced Testing and Debugging in AngularJS</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h2>JS Self-documenting</h2>
-						<br>
-						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
-					</section>
-				</section>
-				<section>
-					<section>
 						<h2>Use Dev tool</h2>
 						<br>
 						<a href="https://developers.google.com/web/updates/2016/06/devtools-digest">DevTools in 2016 and Beyond</a>
 						<br>
 						<a href="https://developers.google.com/web/updates/2016/06/performance-observer">Access Performance data</a>
 					</section>
+				</section> -->
+				<section>
+					<section>
+						<h1>Architecture</h1>
+					</section>
+					<section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section>
 				</section>
 				<section>
 					<section>
-						<h2>security</h2>
+						<h1>security</h1>
+					</section>
+					<section>
+						<h2>Security</h2>
+						<a href="https://github.com/leizongmin/js-xss">js xss</a>
+					</section>
+					<section>
+						<h2>Facebook sixth sense</h2>
+						<p>can use as an example</p>
+						<br>
+						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>CSS</h1>
+					</section>
+					<section>
+						<h2>CSS guidelines</h2>
+						<a href="http://cssguidelin.es/">cssguidelin.es</a>
+					</section>
+					<section>
+						<h2>maintainable css</h2>
+						<br>
+						<a href="http://maintainablecss.com/">maintainable css</a>
+					</section>
+					<section>
+						<h2>Improving css quality in facebook</h2>
+						<br>
+						<a href="https://code.facebook.com/posts/879890885467584/improving-css-quality-at-facebook-and-beyond/">improving css quality</a>
+					</section>
+					<section>
+						<h2>side effects in css</h2>
+						<br>
+						<a href="https://philipwalton.com/articles/side-effects-in-css/">side effects in css</a>
+					</section>
+					<section>
+						<h2>BEM and architecture</h2>
+						<br>
+						<a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">CSS architecture</a>
+					</section>
+					<section>
+						<h2>Mixins Better for Performance</h2>
+						<br>
+						<a href="http://csswizardry.com/2016/02/mixins-better-for-performance/">mixins for performance</a>
+					</section>
+					<section>
+						<h2></h2>
+						<ul>
+							<li>Use a prefix (for class names)</li>
+							<li>No CSS selector nesting</li>
+							<li>Build components with BEM naming</li>
+							<li></li>
+						</ul>
+						<br>
+						<a href="https://medium.com/peergrade-io/structuring-css-in-large-projects-37f1695f5ec8#.bicuecsn4">Structure large project css</a>
+					</section>
+					<section>
+						<h2>others</h2>
+						<ul>
+							<li><a href="https://speckyboy.com/2016/05/10/good-bad-css-practices/">css best practices</a></li>
+							<li><a href="https://robots.thoughtbot.com/you-don-t-need-javascript-for-that">you don't need JS for that</a></li>
+							<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/">CSS display</a></li>
+							<li><a href="https://18f.gsa.gov/2016/01/11/introducing-the-css-coding-style-guide/">US gov css style</a></li>
+							<li><a href="http://www.testmycss.com/">test css</a></li>
+							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
+						</ul>
 					</section>
 				</section>
 				<section>
@@ -1093,25 +1891,100 @@ return Math.round(x); // yes
 						<ul>
 							<li><a href="https://github.com/airbnb/javascript">Airbnb Style Guide</a></li>
 							<li><a href="http://speakingjs.com/es5/ch26.html"> Meta Code Style Guide</a></li>
-							
+
 							<li><a href=""></a></li>
 							<li><br>
 						<a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
 						</ul>
 					</section>
+					<section>
+						<h1>Others</h1>
+					</section>
+					<section>
+						<pre><code>
+document.getElementsByName()
+document.getElementsByClassName()
+document.getElementsByTagName()
+						</code></pre>
+						<pre class="fragment"><code>
+document.images
+document.links
+document.forms
+document.scripts
+document.styleSheets
+						</code></pre>
+						<br>
+						<a href="http://code.tutsplus.com/tutorials/the-essentials-of-writing-high-quality-javascript--net-15145">High Quality JS</a>
+						<aside class="notes">
+							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Increase readability by using switch statement</h2>
+						<pre><code>
+var inspect_me = 0,
+    result = '';
+switch (inspect_me) {
+case 0:
+   result = "zero";
+   break;
+case 1:
+   result = "one";
+   break;
+default:
+   result = "unknown";
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Indentation</h2>
+					</section>
+					<section>
+						<h2>Curly braces</h2>
+						<pre><code>
+// bad practice
+for (var i = 0; i < 10; i += 1)
+   alert(i);
+   alert(i + " is " + (i % 2 ? "odd" : "even"));
+						</code></pre>
+					</section>
+					<section>
+						<h1>Other Other</h1>
+					</section>
+					<section>
+						<h2>three dots</h2>
+						<br>
+						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
+					</section>
+					<section>
+						<h2>Single Page Application</h2>
+					</section>
+					<section>
+						<h2>Forward conf talk</h2>
+						<p>Watch video</p>
+						<br>
+						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
+					</section>
+					<section>
+						<h2>git pre commit hook</h2>
+					</section>
 				</section>
 				<section>
 					<h2>Take a Moment</h2>
-					<p>
-						Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-					</p>
+					<p>Press B or . on your keyboard to pause the presentation.</p>
+				</section>
+				<section>
+					<h2>Summary</h2>
+					<ul>
+						<li class="fragment">Folder Structure</li>
+						<li class="fragment">Module</li>
+						<li class="fragment">Build System</li>
+						<li class="fragment">Coding Style</li>
+						<li class="fragment">Unit Test</li>
+					</ul>
 				</section>
 				<section style="text-align: left;">
-					<h1>THE END</h1>
-					<p>
-						- <a href="http://slides.com">Try the online editor</a> <br>
-						- <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-					</p>
+					<h2>Thank you</h2>
 				</section>
 
 			</div>
