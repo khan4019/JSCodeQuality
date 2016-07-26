@@ -52,7 +52,7 @@
 						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
 					</p>
 				</section>
-				<section>
+				<!--<section>
 					<section>
 						<h1>TODO</h1>
 					</section>
@@ -77,7 +77,7 @@
 							<li>Iterators and Generators</li>
 						</ul>
 					</section>
-					<!-- <section>
+					 <section>
 						<h2>Less important</h2>
 						<ul>
 							<li><a href="http://kellegous.com/j/2013/01/26/layout-performance/">on layout and web performance</a></li>
@@ -100,8 +100,8 @@
 							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
 							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
-					</section> -->
-				</section>
+					</section> 
+				</section>-->
 				<section>
 					<section>
 						<h1>Code Quality</h1>
@@ -111,7 +111,7 @@
 						<small>(reality)</small>
 					</section>
 					<section>
-						<h2>Agile Driven Development</h2>
+						<h2>Real Development Process</h2>
 						<ul>
 							<li class="fragment">Biggest jerk makes all the big decisions</li>
 							<li class="fragment">GDD: Google Driven Development</li>
@@ -122,9 +122,10 @@
 						<br>
 						<br>
 						<br>
-						<a href="http://scottberkun.com/2007/asshole-driven-development/">asshole driven development</a>
+						<a href="http://scottberkun.com/2007/asshole-driven-development/">development process</a>
 						<aside class="notes">
 							<p>All wisdom, logic or process goes out the window when Mr. Asshole is in the Architecture meeting</p>
+							<p>We encourage everyone to have an opinion. But his opinion is the final decision</p>
 							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
 							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
 							<p>All customer request is out of scope</p>
@@ -196,12 +197,10 @@
 						<h2>Code Quality</h2>
 						<ol>
 							<li class="fragment">Clear and understandable design and architecture
-							<li class="fragment">Split into modules. Each module should have one purpose
 							<li class="fragment">Clear Naming convention and coding style
 							<li class="fragment">Documentation -- self-explaining code
-							<li class="fragment">Testable code and break it down into simpler blocks.
-							<li class="fragment">Automated Unit tests
-							<li class="fragment">Code Review</li>
+							<li class="fragment">Split into Testable modules
+							<li class="fragment">Bug captured by Automated tests
 							<li class="fragment">Can Jump straight in after few weekend off
 						</ol>
 						<br>
@@ -305,7 +304,6 @@
 							<li class="fragment">Shared code together</li>
 							<li class="fragment">Think reusability</li>
 							<li class="fragment">Load with dependency order</li>
-							<li class="fragment">avoid global conflicts</li>
 						</ul>
 						<aside class="notes">
 							<p>not more than 500 line</p>
@@ -345,7 +343,7 @@ var Result = mySalute + 'world!';
 						<pre><code>
 //content.js
 module.exports = function(){
-	return 'hello JS';
+  return 'hello JS';
 };
 						</code></pre>
 						<pre class="fragment"><code>
@@ -362,8 +360,8 @@ console.log(content());
 						<pre><code>
 //content.js
 module.exports = {
-	foo:'hello JS',
-	bar:'Beer JS'
+  foo:'hello JS',
+  bar:'Beer JS'
 };
 						</code></pre>
 						<pre class="fragment"><code>
@@ -374,7 +372,7 @@ console.log(content.bar);
 						</code></pre>
 					</section>
 					<section>
-						<h2>Common JS</h2>
+						<h2>Tree Dependency</h2>
 						<pre><code>
 //bar.js
 exports.bar = "JS";
@@ -395,16 +393,18 @@ console.log(foo);
 					<section>
 						<h2>CommonJS</h2>
 						<ul>
-							<li>require to load dependencies</li>
-							<li class="fragment">export</li>
-							<li class="fragment">module</li>
-							<li class="fragment">exports vs module.exports</li>
+							<li>exports</li>
+							<li class="fragment">require</li>
+							<li class="fragment">module.exports</li>
 							<li class="fragment">require can be called anywhere</li>
 							<li class="fragment">Circular dependency is allowed</li>
 							<li class="fragment">Browsers require a loader library or transpiling.</li>
 						</ul>
 						<br>
 						<a href="http://know.cujojs.com/tutorials/modules/authoring-cjs-modules"></a>
+						<aside class="notes">
+							<p>exports vs module.exports <a href="http://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js">stackoverflow</a></p>
+						</aside>
 					</section>
 					<section>
 						<h2>ES6 module</h2>
@@ -431,7 +431,7 @@ export function cube(x) {
 export { square, cube };
 						</code></pre>
 						<pre class="fragment"><code>
-import { square, cube } from 'foo';
+import { square, cube } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
@@ -499,15 +499,7 @@ export * from 'crypto';
 					</section>
 					<section>
 						<h2>import</h2>
-						<pre><code>
-import * as myModule from "my-module";
-
-import {foo, bar} from "my-module";
-
-
-import {reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short} from "my-module";
-						</code></pre>
-						<pre class="fragment"><code>
+						<pre class=""><code>
 // import a module without any import bindings
 import 'jquery';                        
 
@@ -519,6 +511,14 @@ import { $ } from 'jquery';
 
 // import a named export to a different name
 import { $ as jQuery } from 'jquery';   
+						</code></pre>
+						<pre class="fragment"><code>
+import * as myModule from "my-module";
+
+import {foo, bar} from "my-module";
+
+
+import {reallyReallyLongModuleMemberName as shortName, anotherLongModuleName as short} from "my-module";
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
@@ -597,7 +597,7 @@ npm install css-loader style-loader
 						</aside>
 					</section>
 					<section>
-						<h2>config</h2>
+						<h2>webpack.config.js</h2>
 						<pre><code>
 module.exports = {
     entry: "./main.js",
@@ -748,7 +748,6 @@ $ = if (ENV === "desktop") {
 					<section>
 						<h2>Single Purpose</h2>
 						<pre><code>
-// hard to test
 function createGreeting(name, location, age) {
     let greeting;
     if (location === 'Mexico') {
@@ -765,9 +764,12 @@ function createGreeting(name, location, age) {
 }
 						</code></pre>
 						<br>
-						<a href="https://www.toptal.com/javascript/writing-testable-code-in-javascript">testable JS</a>
+						<a href="https://www.toptal.com/javascript/writing-testable-code-in-javascript">Write Testable JS</a>
 						<br>
-						<a href="http://www.adequatelygood.com/Writing-Testable-JavaScript.html">testable JS</a>
+						<a href="http://www.adequatelygood.com/Writing-Testable-JavaScript.html"></a>
+						<aside class="notes">
+							<p>It works but it's not easy to test</p>
+						</aside>
 					</section>
 					<section>
 						<h2>Break it down</h2>
@@ -865,7 +867,7 @@ function square(x) {
 }
 
 function squareThemAll(items){
-	return items.map(square);
+  return items.map(square);
 }
 						</code></pre>
 						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
@@ -953,8 +955,8 @@ changeFooToRed();
 						<ul>
 							<li>Test Framework: Jasmine, mocha</li>
 							<li>Test Runner: Karma, Protractor</li>
-							<li>Browser or PhantomJS</li>
-							<li>Test Coverage</li>
+							<li>Automate Browser testing: PhantomJS, Selenium</li>
+							<li>Test Coverage: Istanbul, blanketJS</li>
 							<li>Continuous Integration</li>
 							<li>Test Debug</li>
 						</ul>
@@ -962,7 +964,6 @@ changeFooToRed();
 						<a href="http://developer.telerik.com/featured/journey-client-side-testing-javascript/">JS unit testing</a>
 						<br>
 						<a href="https://philipwalton.com/articles/learning-how-to-set-up-automated-cross-browser-javascript-unit-testing/">Automated Unit test</a>
-						<br>
 						<br>
 						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Angular Testing</a>
 					</section>
@@ -1002,7 +1003,7 @@ describe("A spec using beforeEach and afterEach", function() {
 					<section>
 						<h1>Coding Style</h1>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>Variable Decleration</h2>
 						<pre><code>
 var views = document.getElementsByClassName('view');
@@ -1081,7 +1082,7 @@ for (var i = 0; i < letNodes.length; i++) {
 							<p>The main reason why let and const are useful is to use up less memory. If the JS engine knows something will not change it can allocate the least amount of memory and use cached values. With a var things can change all the time. I do agree with you though that for a lot of our code this can feel like overkill.</p>
 							<p>let, const and block scoped bindings come into their own when we talk about large applications that need to scale, or libraries that need to have a very low memory footprint. It can be useful for smaller scripts, too, but you shouldn't feel that you need to use it just because it is the new thing to do. </p>
 						</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>Variable decleration</h2>
 						<pre><code>
@@ -1142,8 +1143,6 @@ function checkName(hasName) {
   return name;
 }</code></pre>
 					</section>
-				</section>
-				<section>
 					<section>
 						<h1>Function</h1>
 					</section>
@@ -1562,6 +1561,11 @@ union(["foo"], ["bar"], ["foo"]);
 					<section>
 						<h2>JS Self-documenting</h2>
 						<br>
+						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
+						
+					</section>
+					<section>
+						<h2>Find others</h2>
 						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
 					</section>
 				</section>
@@ -1594,6 +1598,9 @@ union(["foo"], ["bar"], ["foo"]);
 				<section>
 					<section>
 						<h1>Code Review</h1>
+					</section>
+					<section>
+						<img src="images/codeReviews.jpg" alt="">
 					</section>
 					<section>
 						<h2>Time zone example</h2>
@@ -1757,7 +1764,28 @@ console.log(NaN); // NaN
 				</section> -->
 				<section>
 					<section>
+						<h1>Architecture</h1>
+					</section>
+					<section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section>
+				</section>
+				<section>
+					<section>
 						<h1>security</h1>
+					</section>
+					<section>
+						<h2>Security</h2>
+						<a href="https://github.com/leizongmin/js-xss">js xss</a>
 					</section>
 					<section>
 						<h2>Facebook sixth sense</h2>

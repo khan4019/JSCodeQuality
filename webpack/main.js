@@ -1,3 +1,3 @@
-require('style!css!./style.css');
-var content = require('./content')
-document.write(content);
+var foo = require('./foo')
+require('./style.css')
+document.write(foo);
