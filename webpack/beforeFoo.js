@@ -1,1 +1,0 @@
-module.exports = 'before foo was born';
