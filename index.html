@@ -52,11 +52,46 @@
 						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
 					</p>
 				</section>
-				<!--<section>
+				<section>
 					<section>
 						<h1>TODO</h1>
 					</section>
 					<section>
+						<h2>From JS Chi</h2>
+						<ul>
+							<li>module property solves type module other than simple file</li>
+							<li>real dependancy example. How #4/5 definition is met</li>
+							<li>Less ES6 or go to ES6</li>
+							<li>no confusion or comparision of between commonJS and ES6 </li>
+							<li>Remove CommonJS summary page</li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</section>
+					<section>
+						<h2>more</h2>
+						<ul>
+							<li>webpack demo didnt work</li>
+							<li>more realistic and full pledge webpack</li>
+							<li>Real example of code spliting</li>
+							<li>real example of async loading</li>
+							<li>make function pure: should have more slim</li>
+							<li>Enhance code review slides</li>
+							<li>combine security, logging, refactor</li>
+						</ul>
+					</section>
+					<section>
+						<h2>joke</h2>
+						<ul>
+							<li>jokes make faster</li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</section>
+					<!--<section>
 						<h2>TODO: Very good</h2>
 						<ul>
 							<li>Few mistakes in JS</li>
@@ -100,29 +135,27 @@
 							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
 							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
-					</section> 
-				</section>-->
+					</section>--> 
+				</section>
 				<section>
 					<section>
 						<h1>Code Quality</h1>
 						<br>
 						<br>
-						<br>
-						<small>(While you are in a meeting)</small>
-					</section>
-					<section>
-						<h2>Code Quality</h2>
 						<blockquote>Code quality is a loose approximation of long-term usefulness and maintainability of code.</blockquote>
 						<br>
+							<br>
+						<br>
+						<small>(While you are in a meeting)</small>
+					
 					</section>
-					<section>
+					<!--<section>
 						<h2>Code Quality</h2>
 						<ol>
 							<li class="fragment">Clear and understandable design and architecture
 							<li class="fragment">Clear Naming convention and coding style
 							<li class="fragment">Documentation -- self-explaining code
-							<li class="fragment">Split into Testable modules
-							<li class="fragment">Bug captured by Automated tests
+							<li class="fragment">Automated tests
 							<li class="fragment">Can Jump straight in after few weekend off
 						</ol>
 						<br>
@@ -137,7 +170,7 @@
 							<li>Use JSDoc to generate documentation for your JavaScript.
 						</aside>
 					</section>
-					<!-- <section>
+					<section>
 						<h2>Other code smells</h2>
 						<ul>
 							<li>Large classes or God object
@@ -167,7 +200,7 @@
 					<section>
 						<h1>App Structure</h1>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>No common rule</h2>
 						<ul>
 							<li>Whatever works for your project</li>
@@ -185,10 +218,10 @@
 						<img src="images/folderStructure2.png" alt="">
 						<br>
 						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
-					</section>
+					</section> 
 					<section>
 						<img style="height:700px" src="images/folderStructure3.png" alt="">
-					</section>
+					</section>-->
 					<section>
 						<img src="images/folderStructure4.png" alt="">
 						<aside class="notes">
@@ -1108,7 +1141,7 @@ let length;
 						<br>
 						<a href="https://github.com/airbnb/javascript">Airbnb JS style</a>
 					</section>
-					<section>
+					<!-- <section>
 						<pre><code>
 // bad - unnecessary function call
 function checkName(hasName) {
@@ -1143,7 +1176,7 @@ function checkName(hasName) {
 
   return name;
 }</code></pre>
-					</section>
+					</section> -->
 					<section>
 						<h1>Function</h1>
 					</section>
@@ -1671,7 +1704,26 @@ console.log(NaN); // NaN
 						<img src="images/codeReviews.jpg" alt="">
 					</section>
 					<section>
-						<h2>Time zone example</h2>
+						<img src="images/developer1.jpg" alt="">
+					</section>
+					<section>
+						<h2>Other will bang their head</h2>
+						<pre><code>
+function chartNumber(value){
+  var power = Math.round(value).toString().length - 1;
+  var fraction = value/Math.pow(10, power);
+  var ceilFraction = Math.ceil(fraction *2)/2;
+  return ceilFraction * Math.pow(10, power);
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//convert to JS Date oboject from yyyymmdd
+function parseDate (dateString){
+	var match = dateString.match(/(\d{4})(\d{2})(\d{2})/);
+	var formattedDate = match[2] + '/' + match[3] + '/' + match[1];
+	return new Date(formattedDate);
+}
+						</code></pre>
 					</section>
 					<section>
 						<h2>Review Checklist</h2>
@@ -2033,8 +2085,11 @@ for (var i = 0; i < 10; i += 1)
 						<img src="images/tips/socks.jpg" alt="">
 					</section>
 					<section>
+						<img src="images/tips/wine.gif" alt="">
+					</section>
+					<section>
 						<h2>belt in collar</h2>
-						<img src="images/tips/belt2.jpg" alt="">
+						<img style="height:600px;" src="images/tips/belt2.jpg" alt="">
 					</section>
 					<section>
 						<h2>Avoid luggage check in</h2>

@@ -2,14 +2,10 @@
   "name": "webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server ./main.js",
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "webpack-dev-server": "^1.14.1"
-  }
+  "license": "ISC"
 }
