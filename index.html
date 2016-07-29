@@ -64,9 +64,7 @@
 							<li>Less ES6 or go to ES6</li>
 							<li>no confusion or comparision of between commonJS and ES6 </li>
 							<li>Remove CommonJS summary page</li>
-							<li></li>
-							<li></li>
-							<li></li>
+							
 						</ul>
 					</section>
 					<section>
@@ -76,19 +74,9 @@
 							<li>more realistic and full pledge webpack</li>
 							<li>Real example of code spliting</li>
 							<li>real example of async loading</li>
-							<li>make function pure: should have more slim</li>
 							<li>Enhance code review slides</li>
 							<li>combine security, logging, refactor</li>
-						</ul>
-					</section>
-					<section>
-						<h2>joke</h2>
-						<ul>
 							<li>jokes make faster</li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
 						</ul>
 					</section>
 					<!--<section>
@@ -745,11 +733,12 @@ $ = if (ENV === "desktop") {
 				</section>
 				<section>
 					<section>
-						<h1>Make things testable</h1>
+						<h1>Testing</h1>
 					</section>
 					<section>
-						<h2>Single Purpose</h2>
-						<pre><code>
+						<h2>Make things testable</h2>
+						<h4>Single Purpose function</h4>
+						<pre class="fragment"><code>
 function createGreeting(name, location, age) {
     let greeting;
     if (location === 'Mexico') {
@@ -800,45 +789,38 @@ function createGreeting(name, location, age) {
 					</section>
 					<section>
 						<h2>Make function Pure</h2>
-						
-						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
-						<ul class="fragment">
-							<li>Produces no side effects</li>
-							<li>Relies on no external state</li>
-							<li>Given the same input, will always return the same output</li>
+						<ul>
+							<li class="fragment">Doesn’t depend on or modify variables outside of its scope</li>
+							<li class="fragment">Produces no side effects</li>
+							<li class="fragment">Given the same input, will always return the same output</li>
 						</ul>
-						
 						<pre class="fragment"><code>
 function mouseOnLeftSide(mouseX) {
     return mouseX < window.innerWidth / 2;
 }
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX));
-};
 						</code></pre>
-						
+						<br>
+						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
 						<br>
 						<br>
-						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
+						<br>
+						<a href="http://alistapart.com/article/making-your-javascript-pure">Make JavaScript Pure</a>
 						<aside class="notes">
 							<p>Not pure. </p>
 							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Impure is not testable</h2>
+							<h2>Impure is not testable</h2>
 						<ul>
-							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
-							<li class="fragment">How do you test this?
-								<ul class="fragment">
+							<li class="">Bug: a user reported the function doesn't work for window is less than 500 px</li>
+							<li class="">How do you test this?
+								<ul class="">
 									<li>manually test by loading up your browser</li>
 									<li>write some unit tests</li>
 								</ul>
 							</li>
-							<li class="fragment">You cann't write unit test</li>
-							<li class="fragment">function relies on window.innerWidth</li>
+							<li class="">You cann't write unit test</li>
+							<li class="">function relies on window.innerWidth</li>
 						</ul>
+						</aside>
 					</section>
 					<!-- <section>
 						<h2>Pure version</h2>
@@ -872,7 +854,6 @@ function squareThemAll(items){
   return items.map(square);
 }
 						</code></pre>
-						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
 						<aside class="notes">
 							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
 							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
@@ -939,11 +920,6 @@ changeFooToRed();
 							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
 						</aside>
 					</section> -->
-				</section>
-				<section>
-					<section>
-						<h1>Testing</h1>
-					</section>
 					<section>
 						<h2>Static Analysis</h2>
 						<ul>
@@ -951,6 +927,10 @@ changeFooToRed();
 							<li>JSHint</li>
 							<li>ESLint</li>
 						</ul>
+						<aside class="notes">
+							<p>First step of testing is Static analysis</p>
+							<p>Don't feel like you are done by adding static analysis</p>
+						</aside>
 					</section>
 					<section>
 						<img src="images/unitTest.jpg" alt="">
@@ -1705,6 +1685,11 @@ console.log(NaN); // NaN
 					</section>
 					<section>
 						<img src="images/developer1.jpg" alt="">
+					</section>
+					<section>
+						<h2>Read this</h2>
+						<br>
+						<a href="http://bradfrost.com/blog/post/a-code-review-or-yet-another-reason-to-love-the-web/">brad frost code review</a>
 					</section>
 					<section>
 						<h2>Other will bang their head</h2>
