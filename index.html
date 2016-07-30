@@ -991,6 +991,71 @@ describe("A spec using beforeEach and afterEach", function() {
 						<h1>Coding Style</h1>
 					</section>
 					<section>
+						<h2>conditional expression</h2>
+						<pre><code>
+if(!el.offsetWidth || !el.offsetHeight) {
+}
+						</code></pre>
+						<pre class="fragment"><code>
+function isVisible(el) {
+    return el.offsetWidth && el.offsetHeight;
+}
+
+if(!isVisible(el)) {
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//or move to a variable
+var isVisible = el.offsetWidth && el.offsetHeight;
+if(!isVisible) {
+}
+						</code></pre>
+						<br>
+						<a href="https://www.sitepoint.com/self-documenting-javascript/">self documenting JS</a>
+						<aside class="notes">
+							<p>If you have multiple conditional expression move them to a function</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Boolean flags</h2>
+						<pre><code>
+myThing.setData({ x: 1 }, true);
+						</code></pre>
+						<p class="fragment">What is the menaing of true?</p>
+						<pre class="fragment"><code>
+myThing.mergeData({ x: 1 });
+						</code></pre>
+						<aside class="notes">
+							<p>What is the meaning of true?</p>
+							<p>You have absolutely no idea, unless you dig into the source for setData() and find out.</p>
+							<h3>Instead, you can add another function, or rename an existing function:</h3>
+							<p>Now you can immediately tell what’s going on.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Be Explicit over Implicit</h2>
+						<pre ><code class="hljs javascript">
+// Support Opera Mini, which returns NaN for undefined minlength
+if(isNaN(value)){
+  value = undefined;
+}
+						</code></pre>
+						<small><a href="https://github.com/jzaefferer/jquery-validation/blob/38310a142e57e871cf08f369e6690aa54252ec6c/src/core.js#L1130):">jquery source code</a></small>
+						<pre class="fragment"><code class="hljs javascript">
+// Support Opera Mini, which returns NaN for undefined minlength
+var isNaNForUndefinedMinLength = isNaN(value);
+
+if (isNaNForUndefinedMinLength) {
+  value = undefined;
+}
+						</code></pre>
+						<aside class="notes">
+							<p>Code gets refactored or fix bugs and comment becomes irrelevant.</p>
+							<p>People might ignore comment</p>
+							<p>But it's hard to ignore variable name</p>
+						</aside>
+					</section>
+					<section>
 						<h2>naming convention</h2>
 						<br>
 						<small class="fragment">
@@ -999,10 +1064,16 @@ describe("A spec using beforeEach and afterEach", function() {
 						<br>
 						<br>
 						<pre class="fragment"><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days
- var dsc; //description
+var elapsedTimeInDays;
+var description;
 
- var god_damn_its_IE;
+var god_damn_its_IE;
+						</code></pre>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var $d; //elapsed time in days
+var dsc; //description
+
+var f_IE;
 						</code></pre>
  						<aside class="notes">
 							<p class="">But</p>
@@ -1434,6 +1505,9 @@ const sum = arr =>
 
 sum([1, 2, 3]); // => 6
 						</code></pre>
+						<aside class="notes">
+							<p>use map, filter to make code more readable</p>
+						</aside>
 					</section>
 					<!--<section>
 						<h2>apply</h2>
@@ -1562,7 +1636,7 @@ me.size; // => 3
 						<h2>Minimize Dependencies</h2>
 						<pre><code>
 // bad
-// I have to find a better job
+// I have to find a different job
 var _ = require("underscore");
 _.compact(["foo", 0]));
 _.unique(["foo", "foo"]);
@@ -1570,6 +1644,7 @@ _.union(["foo"], ["bar"], ["foo"]);
 						</code></pre>
 						<pre class="fragment"><code>
 // good
+//thank god, i survived
 const compact = arr => arr.filter(el => el);
 const unique = arr => [...Set(arr)];
 const union = (...arr) => unique([].concat(...arr));
@@ -1588,15 +1663,8 @@ union(["foo"], ["bar"], ["foo"]);
 						<h1>Document</h1>
 					</section>
 					<section>
-						<h2>JS-Doc</h2>
-						<br>
-						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
-						<br>
-						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
-					</section>
-					<section>
 						<h2>comment</h2>
-						<pre><code>
+						<pre class="fragment"><code>
 // 
 // Dear maintainer:
 // 
@@ -1607,71 +1675,31 @@ union(["foo"], ["bar"], ["foo"]);
 // 
 // total_hours_wasted_here = 42
 						</code></pre>
+						<ul>
+							<li class="fragment">Explain your intention in comments</li>	
+							<li class="fragment">Warn of consequences in comments</li>
+							<li class="fragment">Emphasis important points in comments</li>
+							<li class="fragment">Never leave code commented</li>
+						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered">code comment</a>
 					</section>
 					<section>
-						<h2>comment</h2>
-						<ul>
-							<li class="fragment">Don’t comment bad code, rewrite it</li>
-							<li class="fragment">If code is readable you don’t need comments</li>
-							<pre class="fragment"><code>
-This is bad:
-
-// Check to see if the employee is eligible for full benefits
-
-if ($employee->flags && self::HOURLY_FLAG && $employee->age > 65)
-
-This is good:
-
-if ($employee->isEligibleForFullBenefits())
-							</code></pre>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
-						</ul>
-					</section>
-					<section>
-						<h2>comment</h2>
-						<ul>
-							<li class="fragment">Explain your intention in comments</li>
-							<pre><code>
-// if we sort the array here the logic becomes simpler in calculatePayment() method
-							</code></pre>
-							<li class="fragment">Warn of consequences in comments</li>
-							<pre><code>
-// this script will take a very long time to run
-							</code></pre>
-							<li class="fragment">Emphasis important points in comments</li>
-							<pre><code>
-// the trim function is very important, in most cases the username has a trailing space
-							</code></pre>
-							<li class="fragment">Always have your PHPDoc comments</li>
-							<li class="fragment">Noise comments are bad</li>
-							<pre><code>
-/** The day of the month. */
-private $dayOfMonth;
-							</code></pre>
-							<li class="fragment">Never leave code commented</li>
-						</ul>
-					</section>
-					<section>
+						<h2>JS-Doc</h2>
 						<pre><code>
-// In the global scope:
-var NaN = 42;
-console.log(NaN); // NaN
-
-// …but elsewhere:
-(function() {
-	var NaN = 42;
-	console.log(NaN); // 42
-}());
+Pressing tab after /**
 						</code></pre>
-						<section>
-							<p>think about ES6 as well</p>
-							<br>
-							<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
-						</section>
-					</section>
+						<img src="images/comment.gif" alt="" class="fragment">
+						<br>
+						<a href="https://github.com/jsdoc3/jsdoc">use JSDoc</a>
+						<br>
+						<a href="https://github.com/spadgos/sublime-jsdocs">sublime-jsdoc</a>
+						<br>
+						<a href="https://github.com/jashkenas/docco">docco</a>
+						<br>
+					</section>					
 				</section>
 				<section>
 					<h1>Logging</h1>
