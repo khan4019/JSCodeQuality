@@ -350,7 +350,7 @@ var foo = require('./foo');
 console.log(foo);
 						</code></pre>
 					</section>
-					<section>
+					<!--<section>
 						<h2>CommonJS</h2>
 						<ul>
 							<li>exports</li>
@@ -395,7 +395,7 @@ import { square, cube } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
-					<!-- <section>
+					<section>
 						<h2>es6</h2>
 						<pre><code>
 //file.js
@@ -421,7 +421,7 @@ getUsefulContents("http://www.example.com", data => {
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
-					</section> -->
+					</section> 
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
@@ -504,7 +504,7 @@ export var another = {};
 						</code></pre>
 						<br>
 						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
-					</section>
+					</section>-->
 				</section>
 				<section>
 					<section>
@@ -1702,7 +1702,17 @@ Pressing tab after /**
 					</section>					
 				</section>
 				<section>
-					<h1>Logging</h1>
+					<section>
+						<h1>Logging</h1>
+						<br>
+						<br>
+						<blockquote>Writing good code is hard and reproducing client-side errors is even harder</blockquote>
+					</section>
+					<section>
+						<pre><code>
+//windows.onError
+						</code></pre>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -1723,12 +1733,24 @@ Pressing tab after /**
 						<h2>Other will bang their head</h2>
 						<pre><code>
 function chartNumber(value){
-  var power = Math.round(value).toString().length - 1;
+  var power = Math.floor(Math.log10(value));
   var fraction = value/Math.pow(10, power);
   var ceilFraction = Math.ceil(fraction *2)/2;
   return ceilFraction * Math.pow(10, power);
 }
 						</code></pre>
+						<ul>
+							<li class="fragment">Name of the function doesn't tell what the function do</li>
+							<li class="fragment">Comment the purpose of the function</li>
+							<li class="fragment">Meaningful variable name</li>
+							<li class="fragment">What does this function is doing, anyway?</li>
+						</ul>
+						<br>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Reviewer_Checklist">MDN: Reviewer Checklist</a>
+					</section>
+					<section>
+						<h2>Review Checklist</h2>
 						<pre class="fragment"><code>
 //convert to JS Date oboject from yyyymmdd
 function parseDate (dateString){
@@ -1739,17 +1761,15 @@ function parseDate (dateString){
 						</code></pre>
 					</section>
 					<section>
-						<h2>Review Checklist</h2>
-					</section>
-					<section>
 						<h2>Review tools</h2>
 							<ul>
-								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
-							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
-							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+								<li>Crucible
+							    <li>Code Collaborator
+							    <li>Review Board
+							    <li>Rietveld
 							</ul>
-
+							<br>
+							<a href="https://addyosmani.com/blog/lessons-from-a-javascript-code-review/">Lesson from a code review</a>
 					</section>
 				</section>
 				<!-- <section>
@@ -1868,7 +1888,7 @@ function parseDate (dateString){
 						</ul>
 					</section>
 				</section>
-				<section>
+				<!-- <section>
 					<section>
 						<h1>Refactor</h1>
 					</section>
@@ -1893,7 +1913,7 @@ function parseDate (dateString){
 							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
 							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
 					</section>
-				</section>
+				</section> -->
 				<section>
 					<section>
 						<h2>Need more?</h2>
