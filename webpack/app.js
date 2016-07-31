@@ -1,3 +1,1 @@
-var salute = require('./salute');
-require('./style.css');
-document.write(salute);
+document.write('Hello That Conference Monday');

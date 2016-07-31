@@ -48,3 +48,6 @@ Temporary Items
 node_modules/
 test/
 react-hot-boilerplate/
+my-app/
+webpack/
+webpack-howto/
