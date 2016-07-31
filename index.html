@@ -25,6 +25,9 @@
 			.hide{
 				display:none !important;
 			}
+			.text-normal a{
+				text-transform: none;
+			}
 		</style>
 		<script>
 			var link = document.createElement( 'link' );
@@ -46,11 +49,19 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>JS Code Quality</h1>
-					<h4>for Large JS Application</h4>
+					<h1>JS Code Quality</h1>	
+					<p class="hide">for Large JS Application</p>
+					<br/>
+					<br>
+					<h2 class="fragment text-normal"><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </h2>
+					<br>
+					<br>
+					<br/>
 					<p>
-						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
+						<a href="http://thatjsdude.com">JS Dude</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
 					</p>
+					<p>www.thatJSdude.com</p>
+					<small>(youtube.com/user/khanLearning)</small>
 				</section>
 				<section>
 					<section>
@@ -126,7 +137,7 @@
 					</section>--> 
 				</section>
 				<section>
-					<section>
+					<!--<section>
 						<h1>Code Quality</h1>
 						<br>
 						<br>
@@ -137,7 +148,7 @@
 						<small>(While you are in a meeting)</small>
 					
 					</section>
-					<!--<section>
+					<section>
 						<h2>Code Quality</h2>
 						<ol>
 							<li class="fragment">Clear and understandable design and architecture
@@ -185,7 +196,7 @@
 				</section>
 				<section>
 					<section>
-						<h1>Modules</h1>
+						<h1>Application Development</h1>
 					</section>
 					<section>
 						<img src="images/spagett.jpg" alt="">
@@ -495,7 +506,7 @@ export var another = {};
 						<br>
 						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>BEM</h2>
 						<ul>
 							<li>logically and functionally independent page component</li>
@@ -506,7 +517,7 @@ export var another = {};
 							<li class="fragment"></li>
 						</ul>
 						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
-					</section>
+					</section> -->
 				</section>
 				<section>
 					<section>
@@ -551,9 +562,10 @@ webpack main.js bundle.js
 npm install css-loader style-loader
 						</code></pre>
 						<br>
-						<a href="http://webpack.github.io/docs/tutorials/getting-started/">webpack</a>
 						<br>
 						<a href="https://www.youtube.com/watch?v=TaWKUpahFZM">getting started with webpack</a>
+						<br>
+						<a href="https://www.youtube.com/watch?v=MzVFrIAwwS8/">webpack advanced</a>
 						<aside class="notes">
 							<p></p>
 						</aside>
@@ -585,6 +597,18 @@ webpack --watch
 						</code></pre>
 					</section>
 					<section>
+						<pre><code>
+--display-modules
+--diplay-reasons
+--display-chunks
+--d //for --debug 
+
+performance tool
+Hints
+
+						</code></pre>
+					</section>
+					<section>
 						<h2>Code Splitting</h2>
 						<pre><code>
 require.ensure(dependencies, callback)
@@ -596,7 +620,7 @@ require.ensure(["module-a", "module-b"], function(require) {
 });
 						</code></pre>
 						<ul>
-							<li class="fragment"></li>
+							<li class="fragment">Common Chunk Plugin</li>
 							<li class="fragment"></li>
 							<li class="fragment">If two chunks contain the same modules, they are merged into one.</li>
 						</ul>
@@ -726,6 +750,10 @@ $ = if (ENV === "desktop") {
 						</code></pre>
 						<small>Will produce 2 separate bundles with different dependencies...</small>
 					</section> -->
+					<section>
+						<h2>open as much as we needed</h2>
+						<img class="fragment" src="images/barbar.jpg" alt="">
+					</section>
 					<section>
 						<h2>Hot Module Replacement</h2>
 						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
@@ -991,6 +1019,9 @@ describe("A spec using beforeEach and afterEach", function() {
 				<section>
 					<section>
 						<h1>So far...</h1>
+						<aside class="notes">
+							<p>so far we have talked about three things</p>
+						</aside>
 					</section>
 					<section>
 						<h2>1. Module</h2>
@@ -1106,6 +1137,9 @@ var f_IE;
 								<li>Become happy and push the code</li>
 							</ul>
 						</aside>
+					</section>
+					<section>
+						<img src="images/edge.jpg" alt="">
 					</section>
 					<section>
 						<h2>Other will bang their head</h2>
@@ -1763,9 +1797,9 @@ Pressing tab after /**
 					<section>
 						<img src="images/codeReviews.jpg" alt="">
 					</section>
-					<section>
+					<!-- <section>
 						<img src="images/developer1.jpg" alt="">
-					</section>
+					</section> -->
 					<section>
 						<img src="images/codeReview2.jpg" alt="">
 					</section>
@@ -1774,9 +1808,9 @@ Pressing tab after /**
 						<pre class="fragment"><code>
 //convert to JS Date oboject from yyyymmdd
 function parseDate (dateString){
-	var match = dateString.match(/(\d{4})(\d{2})(\d{2})/);
-	var formattedDate = match[2] + '/' + match[3] + '/' + match[1];
-	return new Date(formattedDate);
+  var match = dateString.match(/(\d{4})(\d{2})(\d{2})/);
+  var formattedDate = match[2] + '/' + match[3] + '/' + match[1];
+  return new Date(formattedDate);
 }
 						</code></pre>
 						<ul>
@@ -1870,35 +1904,6 @@ function parseDate (dateString){
 						<h1>Module Everything</h1>
 					</section>
 					<section>
-						<h2>CSS guidelines</h2>
-						<a href="http://cssguidelin.es/">cssguidelin.es</a>
-					</section>
-					<section>
-						<h2>maintainable css</h2>
-						<br>
-						<a href="http://maintainablecss.com/">maintainable css</a>
-					</section>
-					<section>
-						<h2>Improving css quality in facebook</h2>
-						<br>
-						<a href="https://code.facebook.com/posts/879890885467584/improving-css-quality-at-facebook-and-beyond/">improving css quality</a>
-					</section>
-					<section>
-						<h2>side effects in css</h2>
-						<br>
-						<a href="https://philipwalton.com/articles/side-effects-in-css/">side effects in css</a>
-					</section>
-					<section>
-						<h2>BEM and architecture</h2>
-						<br>
-						<a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">CSS architecture</a>
-					</section>
-					<section>
-						<h2>Mixins Better for Performance</h2>
-						<br>
-						<a href="http://csswizardry.com/2016/02/mixins-better-for-performance/">mixins for performance</a>
-					</section>
-					<section>
 						<h2></h2>
 						<ul>
 							<li>Use a prefix (for class names)</li>
@@ -1910,15 +1915,9 @@ function parseDate (dateString){
 						<a href="https://medium.com/peergrade-io/structuring-css-in-large-projects-37f1695f5ec8#.bicuecsn4">Structure large project css</a>
 					</section>
 					<section>
-						<h2>others</h2>
-						<ul>
-							<li><a href="https://speckyboy.com/2016/05/10/good-bad-css-practices/">css best practices</a></li>
-							<li><a href="https://robots.thoughtbot.com/you-don-t-need-javascript-for-that">you don't need JS for that</a></li>
-							<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/">CSS display</a></li>
-							<li><a href="https://18f.gsa.gov/2016/01/11/introducing-the-css-coding-style-guide/">US gov css style</a></li>
-							<li><a href="http://www.testmycss.com/">test css</a></li>
-							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
-						</ul>
+						<h2>Module Image</h2>
+						<br>
+						<a href="https://github.com/tcoopman/image-webpack-loader">webpack image loader</a>
 					</section>
 				</section>
 				<!-- <section>
@@ -1962,6 +1961,22 @@ function parseDate (dateString){
 							<li><a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
 						</ul>
 					</section>
+					<section>
+						<h2>CSS resources: to be read</h2>
+						<ul>
+							<li><a href="https://speckyboy.com/2016/05/10/good-bad-css-practices/">css best practices</a></li>
+							<li><a href="https://robots.thoughtbot.com/you-don-t-need-javascript-for-that">you don't need JS for that</a></li>
+							<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/">CSS display</a></li>
+							<li><a href="https://18f.gsa.gov/2016/01/11/introducing-the-css-coding-style-guide/">US gov css style</a></li>
+							<li><a href="http://www.testmycss.com/">test css</a></li>
+							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
+							<li><a href="http://cssguidelin.es/">CSS guidelines</a></li>
+							<li><a href="http://maintainablecss.com/">maintainable css</a></li>
+							<li><a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">CSS architecture</a></li>
+							<li><a href="http://csswizardry.com/2016/02/mixins-better-for-performance/">mixins for performance</a></li>
+							<li><a href="https://code.facebook.com/posts/879890885467584/improving-css-quality-at-facebook-and-beyond/">improving css quality</a></li>
+						</ul>
+					</section>
 					<!-- <section>
 						<pre><code>
 document.getElementsByName()
@@ -1991,7 +2006,7 @@ document.styleSheets
 				</section>
 				<section>
 					<section>
-						<h1>Nine Things</h1>
+						<h1>Five Things</h1>
 					</section>
 					<section>
 						<h2>Summary</h2>
@@ -2000,8 +2015,11 @@ document.styleSheets
 							<li class="fragment">Build System</li>
 							<li class="fragment">Make things testable</li>
 							<li class="fragment">Coding Style</li>
-							<li class="fragment">Commit to Code Quality</li>
+							<li class="fragment">Modularize Everything</li>
 						</ol>
+					</section>
+					<section>
+						
 					</section>
 				</section>
 				<section>
@@ -2109,8 +2127,13 @@ document.styleSheets
 				</section>
 				<section style="text-align: left;">
 					<h2>Thank you</h2>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<p class=""><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </p>
 				</section>
-
 			</div>
 
 		</div>
