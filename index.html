@@ -25,6 +25,9 @@
 			.hide{
 				display:none !important;
 			}
+			.text-normal a{
+				text-transform: none;
+			}
 		</style>
 		<script>
 			var link = document.createElement( 'link' );
@@ -46,11 +49,19 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>JS Code Quality</h1>
-					<h4>for Large JS Application</h4>
+					<h1>JS Code Quality</h1>	
+					<p class="hide">for Large JS Application</p>
+					<br/>
+					<br>
+					<h2 class="fragment text-normal"><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </h2>
+					<br>
+					<br>
+					<br/>
 					<p>
-						<small><a href="http://www.thatjsdude.com/">thatjsdude.com</a> / <a href="https://twitter.com/mdkhan005">@mdkhan005</a></small>
+						<a href="http://thatjsdude.com">JS Dude</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
 					</p>
+					<p>www.thatJSdude.com</p>
+					<small>(youtube.com/user/khanLearning)</small>
 				</section>
 				<section>
 					<section>
@@ -64,9 +75,7 @@
 							<li>Less ES6 or go to ES6</li>
 							<li>no confusion or comparision of between commonJS and ES6 </li>
 							<li>Remove CommonJS summary page</li>
-							<li></li>
-							<li></li>
-							<li></li>
+							
 						</ul>
 					</section>
 					<section>
@@ -76,19 +85,9 @@
 							<li>more realistic and full pledge webpack</li>
 							<li>Real example of code spliting</li>
 							<li>real example of async loading</li>
-							<li>make function pure: should have more slim</li>
 							<li>Enhance code review slides</li>
 							<li>combine security, logging, refactor</li>
-						</ul>
-					</section>
-					<section>
-						<h2>joke</h2>
-						<ul>
 							<li>jokes make faster</li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
 						</ul>
 					</section>
 					<!--<section>
@@ -138,7 +137,7 @@
 					</section>--> 
 				</section>
 				<section>
-					<section>
+					<!--<section>
 						<h1>Code Quality</h1>
 						<br>
 						<br>
@@ -149,11 +148,10 @@
 						<small>(While you are in a meeting)</small>
 					
 					</section>
-					<!--<section>
+					<section>
 						<h2>Code Quality</h2>
 						<ol>
 							<li class="fragment">Clear and understandable design and architecture
-							<li class="fragment">Clear Naming convention and coding style
 							<li class="fragment">Documentation -- self-explaining code
 							<li class="fragment">Automated tests
 							<li class="fragment">Can Jump straight in after few weekend off
@@ -198,58 +196,7 @@
 				</section>
 				<section>
 					<section>
-						<h1>App Structure</h1>
-					</section>
-					<!-- <section>
-						<h2>No common rule</h2>
-						<ul>
-							<li>Whatever works for your project</li>
-							<li>But you need one</li>
-						</ul>
-					</section>
-					<section>
-						<img src="images/folderStructure.png" alt="">
-						<aside class="notes">
-							<p>Old Style: M, V, C style</p>
-							<p>Controller, service, directory</p>
-						</aside>
-					</section>
-					<section>
-						<img src="images/folderStructure2.png" alt="">
-						<br>
-						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
-					</section> 
-					<section>
-						<img style="height:700px" src="images/folderStructure3.png" alt="">
-					</section>-->
-					<section>
-						<img src="images/folderStructure4.png" alt="">
-						<aside class="notes">
-							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
-						</aside>
-					</section>
-					<section>
-						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
-						<img src="images/folderStructure5.png" alt="">
-						<br>
-						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
-					</section>
-					<section>
-						<h2>BEM</h2>
-						<ul>
-							<li>logically and functionally independent page component</li>
-							<li class="fragment">equivalent of a component in Web Components</li>
-							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
-							<li class="fragment">Element: a small part of block</li>
-							<li class="fragment">Modifier: Block looks due to behavior</li>
-							<li class="fragment"></li>
-						</ul>
-						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
-					</section>
-				</section>
-				<section>
-					<section>
-						<h1>Modules</h1>
+						<h1>Application Development</h1>
 					</section>
 					<section>
 						<img src="images/spagett.jpg" alt="">
@@ -262,21 +209,6 @@
 					</section>
 					<section>
 						<img src="images/module.jpg" alt="">
-					</section>
-					<section>
-						<h2>How to create module</h2>
-						<ul>
-							<li>Single Responsibility</li>
-							<li class="fragment">Have a top-level scope that is not the global scope</li>
-							<li class="fragment">Shared code together</li>
-							<li class="fragment">Think reusability</li>
-							<li class="fragment">Load with dependency order</li>
-						</ul>
-						<aside class="notes">
-							<p>not more than 500 line</p>
-							<p>one module per file</p>
-							<p>Good authors divide their books into chapters and sections; good programmers divide their programs into modules.</p>
-						</aside>
 					</section>
 					<section>
 						<h2>Plain simple JS</h2>
@@ -363,6 +295,24 @@ console.log(foo);
 						</code></pre>
 					</section>
 					<section>
+						<h2>How to create module</h2>
+						<ul>
+							<li>Single Responsibility</li>
+							<li class="fragment">Have a top-level scope that is not the global scope</li>
+							<li class="fragment">Shared code together</li>
+							<li class="fragment">Think reusability</li>
+							<li class="fragment">Load with dependency order</li>
+						</ul>
+						<br>
+						<br>
+						<a href="https://github.com/facebook/react/blob/master/src/shared/utils/traverseAllChildren.js">module example</a>
+						<aside class="notes">
+							<p>not more than 500 line</p>
+							<p>one module per file</p>
+							<p>Good authors divide their books into chapters and sections; good programmers divide their programs into modules.</p>
+						</aside>
+					</section>
+					<!--<section>
 						<h2>CommonJS</h2>
 						<ul>
 							<li>exports</li>
@@ -407,7 +357,7 @@ import { square, cube } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
-					<!-- <section>
+					<section>
 						<h2>es6</h2>
 						<pre><code>
 //file.js
@@ -433,7 +383,7 @@ getUsefulContents("http://www.example.com", data => {
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
-					</section> -->
+					</section> 
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
@@ -516,7 +466,58 @@ export var another = {};
 						</code></pre>
 						<br>
 						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
+					</section>-->
+				</section>
+				<section>
+					<section>
+						<h1>Folder Structure</h1>
 					</section>
+					<!-- <section>
+						<h2>No common rule</h2>
+						<ul>
+							<li>Whatever works for your project</li>
+							<li>But you need one</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/folderStructure.png" alt="">
+						<aside class="notes">
+							<p>Old Style: M, V, C style</p>
+							<p>Controller, service, directory</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/folderStructure2.png" alt="">
+						<br>
+						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
+					</section> 
+					<section>
+						<img style="height:700px" src="images/folderStructure3.png" alt="">
+					</section>-->
+					<section>
+						<img src="images/folderStructure4.png" alt="">
+						<aside class="notes">
+							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
+						</aside>
+					</section>
+					<section>
+						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
+						<img src="images/folderStructure5.png" alt="">
+						<br>
+						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
+					</section>
+					<!-- <section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section> -->
 				</section>
 				<section>
 					<section>
@@ -561,9 +562,10 @@ webpack main.js bundle.js
 npm install css-loader style-loader
 						</code></pre>
 						<br>
-						<a href="http://webpack.github.io/docs/tutorials/getting-started/">webpack</a>
 						<br>
 						<a href="https://www.youtube.com/watch?v=TaWKUpahFZM">getting started with webpack</a>
+						<br>
+						<a href="https://www.youtube.com/watch?v=MzVFrIAwwS8/">webpack advanced</a>
 						<aside class="notes">
 							<p></p>
 						</aside>
@@ -572,7 +574,7 @@ npm install css-loader style-loader
 						<h2>webpack.config.js</h2>
 						<pre><code>
 module.exports = {
-    entry: "./main.js",
+    entry: "./app.js",
     output: {
         path: __dirname,
         filename: "bundle.js"
@@ -595,6 +597,18 @@ webpack --watch
 						</code></pre>
 					</section>
 					<section>
+						<pre><code>
+--display-modules
+--diplay-reasons
+--display-chunks
+--d //for --debug 
+
+performance tool
+Hints
+
+						</code></pre>
+					</section>
+					<section>
 						<h2>Code Splitting</h2>
 						<pre><code>
 require.ensure(dependencies, callback)
@@ -606,7 +620,7 @@ require.ensure(["module-a", "module-b"], function(require) {
 });
 						</code></pre>
 						<ul>
-							<li class="fragment"></li>
+							<li class="fragment">Common Chunk Plugin</li>
 							<li class="fragment"></li>
 							<li class="fragment">If two chunks contain the same modules, they are merged into one.</li>
 						</ul>
@@ -737,6 +751,10 @@ $ = if (ENV === "desktop") {
 						<small>Will produce 2 separate bundles with different dependencies...</small>
 					</section> -->
 					<section>
+						<h2>open as much as we needed</h2>
+						<img class="fragment" src="images/barbar.jpg" alt="">
+					</section>
+					<section>
 						<h2>Hot Module Replacement</h2>
 						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
 						<br>
@@ -745,11 +763,12 @@ $ = if (ENV === "desktop") {
 				</section>
 				<section>
 					<section>
-						<h1>Make things testable</h1>
+						<h1>Testing</h1>
 					</section>
 					<section>
-						<h2>Single Purpose</h2>
-						<pre><code>
+						<h2>Make things testable</h2>
+						<h4>Single Purpose function</h4>
+						<pre class="fragment"><code>
 function createGreeting(name, location, age) {
     let greeting;
     if (location === 'Mexico') {
@@ -800,45 +819,38 @@ function createGreeting(name, location, age) {
 					</section>
 					<section>
 						<h2>Make function Pure</h2>
-						
-						<small>A pure function doesn’t depend on or modify variables outside of its scope</small>
-						<ul class="fragment">
-							<li>Produces no side effects</li>
-							<li>Relies on no external state</li>
-							<li>Given the same input, will always return the same output</li>
+						<ul>
+							<li class="fragment">Doesn’t depend on or modify variables outside of its scope</li>
+							<li class="fragment">Produces no side effects</li>
+							<li class="fragment">Given the same input, will always return the same output</li>
 						</ul>
-						
 						<pre class="fragment"><code>
 function mouseOnLeftSide(mouseX) {
     return mouseX < window.innerWidth / 2;
 }
-
-document.onmousemove = function(e) {
-    console.log(mouseOnLeftSide(e.pageX));
-};
 						</code></pre>
-						
+						<br>
+						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
 						<br>
 						<br>
-						<a href="http://alistapart.com/article/making-your-javascript-pure">Making your JavaScript Pure</a>
+						<br>
+						<a href="http://alistapart.com/article/making-your-javascript-pure">Make JavaScript Pure</a>
 						<aside class="notes">
 							<p>Not pure. </p>
 							<p>within the body of the function, it refers to a window.innerWidth that it wasn’t explicitly given</p>
-						</aside>
-					</section>
-					<section>
-						<h2>Impure is not testable</h2>
+							<h2>Impure is not testable</h2>
 						<ul>
-							<li class="fragment">Bug: a user reported the function doesn't work for window is less than 500 px</li>
-							<li class="fragment">How do you test this?
-								<ul class="fragment">
+							<li class="">Bug: a user reported the function doesn't work for window is less than 500 px</li>
+							<li class="">How do you test this?
+								<ul class="">
 									<li>manually test by loading up your browser</li>
 									<li>write some unit tests</li>
 								</ul>
 							</li>
-							<li class="fragment">You cann't write unit test</li>
-							<li class="fragment">function relies on window.innerWidth</li>
+							<li class="">You cann't write unit test</li>
+							<li class="">function relies on window.innerWidth</li>
 						</ul>
+						</aside>
 					</section>
 					<!-- <section>
 						<h2>Pure version</h2>
@@ -872,7 +884,6 @@ function squareThemAll(items){
   return items.map(square);
 }
 						</code></pre>
-						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
 						<aside class="notes">
 							<p>If you know that a function doesn’t reach out of its scope to get data, you know the only data it can possibly touch is passed in as arguments. </p>
 							<p>Global variables are a common source of bugs. Anything could change the value of a global variable, and hence the function could now behave differently.</p>
@@ -939,11 +950,6 @@ changeFooToRed();
 							<p>By keeping the places where you’re impure to a minimum and creating as many pure, reusable functions as you can, you’ll save yourself a huge amount of pain in the future and write better code.</p>
 						</aside>
 					</section> -->
-				</section>
-				<section>
-					<section>
-						<h1>Testing</h1>
-					</section>
 					<section>
 						<h2>Static Analysis</h2>
 						<ul>
@@ -951,6 +957,10 @@ changeFooToRed();
 							<li>JSHint</li>
 							<li>ESLint</li>
 						</ul>
+						<aside class="notes">
+							<p>First step of testing is Static analysis</p>
+							<p>Don't feel like you are done by adding static analysis</p>
+						</aside>
 					</section>
 					<section>
 						<img src="images/unitTest.jpg" alt="">
@@ -1001,14 +1011,101 @@ describe("A spec using beforeEach and afterEach", function() {
 						<a href="http://jasmine.github.io/edge/introduction.html">Jasmine</a>
 					</section>
 					<section>
-						<h2>Test Ajax call</h2>
+						<h2>Test Runner and code coverage</h2>
 						<br>
 						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
 				</section>
 				<section>
 					<section>
+						<h1>So far...</h1>
+						<aside class="notes">
+							<p>so far we have talked about three things</p>
+						</aside>
+					</section>
+					<section>
+						<h2>1. Module</h2>
+						<img src="images/module3.jpg" alt="">
+					</section>
+					<section>
+						<h2>2. Build System</h2>
+						<img src="images/webpack.png" alt="">
+					</section>
+					<section>
+						<h2>3. Make things testable</h2>
+						<img src="images/testing.jpg" alt="">
+					</section>
+				</section>
+				<section>
+					<section>
 						<h1>Coding Style</h1>
+					</section>
+					<section>
+						<h2>conditional expression</h2>
+						<pre><code>
+if(!el.offsetWidth || !el.offsetHeight) {
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//create separate function
+function isVisible(el) {
+    return el.offsetWidth && el.offsetHeight;
+}
+
+if(!isVisible(el)) {
+}
+						</code></pre>
+						<pre class="fragment"><code>
+//or move to a variable
+var isVisible = el.offsetWidth && el.offsetHeight;
+
+if(!isVisible) {
+}
+						</code></pre>
+						<br>
+						<a href="https://www.sitepoint.com/self-documenting-javascript/">self documenting JS</a>
+						<aside class="notes">
+							<p>If you have multiple conditional expression move them to a function</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Boolean flags</h2>
+						<pre><code>
+myThing.setData({ x: 1 }, true);
+						</code></pre>
+						<p class="fragment">What is the menaing of true?</p>
+						<pre class="fragment"><code>
+myThing.mergeData({ x: 1 });
+						</code></pre>
+						<aside class="notes">
+							<p>What is the meaning of true?</p>
+							<p>You have absolutely no idea, unless you dig into the source for setData() and find out.</p>
+							<h3>Instead, you can add another function, or rename an existing function:</h3>
+							<p>Now you can immediately tell what’s going on.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Be Explicit over Implicit</h2>
+						<pre ><code class="hljs javascript">
+// Support Opera Mini, which returns NaN for undefined minlength
+if(isNaN(value)){
+  value = undefined;
+}
+						</code></pre>
+						<small><a href="https://github.com/jzaefferer/jquery-validation/blob/38310a142e57e871cf08f369e6690aa54252ec6c/src/core.js#L1130):">jquery source code</a></small>
+						<pre class="fragment"><code class="hljs javascript">
+// Support Opera Mini, which returns NaN for undefined minlength
+var isNaNForUndefined = isNaN(value);
+
+if (isNaNForUndefined) {
+  value = undefined;
+}
+						</code></pre>
+						<aside class="notes">
+							<p>Code gets refactored or fix bugs and comment becomes irrelevant.</p>
+							<p>People might ignore comment</p>
+							<p>But it's hard to ignore variable name</p>
+						</aside>
 					</section>
 					<section>
 						<h2>naming convention</h2>
@@ -1019,10 +1116,16 @@ describe("A spec using beforeEach and afterEach", function() {
 						<br>
 						<br>
 						<pre class="fragment"><code class="hljs" data-trim contenteditable>
- var $d; //elapsed time in days
- var dsc; //description
+var elapsedTimeInDays;
+var description;
 
- var god_damn_its_IE;
+var god_damn_its_IE;
+						</code></pre>
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+var $d; //elapsed time in days
+var dsc; //description
+
+var f_IE;
 						</code></pre>
  						<aside class="notes">
 							<p class="">But</p>
@@ -1034,6 +1137,30 @@ describe("A spec using beforeEach and afterEach", function() {
 								<li>Become happy and push the code</li>
 							</ul>
 						</aside>
+					</section>
+					<section>
+						<img src="images/edge.jpg" alt="">
+					</section>
+					<section>
+						<h2>Other will bang their head</h2>
+						<pre><code>
+//When I wrote this, only God and I understood what I was doing
+//Now, God only knows
+function chartNumber(value){
+  var power = Math.floor(Math.log10(value));
+  var fraction = value/Math.pow(10, power);
+  var ceilFraction = Math.ceil(fraction *2)/2;
+  return ceilFraction * Math.pow(10, power);
+}
+						</code></pre>
+						<ul>
+							<li class="fragment">Name of the function doesn't tell what the function do</li>
+							<li class="fragment">Comment the purpose of the function</li>
+							<li class="fragment">Meaningful variable name</li>
+						</ul>
+						<br>
+						<br>
+						
 					</section>
 					<!-- <section>
 						<h2>Variable Decleration</h2>
@@ -1454,6 +1581,9 @@ const sum = arr =>
 
 sum([1, 2, 3]); // => 6
 						</code></pre>
+						<aside class="notes">
+							<p>use map, filter to make code more readable</p>
+						</aside>
 					</section>
 					<!--<section>
 						<h2>apply</h2>
@@ -1582,7 +1712,7 @@ me.size; // => 3
 						<h2>Minimize Dependencies</h2>
 						<pre><code>
 // bad
-// I have to find a better job
+// I have to find a different job
 var _ = require("underscore");
 _.compact(["foo", 0]));
 _.unique(["foo", "foo"]);
@@ -1590,6 +1720,7 @@ _.union(["foo"], ["bar"], ["foo"]);
 						</code></pre>
 						<pre class="fragment"><code>
 // good
+//thank god, i survived
 const compact = arr => arr.filter(el => el);
 const unique = arr => [...Set(arr)];
 const union = (...arr) => unique([].concat(...arr));
@@ -1608,15 +1739,8 @@ union(["foo"], ["bar"], ["foo"]);
 						<h1>Document</h1>
 					</section>
 					<section>
-						<h2>JS-Doc</h2>
-						<br>
-						<a href="https://github.com/jsdoc3/jsdoc">JS-doc</a>
-						<br>
-						<a href="https://www.sitepoint.com/self-documenting-javascript/">15 ways to write self documenting</a>
-					</section>
-					<section>
 						<h2>comment</h2>
-						<pre><code>
+						<pre class="fragment"><code>
 // 
 // Dear maintainer:
 // 
@@ -1627,74 +1751,44 @@ union(["foo"], ["bar"], ["foo"]);
 // 
 // total_hours_wasted_here = 42
 						</code></pre>
+						<ul>
+							<li class="fragment">Explain your intention in comments</li>	
+							<li class="fragment">Warn of consequences in comments</li>
+							<li class="fragment">Emphasis important points in comments</li>
+							<li class="fragment">Never leave code commented</li>
+						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered">code comment</a>
 					</section>
 					<section>
-						<h2>comment</h2>
-						<ul>
-							<li class="fragment">Don’t comment bad code, rewrite it</li>
-							<li class="fragment">If code is readable you don’t need comments</li>
-							<pre class="fragment"><code>
-This is bad:
-
-// Check to see if the employee is eligible for full benefits
-
-if ($employee->flags && self::HOURLY_FLAG && $employee->age > 65)
-
-This is good:
-
-if ($employee->isEligibleForFullBenefits())
-							</code></pre>
-							<li class="fragment"></li>
-							<li class="fragment"></li>
-						</ul>
-					</section>
+						<h2>JS-Doc</h2>
+						<pre><code>
+Pressing tab after /**
+						</code></pre>
+						<img src="images/comment.gif" alt="" class="fragment">
+						<br>
+						<a href="https://github.com/jsdoc3/jsdoc">use JSDoc</a>
+						<br>
+						<a href="https://github.com/spadgos/sublime-jsdocs">sublime-jsdoc</a>
+						<br>
+						<a href="https://github.com/jashkenas/docco">docco</a>
+						<br>
+					</section>					
+				</section>
+				<section>
 					<section>
-						<h2>comment</h2>
-						<ul>
-							<li class="fragment">Explain your intention in comments</li>
-							<pre><code>
-// if we sort the array here the logic becomes simpler in calculatePayment() method
-							</code></pre>
-							<li class="fragment">Warn of consequences in comments</li>
-							<pre><code>
-// this script will take a very long time to run
-							</code></pre>
-							<li class="fragment">Emphasis important points in comments</li>
-							<pre><code>
-// the trim function is very important, in most cases the username has a trailing space
-							</code></pre>
-							<li class="fragment">Always have your PHPDoc comments</li>
-							<li class="fragment">Noise comments are bad</li>
-							<pre><code>
-/** The day of the month. */
-private $dayOfMonth;
-							</code></pre>
-							<li class="fragment">Never leave code commented</li>
-						</ul>
+						<h1>Logging</h1>
+						<br>
+						<br>
+						<blockquote>Writing good code is hard and reproducing client-side errors is even harder</blockquote>
 					</section>
 					<section>
 						<pre><code>
-// In the global scope:
-var NaN = 42;
-console.log(NaN); // NaN
-
-// …but elsewhere:
-(function() {
-	var NaN = 42;
-	console.log(NaN); // 42
-}());
+//windows.onError
 						</code></pre>
-						<section>
-							<p>think about ES6 as well</p>
-							<br>
-							<a href="https://gist.github.com/cjohansen/4135065">naming this in nested function</a>
-						</section>
 					</section>
-				</section>
-				<section>
-					<h1>Logging</h1>
 				</section>
 				<section>
 					<section>
@@ -1703,40 +1797,46 @@ console.log(NaN); // NaN
 					<section>
 						<img src="images/codeReviews.jpg" alt="">
 					</section>
-					<section>
+					<!-- <section>
 						<img src="images/developer1.jpg" alt="">
-					</section>
+					</section> -->
 					<section>
-						<h2>Other will bang their head</h2>
-						<pre><code>
-function chartNumber(value){
-  var power = Math.round(value).toString().length - 1;
-  var fraction = value/Math.pow(10, power);
-  var ceilFraction = Math.ceil(fraction *2)/2;
-  return ceilFraction * Math.pow(10, power);
-}
-						</code></pre>
-						<pre class="fragment"><code>
-//convert to JS Date oboject from yyyymmdd
-function parseDate (dateString){
-	var match = dateString.match(/(\d{4})(\d{2})(\d{2})/);
-	var formattedDate = match[2] + '/' + match[3] + '/' + match[1];
-	return new Date(formattedDate);
-}
-						</code></pre>
+						<img src="images/codeReview2.jpg" alt="">
 					</section>
 					<section>
 						<h2>Review Checklist</h2>
+						<pre class="fragment"><code>
+//convert to JS Date oboject from yyyymmdd
+function parseDate (dateString){
+  var match = dateString.match(/(\d{4})(\d{2})(\d{2})/);
+  var formattedDate = match[2] + '/' + match[3] + '/' + match[1];
+  return new Date(formattedDate);
+}
+						</code></pre>
+						<ul>
+							<li class="fragment">What happens when dateString is in a different format?</li>
+							<li class="fragment">How this deals with timezone?</li>
+							<li class="fragment">Server and client side time offset</li>
+							<li class="fragment">Is it generic parsing or specific parsing of date string?</li>
+						</ul>
+						<br>
+						<br>
+						<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Reviewer_Checklist">MDN: Reviewer Checklist</a>
+						
 					</section>
 					<section>
 						<h2>Review tools</h2>
 							<ul>
-								<li>Crucible - commercial product by Atlassian (http://www.atlassian.com/softwar...)
-							    <li>Code Collaborator - commercial product by SmartBear (http://smartbear.com/products/de...)
-							    <li>Review Board - used at VMWare (http://www.review-board.org/)
-							    <li>Rietveld - in use at Google (http://code.google.com/p/rietveld/)
+								<li>Crucible
+							    <li>Code Collaborator
+							    <li>Review Board
+							    
 							</ul>
-
+							<br>
+							<br>
+							<a href="http://bradfrost.com/blog/post/a-code-review-or-yet-another-reason-to-love-the-web/">brad frost code review</a>
+							<br>
+							<a href="https://addyosmani.com/blog/lessons-from-a-javascript-code-review/">Lesson from a code review</a>
 					</section>
 				</section>
 				<!-- <section>
@@ -1801,36 +1901,7 @@ function parseDate (dateString){
 				</section>
 				<section>
 					<section>
-						<h1>CSS</h1>
-					</section>
-					<section>
-						<h2>CSS guidelines</h2>
-						<a href="http://cssguidelin.es/">cssguidelin.es</a>
-					</section>
-					<section>
-						<h2>maintainable css</h2>
-						<br>
-						<a href="http://maintainablecss.com/">maintainable css</a>
-					</section>
-					<section>
-						<h2>Improving css quality in facebook</h2>
-						<br>
-						<a href="https://code.facebook.com/posts/879890885467584/improving-css-quality-at-facebook-and-beyond/">improving css quality</a>
-					</section>
-					<section>
-						<h2>side effects in css</h2>
-						<br>
-						<a href="https://philipwalton.com/articles/side-effects-in-css/">side effects in css</a>
-					</section>
-					<section>
-						<h2>BEM and architecture</h2>
-						<br>
-						<a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">CSS architecture</a>
-					</section>
-					<section>
-						<h2>Mixins Better for Performance</h2>
-						<br>
-						<a href="http://csswizardry.com/2016/02/mixins-better-for-performance/">mixins for performance</a>
+						<h1>Module Everything</h1>
 					</section>
 					<section>
 						<h2></h2>
@@ -1844,18 +1915,12 @@ function parseDate (dateString){
 						<a href="https://medium.com/peergrade-io/structuring-css-in-large-projects-37f1695f5ec8#.bicuecsn4">Structure large project css</a>
 					</section>
 					<section>
-						<h2>others</h2>
-						<ul>
-							<li><a href="https://speckyboy.com/2016/05/10/good-bad-css-practices/">css best practices</a></li>
-							<li><a href="https://robots.thoughtbot.com/you-don-t-need-javascript-for-that">you don't need JS for that</a></li>
-							<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/">CSS display</a></li>
-							<li><a href="https://18f.gsa.gov/2016/01/11/introducing-the-css-coding-style-guide/">US gov css style</a></li>
-							<li><a href="http://www.testmycss.com/">test css</a></li>
-							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
-						</ul>
+						<h2>Module Image</h2>
+						<br>
+						<a href="https://github.com/tcoopman/image-webpack-loader">webpack image loader</a>
 					</section>
 				</section>
-				<section>
+				<!-- <section>
 					<section>
 						<h1>Refactor</h1>
 					</section>
@@ -1880,7 +1945,7 @@ function parseDate (dateString){
 							<li><a href="http://www.integralist.co.uk/posts/refactoring-techniques.html">Refactoring Technique</a></li>
 							<li><a href="https://dzone.com/articles/cyclomatic-complexity-refactoring-tips-for-javascr-1">Cyclomatic Complexity</a></li>
 					</section>
-				</section>
+				</section> -->
 				<section>
 					<section>
 						<h2>Need more?</h2>
@@ -1890,16 +1955,29 @@ function parseDate (dateString){
 						<ul>
 							<li><a href="https://github.com/airbnb/javascript">Airbnb Style Guide</a></li>
 							<li><a href="http://speakingjs.com/es5/ch26.html"> Meta Code Style Guide</a></li>
-
-							<li><a href=""></a></li>
-							<li><br>
-						<a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
+							<br>
+							<li><a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a></li>
+							<li><a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Open-Source JS Libraries</a></li>
+							<li><a href="https://medium.com/javascript-scene/7-surprising-things-i-learned-writing-a-fibonacci-generator-4886a5c87710#.z3baeouz5">7 Surprising Things I Learned Writing a Fibonacci Generator in JavaScript</a></li>
 						</ul>
 					</section>
 					<section>
-						<h1>Others</h1>
+						<h2>CSS resources: to be read</h2>
+						<ul>
+							<li><a href="https://speckyboy.com/2016/05/10/good-bad-css-practices/">css best practices</a></li>
+							<li><a href="https://robots.thoughtbot.com/you-don-t-need-javascript-for-that">you don't need JS for that</a></li>
+							<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/">CSS display</a></li>
+							<li><a href="https://18f.gsa.gov/2016/01/11/introducing-the-css-coding-style-guide/">US gov css style</a></li>
+							<li><a href="http://www.testmycss.com/">test css</a></li>
+							<li><a href="https://medium.com/statuscode/the-14-most-popular-css-links-of-2016-so-far-96a6e64378d5#.tzshbwe06">other 14 links</a></li>
+							<li><a href="http://cssguidelin.es/">CSS guidelines</a></li>
+							<li><a href="http://maintainablecss.com/">maintainable css</a></li>
+							<li><a href="https://www.lullabot.com/articles/bem-atomic-design-a-css-architecture-worth-loving">CSS architecture</a></li>
+							<li><a href="http://csswizardry.com/2016/02/mixins-better-for-performance/">mixins for performance</a></li>
+							<li><a href="https://code.facebook.com/posts/879890885467584/improving-css-quality-at-facebook-and-beyond/">improving css quality</a></li>
+						</ul>
 					</section>
-					<section>
+					<!-- <section>
 						<pre><code>
 document.getElementsByName()
 document.getElementsByClassName()
@@ -1917,53 +1995,7 @@ document.styleSheets
 						<aside class="notes">
 							<p>The trouble with collections is that they are live queries against the underlying document (the HTML page). This means that every time you access any collection’s length, you’re querying the live DOM, and DOM operations are expensive in general.</p>
 						</aside>
-					</section>
-					<section>
-						<h2>Increase readability by using switch statement</h2>
-						<pre><code>
-var inspect_me = 0,
-    result = '';
-switch (inspect_me) {
-case 0:
-   result = "zero";
-   break;
-case 1:
-   result = "one";
-   break;
-default:
-   result = "unknown";
-}
-						</code></pre>
-					</section>
-					<section>
-						<h2>Indentation</h2>
-					</section>
-					<section>
-						<h2>Curly braces</h2>
-						<pre><code>
-// bad practice
-for (var i = 0; i < 10; i += 1)
-   alert(i);
-   alert(i + " is " + (i % 2 ? "odd" : "even"));
-						</code></pre>
-					</section>
-					<section>
-						<h1>Other Other</h1>
-					</section>
-					<section>
-						<h2>three dots</h2>
-						<br>
-						<a href="http://rainsoft.io/how-three-dots-changed-javascript/">How three dots changed JavaScript</a>
-					</section>
-					<section>
-						<h2>Single Page Application</h2>
-					</section>
-					<section>
-						<h2>Forward conf talk</h2>
-						<p>Watch video</p>
-						<br>
-						<a href="https://www.youtube.com/watch?v=TYeBsdcYs7U&index=4&list=PLndbWGuLoHebKI8krCzJU88Rf3TwhNZvH">Best Practices for Building Popular Open-Source JavaScript Libraries - Forward 4 Web Summit </a>
-					</section>
+					</section> -->
 					<section>
 						<h2>git pre commit hook</h2>
 					</section>
@@ -1974,22 +2006,20 @@ for (var i = 0; i < 10; i += 1)
 				</section>
 				<section>
 					<section>
-						<h1>Ten Things</h1>
+						<h1>Five Things</h1>
 					</section>
 					<section>
 						<h2>Summary</h2>
 						<ol>
-							<li class="fragment">Folder Structure</li>
 							<li class="fragment">Module</li>
 							<li class="fragment">Build System</li>
 							<li class="fragment">Make things testable</li>
-							<li class="fragment">Automate Test</li>
 							<li class="fragment">Coding Style</li>
-							<li class="fragment">Document</li>
-							<li class="fragment">Logging</li>
-							<li class="fragment">Code Review</li>
-							<li class="fragment">Security</li>
+							<li class="fragment">Modularize Everything</li>
 						</ol>
+					</section>
+					<section>
+						
 					</section>
 				</section>
 				<section>
@@ -2001,12 +2031,6 @@ for (var i = 0; i < 10; i += 1)
 						<small>(reality)</small>
 					</section>
 					<section>
-						<img src="images/design.jpg" alt="">
-					</section>
-					<section>
-						<img style="height:600px;" src="images/expect.jpg" alt="">
-					</section>
-					<section>
 						<h2>Code Quality</h2>
 						<blockquote>
 							&ldquo; As a developer our job is to promise quality code at the beginning of the project and somehow mess it up in six months.&rdquo;
@@ -2014,6 +2038,9 @@ for (var i = 0; i < 10; i += 1)
 						<aside class="notes">
 							<p> Don't worry, project manager will allocate plenty of time to clean those mess and create some new mess.</p>
 						</aside>
+					</section>
+					<section>
+						<img style="height:600px;" src="images/expect.jpg" alt="">
 					</section>
 					<section>
 						<h2>Real Development Process</h2>
@@ -2100,8 +2127,13 @@ for (var i = 0; i < 10; i += 1)
 				</section>
 				<section style="text-align: left;">
 					<h2>Thank you</h2>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<p class=""><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </p>
 				</section>
-
 			</div>
 
 		</div>
