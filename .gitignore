@@ -48,7 +48,7 @@ Temporary Items
 node_modules/
 test/
 react-hot-boilerplate/
-my-app/
+react-app/
 webpack/
 webpack-howto/
 webpack-es6-demo
