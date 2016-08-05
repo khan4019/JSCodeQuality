@@ -63,7 +63,7 @@
 					<p>www.thatJSdude.com</p>
 					<small>(youtube.com/user/khanLearning)</small>
 				</section>
-				<section>
+				<!--<section>
 					<section>
 						<h1>TODO</h1>
 					</section>
@@ -90,7 +90,7 @@
 							<li>jokes make faster</li>
 						</ul>
 					</section>
-					<!--<section>
+					<section>
 						<h2>TODO: Very good</h2>
 						<ul>
 							<li>Few mistakes in JS</li>
@@ -134,8 +134,8 @@
 							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
 							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
-					</section>--> 
-				</section>
+					</section> 
+				</section>-->
 				<!--<section>
 					<section>
 						<h1>Code Quality</h1>
@@ -394,6 +394,9 @@ export default 42;
 export default function foo() {};       
 
 						</code></pre>
+						<aside class="notes">
+							<p></p>
+						</aside>
 					</section>
 					<section>
 						<h2>es6 export</h2>
@@ -461,6 +464,61 @@ export var another = {};
 						</code></pre>
 						<br>
 						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
+					</section>
+					<section>
+						<table>
+						  <thead>
+						    <tr>
+						      <th>&nbsp;</th>
+						      <th>Scripts</th>
+						      <th>Modules</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>HTML element</td>
+						      <td><code>&lt;script&gt;</code></td>
+						      <td><code>&lt;script type="module"&gt;</code></td>
+						    </tr>
+						    <!-- <tr>
+						      <td>Default mode</td>
+						      <td>non-strict</td>
+						      <td>strict</td>
+						    </tr>
+						     --><tr>
+						      <td>Top-level variables</td>
+						      <td>global</td>
+						      <td>local to module</td>
+						    </tr>
+						    <tr>
+						      <td>Value of <code>this</code> at top level</td>
+						      <td><code>window</code></td>
+						      <td><code>undefined</code></td>
+						    </tr>
+						    <tr>
+						      <td>Executed</td>
+						      <td>synchronously</td>
+						      <td>asynchronously</td>
+						    </tr>
+						    <tr>
+						      <td>Declarative imports (<code>import</code> statement)</td>
+						      <td>no</td>
+						      <td>yes</td>
+						    </tr>
+						    <tr>
+						      <td>Programmatic imports (Promise-based API)</td>
+						      <td>yes</td>
+						      <td>yes</td>
+						    </tr>
+						    <!-- <tr>
+						      <td>File extension</td>
+						      <td><code>.js</code></td>
+						      <td><code>.js</code></td>
+						    </tr> -->
+						  </tbody>
+						</table>
+						<br>
+						<a href="http://exploringjs.com/es6/ch_modules.html#sec_modules-vs-scripts">es6 modules</a>
 					</section>
 				</section>
 				<section>
@@ -978,11 +1036,14 @@ describe("A spec using beforeEach and afterEach", function() {
 						</code></pre>
 						<br>
 						<a href="http://jasmine.github.io/edge/introduction.html">Jasmine</a>
+						<br>
+						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
 					<section>
 						<h2>Test Runner and code coverage</h2>
+						<img src="images/coverage.png" alt="">
 						<br>
-						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
+						<a href="https://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">Coverage Report</a>
 					</section>
 				</section>
 				<section>
@@ -1805,8 +1866,16 @@ Pressing tab after /**
 						<blockquote>Writing good code is hard and reproducing client-side errors is even harder</blockquote>
 					</section>
 					<section>
-						<pre><code>
-//windows.onError
+						<h2>Log JavaScript Error</h2>
+						<pre><code class="hljs javascript">
+window.onerror = function(message, source, lineno, colno, error) { 
+  var req = new XMLHttpRequest();
+  var params = 'msg='' + encodeURIComponent(msg) + 
+  			'&amp;url=' + encodeURIComponent(url) +
+  			'&amp;line='' + line;
+  req.open('POST', '/scripts/logerror.php');
+  req.send(params);
+}
 						</code></pre>
 					</section>
 				</section>
@@ -1911,12 +1980,8 @@ function parseDate (dateString){
 					<section>
 						<h2>Security</h2>
 						<a href="https://github.com/leizongmin/js-xss">js xss</a>
-					</section>
-					<section>
-						<h2>Facebook sixth sense</h2>
-						<p>can use as an example</p>
 						<br>
-						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
+						<a href="http://kirszenberg.com/facebook-sixth-sense">Facebook sixth sense</a>
 					</section>
 				</section>
 				<section>
@@ -1925,20 +1990,84 @@ function parseDate (dateString){
 					</section>
 					<section>
 						<h2>Writing CSS is easy.</h2>
-						<p>Writing maintainable CSS is hard.</p>
-						<ul>
+						<small class="fragment">Writing maintainable CSS is hard.</small>
+						<br>
+						<img class="fragment" src="images/border.png" alt="">
+						<img class="fragment" src="images/build2.jpg" alt="">
+						<!-- <ul>
+							<li><a href="https://addyosmani.com/blog/removing-unused-css/">Remove Unused CSS</a></li>
 							<li>Use a prefix (for class names)</li>
 							<li>No CSS selector nesting</li>
-							<li>Build components with BEM naming</li>
-							<li></li>
-						</ul>
+						</ul> -->
+						<br>
+						<br>
 						<br>
 						<a href="https://medium.com/peergrade-io/structuring-css-in-large-projects-37f1695f5ec8#.bicuecsn4">Structure large project css</a>
 						<br>
 						<a href="http://maintainablecss.com/chapters/reuse/">reuse CSS</a>
+						<br>
+						<a href="https://github.com/gajus/react-css-modules">react css module</a>
 					</section>
 					<section>
-						<h2>Module Image</h2>
+						<h2>CSS Module</h2>
+						<pre><code class="hljs sass">
+//contianer.sass
+@import 'stylesheets/config/colors'
+.container
+  background: $blue
+						</code></pre>
+						<pre class="fragment"><code class="hljs sass">
+
+//header.sass
+@import 'stylesheets/config/colors'
+.header
+  font-weight: bold
+  font-size: 3em
+  color: $red
+						</code></pre>
+						<pre class="fragment"><code>
+//footer.sass
+.footer
+  font-style: italic
+						</code></pre>
+						<br>
+						<a href="https://github.com/bensmithett/webpack-css-example">css build with webpack</a>
+					</section>
+					<section>
+						<h2>CSS build with Webpack</h2>
+						<br>
+						<pre><code>
+//webpack-css-example
+npm install
+npm run build
+Take a look at the generated CSS in build/
+						</code></pre>
+					</section>
+					<section>
+						<h2>generated CSS</h2>
+						<pre><code class="hljs css">
+/*app.css*/
+html {
+  font-family: sans-serif; }
+.header {
+  font-weight: bold;
+  font-size: 3em;
+  color: #f00; }
+.u-clearfix {
+  overflow: hidden; }
+.footer {
+  font-style: italic; }
+.container {
+  background: steelblue; }
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Module Everything else</h2>
+						<br>
+						<a href="http://julienrenaux.fr/2015/03/30/introduction-to-webpack-with-practical-examples/">Webpack practical examples</a>
+						<br>
+						<a href="https://github.com/webpack/html-loader">html loader</a>
 						<br>
 						<a href="https://github.com/tcoopman/image-webpack-loader">webpack image loader</a>
 					</section>
@@ -2041,9 +2170,6 @@ document.styleSheets
 							<li class="fragment">Modularize Everything</li>
 						</ol>
 					</section>
-					<section>
-						
-					</section>
 				</section>
 				<section>
 					<section>
@@ -2067,13 +2193,15 @@ document.styleSheets
 					</section>
 					<section>
 						<h2>Real Development Process</h2>
-						<ul>
-							<li class="fragment">Biggest jerk makes all the big decisions</li>
+						<ol>
+							<li class="fragment">Biggest jerk makes all big decisions</li>
 							<li class="fragment">GDD: Google Driven Development</li>
-							<li class="fragment">SDD: Stackoverflow Driven Development</li>
-							<li class="fragment">BDD: Bug Driven Development</li>
-							<li class="fragment">Every bug is created by the guy left</li>
-						</ul>
+							<li value="2" style="text-decoration:line-through" class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">Always report progress as “It’s Almost Done”</li>
+							<li class="fragment">Don't finish the feature when there is code freeze.</li>
+							<li class="fragment">Build: put green dot on project manager's monitor</li>
+							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
+						</ol>
 						<br>
 						<br>
 						<br>
@@ -2084,6 +2212,9 @@ document.styleSheets
 							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
 							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
 							<p>All customer request is out of scope</p>
+							<li class="">BDD: Bug Driven Development</li>
+
+							<li class="">Every bug is created by the guy left</li>
 							<p> when you manager asks about the progress status</p>
 							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
 						</aside>
@@ -2103,7 +2234,7 @@ document.styleSheets
 							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>How to write quality code</h2>
 						<ul>
 							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
@@ -2120,7 +2251,7 @@ document.styleSheets
 							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
 
 						</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>measure code quality</h2>
 						<img class="fragment" src="images/wtf.png" alt="">
