@@ -367,7 +367,7 @@ export { cube, doubleSquare };
 						</code></pre>
 						<pre class="fragment"><code>
 import { cube, doubleSquare } from 'library';
-console.log(cube(4)); // 16
+console.log(cube(4)); // 64
 						</code></pre>
 					</section>
 					<!-- <section>
@@ -413,11 +413,19 @@ export default 42;
 export default function foo() {};       
 
 						</code></pre>
+						<pre class="fragment"><code class="hljs javascript">
+//export an export from another module
+export { encrypt as en } from 'crypto';
+
+//export all exports from another module 
+export * from 'crypto';  
+						</code></pre>
+						
 						<aside class="notes">
 							<p></p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>es6 export</h2>
 						<pre><code>
 //export an existing variable
@@ -435,7 +443,7 @@ export * from 'crypto';
 						</code></pre>
 						<br>
 						<a href="https://github.com/ModuleLoader/es6-module-loader/wiki/Brief-Overview-of-ES6-Module-syntax">overview of es6 module</a>
-					</section>
+					</section> -->
 					<section>
 						<h2>import</h2>
 						<pre class=""><code>
@@ -636,14 +644,18 @@ Hints
 							<li class="fragment">Small Initial download</li>
 							<li class="fragment">Load chunks on demand  during runtime</li>
 						</ul>
-						<pre class="fragment"><code class="hljs javascript">
-var a = require("a");
-var b = require("b");
-
-require.ensure(["c"], function(require) {
-    require("b").xyz();
-    var d = require("d");
-});
+						<pre class="fragment"><code>
+if (window.location.pathname === '/feed') {
+  require.ensure(['/feedCode'], function() { 
+    // when this function is called, the module is guaranteed 
+    // to be synchronously available.
+    require('./feed').show(); 
+  });
+} else if (window.location.pathname === '/profile') {
+  require.ensure(['/profileCore'], function() {
+    require('./profile').show();
+  });
+}
 						</code></pre>
 						
 						<br>
@@ -694,7 +706,7 @@ module.exports = {
 							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
 							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
 						</aside>
-					</section> -->
+					</section> 
 					<section>
 						<h2>async loading</h2>
 						<pre><code>
@@ -717,7 +729,7 @@ if (window.location.pathname === '/feed') {
 							<p>Specify the split point where you want to load asynchronously. For example:</p>
 							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
 						</aside>
-					</section>
+					</section>-->
 					<section>
 						<h2>open as much as we needed</h2>
 						<img class="fragment" src="images/barbar.jpg" alt="">
@@ -815,7 +827,7 @@ $ = if (ENV === "desktop") {
 					</section>
 					<section>
 						<h2>Make things testable</h2>
-						<h4>Single Purpose function</h4>
+						<h4>Single Activity function</h4>
 						<pre class="fragment"><code>
 function createGreeting(name, location, age) {
     let greeting;
@@ -2176,7 +2188,7 @@ document.styleSheets
 				</section>
 				<section>
 					<h2>Take a Moment</h2>
-					<p>Press B or . on your keyboard to pause the presentation.</p>
+					<p>Press B or . on your keyboard</p>
 				</section>
 				<section>
 					<section>
