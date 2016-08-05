@@ -197,6 +197,12 @@
 				<section>
 					<section>
 						<h1>Application Development</h1>
+						<aside class="notes">
+							<p>We go to github and fork</p>
+							<p>10min to fork and use</p>
+							<p>npm start</p>
+							<p>spend rest of the morning whether you should have Chinese or Italian for your lunch</p>
+						</aside>
 					</section>
 					<section>
 						<img src="images/spagett.jpg" alt="">
@@ -209,6 +215,11 @@
 					</section>
 					<section>
 						<img src="images/module.jpg" alt="">
+						<aside class="notes">
+							<p>This nice and separation is called module</p>
+							<p>Historically we had JavaScript file of 3000 lines</p>
+							<p>We passed those days 10 years ago</p>
+						</aside>
 					</section>
 					<section>
 						<h2>Plain simple JS</h2>
@@ -220,6 +231,12 @@ var mySalute = 'Hello';
 //app.js
 var result = mySalute + ' world!';
 						</code></pre>
+						<aside class="notes">	
+								<p>I need to make sure salute.js loads before app.js</p>
+								<p>Otherwise, we need to be careful</p>
+								<p>To solve this problem, we need to place our script one before another</p>
+								<p>However, if we have a circular dependency, we are screwed</p>
+						</aside>
 					</section>
 					<section>
 						<h2>Common JS</h2>
@@ -234,7 +251,9 @@ var mySalute = require('./salute');
 var Result = mySalute + 'world!';
 						</code></pre>
 						<aside class="notes">
-							<p>CommonJS defined a module format to solve JavaScript scope issues by making sure each module is executed in its own namespace.</p>
+							<p>CommonJS solves few problems</p>
+							<p>Resolving circular dependency</p>
+							<p>Reduce Global scope issues by making sure each module is executed in its own namespace.</p>
 							<p>By forcing modules to explicitly export those variables it wants to expose to the “universe”, and also by defining those other modules required to properly work.</p>
 							<p>you can omit the extension of your scripts. ./ means that the salute module is in the same directory as the world module.</p>
 						</aside>
@@ -281,7 +300,7 @@ console.log(salute.bar);
 						<h2>Tree Dependency</h2>
 						<pre><code>
 //bar.js
-exports.bar = 'JS';
+exports.bar = 'Bar not so far!';
 						</code></pre>
 						<pre class="fragment"><code>
 //foo.js
@@ -302,7 +321,7 @@ console.log(foo);
 							<li>Single Responsibility</li>
 							<li class="fragment">Have a top-level scope that is not the global scope</li>
 							<li class="fragment">Shared code together</li>
-							<li class="fragment">Think reusability</li>
+							<li class="fragment">Think reusability, maintainability, readability</li>
 							<li class="fragment">Load with dependency order</li>
 						</ul>
 						<br>
@@ -540,7 +559,6 @@ export var another = {};
 						<ul>
 							<li>Split your app into multiple files</li>
 							<li>Load asynchronously on demand</li>
-							<li class="fragment">Keep initial load time low</li>
 							<li class="fragment">Module all static resources</li>
 							<li class="fragment">Handles style, image, fonts, templates, etc.</li>
 							<li class="fragment">Create single or multiple chunks</li>
@@ -703,6 +721,9 @@ if (window.location.pathname === '/feed') {
 					<section>
 						<h2>open as much as we needed</h2>
 						<img class="fragment" src="images/barbar.jpg" alt="">
+						<aside class="notes">
+							<p>Main philosophy of webpack is to open as much as needed</p>
+						</aside>
 					</section>
 					<!-- <section>
 						<h2>webpack es6</h2>
@@ -857,7 +878,7 @@ function mouseOnLeftSide(mouseX) {
 }
 						</code></pre>
 						<br>
-						<small class="fragment">Having 100% pure function might not be practical but try as many as you can</small>
+						<!-- <small class="fragment">Having 100% pure function might not be practical but try as many as you can</small> -->
 						<br>
 						<br>
 						<br>
@@ -1012,6 +1033,7 @@ changeFooToRed();
 						<a href="http://www.yearofmoo.com/2013/09/advanced-testing-and-debugging-in-angularjs.html">Angular Testing</a>
 					</section>
 					<section>
+						<h2>Jasmine Unit test</h2>
 						<pre><code>
 describe("A spec using beforeEach and afterEach", function() {
   var foo = 0;
@@ -1040,7 +1062,7 @@ describe("A spec using beforeEach and afterEach", function() {
 						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
 					<section>
-						<h2>Test Runner and code coverage</h2>
+						<h2>Istanbul code coverage</h2>
 						<img src="images/coverage.png" alt="">
 						<br>
 						<a href="https://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">Coverage Report</a>
@@ -1128,19 +1150,19 @@ if(!el.offsetWidth || !el.offsetHeight) {
 }
 						</code></pre>
 						<pre class="fragment"><code>
+//or move to a variable
+var isVisible = el.offsetWidth && el.offsetHeight;
+
+if(!isVisible) {
+}
+						</code></pre>
+						<pre class="fragment"><code>
 //create separate function
 function isVisible(el) {
     return el.offsetWidth && el.offsetHeight;
 }
 
 if(!isVisible(el)) {
-}
-						</code></pre>
-						<pre class="fragment"><code>
-//or move to a variable
-var isVisible = el.offsetWidth && el.offsetHeight;
-
-if(!isVisible) {
 }
 						</code></pre>
 						<br>
@@ -1219,9 +1241,9 @@ var f_IE;
 							</ul>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<img src="images/edge.jpg" alt="">
-					</section>
+					</section> -->
 					<section>
 						<h2>Other will bang their head</h2>
 						<pre><code>
@@ -2199,7 +2221,6 @@ document.styleSheets
 							<li value="2" style="text-decoration:line-through" class="fragment">SDD: Stackoverflow Driven Development</li>
 							<li class="fragment">Always report progress as “It’s Almost Done”</li>
 							<li class="fragment">Don't finish the feature when there is code freeze.</li>
-							<li class="fragment">Build: put green dot on project manager's monitor</li>
 							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
 						</ol>
 						<br>
@@ -2234,6 +2255,14 @@ document.styleSheets
 							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
 						</aside>
 					</section>
+					<section>
+						<h2>Too many Broken builds</h2>
+						<img class="fragment" src="images/green.jpg" alt="">
+						<aside class="notes">
+							<p>If you manager complains about broken build</p>
+							<li class="">Build: put green dot on project manager's monitor</li>
+						</aside>
+					</section>
 					<!-- <section>
 						<h2>How to write quality code</h2>
 						<ul>
@@ -2263,14 +2292,20 @@ document.styleSheets
 					</section>
 					<section>
 						<h2>Travel Tips</h2>
-						<img src="images/tips/socks.jpg" alt="">
+						<img src="images/tips/shoe.jpg" alt="">
+						<aside class="notes">
+							<p>Put shocks, underwear and other stuff in your shoue</p>
+						</aside>
 					</section>
 					<section>
 						<img src="images/tips/wine.gif" alt="">
+						<aside class="notes">
+							<p>You can even put an entire wine bottle</p>
+						</aside>
 					</section>
 					<section>
-						<h2>belt in collar</h2>
-						<img style="height:600px;" src="images/tips/belt2.jpg" alt="">
+						<h2>Empty water bottle</h2>
+						<img style="height:600px;" src="images/tips/bottle.jpg" alt="">
 					</section>
 					<section>
 						<h2>Avoid luggage check in</h2>
@@ -2279,14 +2314,19 @@ document.styleSheets
 						<a href="http://www.dailymail.co.uk/travel/travel_news/article-2722591/Passengers-wear-clothes-check-staff-say-luggage-overweight.html">avoid check in fee</a>
 					</section>
 				</section>
-				<section style="text-align: left;">
+				<section>
 					<h2>Thank you</h2>
 					<br>
 					<br>
-					<br>
-					<br>
-					<br>
 					<p class=""><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </p>
+					<br>
+					<br>
+					<br>
+					<p>
+						<a href="http://thatjsdude.com">JS Dude</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+					</p>
+					<p>www.thatJSdude.com</p>
+					<small>(youtube.com/user/khanLearning)</small>
 				</section>
 			</div>
 
