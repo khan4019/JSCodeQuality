@@ -1,2 +1,3 @@
-import salute from './salute'
-document.write('Hello That Conference Monday ' + salute);
+var style = require('./style.css')
+var bar = require('./bar')
+document.write(bar);

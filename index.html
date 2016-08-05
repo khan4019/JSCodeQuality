@@ -63,7 +63,7 @@
 					<p>www.thatJSdude.com</p>
 					<small>(youtube.com/user/khanLearning)</small>
 				</section>
-				<section>
+				<!--<section>
 					<section>
 						<h1>TODO</h1>
 					</section>
@@ -90,7 +90,7 @@
 							<li>jokes make faster</li>
 						</ul>
 					</section>
-					<!--<section>
+					<section>
 						<h2>TODO: Very good</h2>
 						<ul>
 							<li>Few mistakes in JS</li>
@@ -134,10 +134,10 @@
 							<li><a href="http://corporate.tuenti.com/en/dev/blog/top-13-javascript-mistakes">Few mistakes</a></li>
 							<li><a href="https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta">map, filter performance</a></li>
 						</ul>
-					</section>--> 
-				</section>
-				<section>
-					<!--<section>
+					</section> 
+				</section>-->
+				<!--<section>
+					<section>
 						<h1>Code Quality</h1>
 						<br>
 						<br>
@@ -192,8 +192,8 @@
 							<li>Code Coverage: Istanbul</li>
 							<li>Package Management: Bower, npm</li>
 						</ul>
-					</section> -->
-				</section>
+					</section> 
+				</section>-->
 				<section>
 					<section>
 						<h1>Application Development</h1>
@@ -213,28 +213,30 @@
 					<section>
 						<h2>Plain simple JS</h2>
 						<pre><code>
-// salute.js
+//salute.js
 var mySalute = 'Hello';
 						</code></pre>
-						<pre class="fragment"><code>
-// app.js
+						<pre class="fragment"><code class="hljs javascript">
+//app.js
 var result = mySalute + ' world!';
 						</code></pre>
 					</section>
 					<section>
 						<h2>Common JS</h2>
-						<pre><code>
-// salute.js
+						<pre class="fragment"><code>
+//salute.js
 var mySalute = 'Hello';
 module.exports = mySalute;
 						</code></pre>
 						<pre class="fragment"><code>
-// app.js
+//app.js
 var mySalute = require('./salute');
 var Result = mySalute + 'world!';
 						</code></pre>
 						<aside class="notes">
-							<p>Note that we didn’t use the full filename salute.js but ./salute when calling require, so you can omit the extension of your scripts. ./ means that the salute module is in the same directory as the world module.</p>
+							<p>CommonJS defined a module format to solve JavaScript scope issues by making sure each module is executed in its own namespace.</p>
+							<p>By forcing modules to explicitly export those variables it wants to expose to the “universe”, and also by defining those other modules required to properly work.</p>
+							<p>you can omit the extension of your scripts. ./ means that the salute module is in the same directory as the world module.</p>
 						</aside>
 					</section>
 					<section>
@@ -312,22 +314,7 @@ console.log(foo);
 							<p>Good authors divide their books into chapters and sections; good programmers divide their programs into modules.</p>
 						</aside>
 					</section>
-					<!--<section>
-						<h2>CommonJS</h2>
-						<ul>
-							<li>exports</li>
-							<li class="fragment">require</li>
-							<li class="fragment">module.exports</li>
-							<li class="fragment">require can be called anywhere</li>
-							<li class="fragment">Circular dependency is allowed</li>
-							<li class="fragment">Browsers require a loader library or transpiling.</li>
-						</ul>
-						<br>
-						<a href="http://know.cujojs.com/tutorials/modules/authoring-cjs-modules"></a>
-						<aside class="notes">
-							<p>exports vs module.exports <a href="http://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-node-js">stackoverflow</a></p>
-						</aside>
-					</section>
+					
 					<section>
 						<h2>ES6 module</h2>
 						<ul>
@@ -335,13 +322,16 @@ console.log(foo);
 							<li>Support for cyclic dependencies between modules</li>
 						</ul>
 						<br>
+						<br>
+						<br>
+						<br>
 						<a href="http://www.2ality.com/2014/09/es6-modules-final.html">es6 modules</a>
 					</section>
 					<section>
 						<h2>ES2015</h2>
 						<pre><code>
 // library.js
-export function square(x) {
+function square(x) {
   return x * x;
 }
 
@@ -349,15 +339,19 @@ export function cube(x) {
   return x * x * x;
 }
 
+export function doubleSquare(x) {
+  return square(x) * square(x);
+}
+
 //or
-export { square, cube };
+export { cube, doubleSquare };
 						</code></pre>
 						<pre class="fragment"><code>
-import { square, cube } from 'library';
+import { cube, doubleSquare } from 'library';
 console.log(cube(4)); // 16
 						</code></pre>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>es6</h2>
 						<pre><code>
 //file.js
@@ -383,7 +377,7 @@ getUsefulContents("http://www.example.com", data => {
 						</code></pre>
 						<br>
 						<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">MDN: es6 import</a>
-					</section> 
+					</section>  -->
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
@@ -400,21 +394,25 @@ export default 42;
 export default function foo() {};       
 
 						</code></pre>
+						<aside class="notes">
+							<p></p>
+						</aside>
 					</section>
 					<section>
 						<h2>es6 export</h2>
 						<pre><code>
-// export an existing variable
+//export an existing variable
 export { encrypt };           
 
-// export a variable as a new name
-export { decrypt as dec };        
-
-// export an export from another module
+//export a variable as a new name
+export { decrypt as dec };                       
+						</code></pre>
+						<pre class="fragment"><code class="hljs javascript">
+//export an export from another module
 export { encrypt as en } from 'crypto';
 
-// export all exports from another module 
-export * from 'crypto';                 
+//export all exports from another module 
+export * from 'crypto';  
 						</code></pre>
 						<br>
 						<a href="https://github.com/ModuleLoader/es6-module-loader/wiki/Brief-Overview-of-ES6-Module-syntax">overview of es6 module</a>
@@ -466,58 +464,62 @@ export var another = {};
 						</code></pre>
 						<br>
 						<a href="https://www.sitepoint.com/music-streaming-app-electron-react-es6/">react es6</a>
-					</section>-->
-				</section>
-				<section>
-					<section>
-						<h1>Folder Structure</h1>
-					</section>
-					<!-- <section>
-						<h2>No common rule</h2>
-						<ul>
-							<li>Whatever works for your project</li>
-							<li>But you need one</li>
-						</ul>
 					</section>
 					<section>
-						<img src="images/folderStructure.png" alt="">
-						<aside class="notes">
-							<p>Old Style: M, V, C style</p>
-							<p>Controller, service, directory</p>
-						</aside>
-					</section>
-					<section>
-						<img src="images/folderStructure2.png" alt="">
+						<table>
+						  <thead>
+						    <tr>
+						      <th>&nbsp;</th>
+						      <th>Scripts</th>
+						      <th>Modules</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>HTML element</td>
+						      <td><code>&lt;script&gt;</code></td>
+						      <td><code>&lt;script type="module"&gt;</code></td>
+						    </tr>
+						    <!-- <tr>
+						      <td>Default mode</td>
+						      <td>non-strict</td>
+						      <td>strict</td>
+						    </tr>
+						     --><tr>
+						      <td>Top-level variables</td>
+						      <td>global</td>
+						      <td>local to module</td>
+						    </tr>
+						    <tr>
+						      <td>Value of <code>this</code> at top level</td>
+						      <td><code>window</code></td>
+						      <td><code>undefined</code></td>
+						    </tr>
+						    <tr>
+						      <td>Executed</td>
+						      <td>synchronously</td>
+						      <td>asynchronously</td>
+						    </tr>
+						    <tr>
+						      <td>Declarative imports (<code>import</code> statement)</td>
+						      <td>no</td>
+						      <td>yes</td>
+						    </tr>
+						    <tr>
+						      <td>Programmatic imports (Promise-based API)</td>
+						      <td>yes</td>
+						      <td>yes</td>
+						    </tr>
+						    <!-- <tr>
+						      <td>File extension</td>
+						      <td><code>.js</code></td>
+						      <td><code>.js</code></td>
+						    </tr> -->
+						  </tbody>
+						</table>
 						<br>
-						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
-					</section> 
-					<section>
-						<img style="height:700px" src="images/folderStructure3.png" alt="">
-					</section>-->
-					<section>
-						<img src="images/folderStructure4.png" alt="">
-						<aside class="notes">
-							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
-						</aside>
+						<a href="http://exploringjs.com/es6/ch_modules.html#sec_modules-vs-scripts">es6 modules</a>
 					</section>
-					<section>
-						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
-						<img src="images/folderStructure5.png" alt="">
-						<br>
-						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
-					</section>
-					<!-- <section>
-						<h2>BEM</h2>
-						<ul>
-							<li>logically and functionally independent page component</li>
-							<li class="fragment">equivalent of a component in Web Components</li>
-							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
-							<li class="fragment">Element: a small part of block</li>
-							<li class="fragment">Modifier: Block looks due to behavior</li>
-							<li class="fragment"></li>
-						</ul>
-						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
-					</section> -->
 				</section>
 				<section>
 					<section>
@@ -556,7 +558,7 @@ export var another = {};
  npm install webpack -g
 						</code></pre>
 						<pre class="fragment"><code>
-webpack main.js bundle.js
+webpack app.js bundle.js
 						</code></pre>
 						<pre class="fragment"><code>
 npm install css-loader style-loader
@@ -610,67 +612,82 @@ Hints
 					</section>
 					<section>
 						<h2>Code Splitting</h2>
-						<pre><code>
-require.ensure(dependencies, callback)
-						</code></pre>
-						<pre class="fragment"><code>
-require.ensure(["module-a", "module-b"], function(require) {
-    var a = require("module-a");
-    // ...
+						<ul>
+							<li class="fragment">Define split points in code</li>
+							<li class="fragment">Webpack resolve dependencies, create output files</li>
+							<li class="fragment">Small Initial download</li>
+							<li class="fragment">Load chunks on demand  during runtime</li>
+						</ul>
+						<pre class="fragment"><code class="hljs javascript">
+var a = require("a");
+var b = require("b");
+
+require.ensure(["c"], function(require) {
+    require("b").xyz();
+    var d = require("d");
 });
 						</code></pre>
-						<ul>
-							<li class="fragment">Common Chunk Plugin</li>
-							<li class="fragment"></li>
-							<li class="fragment">If two chunks contain the same modules, they are merged into one.</li>
-						</ul>
+						
 						<br>
-						<a href="https://webpack.github.io/docs/code-splitting.html">code splitting</a>
+						<a href="https://github.com/webpack/webpack/tree/master/examples/code-splitting">code splitting</a>
+						<br>
+						<a href="http://jonathancreamer.com/advanced-webpack-part-1-the-commonschunk-plugin/">Common Chunk Plugin</a>
+						<aside class="notes">
+							<p>For big web apps it’s not efficient to put all code into a single file, especially if some blocks of code are only required under some circumstances. Webpack has a feature to split your codebase into “chunks” which are loaded on demand. </p>
+							<ul>
+								<li> a and b are required normally via CommonJS
+								<li>c is depended through the require.ensure array.
+								<ul>
+									<li>This means: make it available, but don't execute it
+									<li>webpack will load it on demand	
+								</ul>
+								
+								<li>b and d are required via CommonJs in the require.ensure callback
+								<li>webpack detects that these are in the on-demand-callback and
+								<li>will load them on demand
+								<li>webpacks optimizer can optimize b away
+								<li>as it is already available through the parent chunks
+								<p>You can see that webpack outputs two files/chunks:</p>
+
+								output.js is the entry chunk and contains
+								the module system
+								chunk loading logic
+								the entry point example.js
+								module a
+								module b
+								1.js is an additional chunk (on demand loaded) and contains
+								module c
+								module d
+							</ul>
+						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>Single page App</h2>
-						<ul>
-							<li>entry chunk
-								<ul>
-									<li>async require -> chunk X
-									<li>async require -> chunk Y
-								</ul>
-							</li>
-							<li>Chunk X
-								<ul>
-									<li>module a
-									<li>module b
-									<li>module c</li>
-								</ul>
-							</li>
-							<li>Chunk Y
-								<ul>
-									<li>module a
-									<li>module b
-									<li>module d</li>
-								</ul>
-							</li>
-						</ul>
+						<pre><code>
+module.exports = {
+    entry: { a: "./a", b: "./b" },
+    output: { filename: "[name].js" },
+    plugins: [ new webpack.optimize.CommonsChunkPlugin("init.js") ]
+}
+						</code></pre>
 						<br>
 						<a href="https://github.com/webpack/webpack/tree/master/examples/extra-async-chunk">async chunk</a>
 						<aside class="notes">
 							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
 							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
 						</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>async loading</h2>
 						<pre><code>
 if (window.location.pathname === '/feed') {
-  showLoadingState();
-  require.ensure([], function() { // this syntax is weird but it works
-    hideLoadingState();
-    require('./feed').show(); // when this function is called, the module is guaranteed to be synchronously available.
+  require.ensure([], function() { 
+    // when this function is called, the module is guaranteed 
+    // to be synchronously available.
+    require('./feed').show(); 
   });
 } else if (window.location.pathname === '/profile') {
-  showLoadingState();
   require.ensure([], function() {
-    hideLoadingState();
     require('./profile').show();
   });
 }
@@ -682,6 +699,10 @@ if (window.location.pathname === '/feed') {
 							<p>Specify the split point where you want to load asynchronously. For example:</p>
 							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
 						</aside>
+					</section>
+					<section>
+						<h2>open as much as we needed</h2>
+						<img class="fragment" src="images/barbar.jpg" alt="">
 					</section>
 					<!-- <section>
 						<h2>webpack es6</h2>
@@ -749,17 +770,23 @@ $ = if (ENV === "desktop") {
 }
 						</code></pre>
 						<small>Will produce 2 separate bundles with different dependencies...</small>
-					</section> -->
-					<section>
-						<h2>open as much as we needed</h2>
-						<img class="fragment" src="images/barbar.jpg" alt="">
-					</section>
+					</section> 
 					<section>
 						<h2>Hot Module Replacement</h2>
 						<small>Hot Module Replacement (HMR) is a way of exchanging modules in a running application (and adding/removing modules). You basically can update changed modules without a full page reload.</small>
+						<ul>
+							<li>webpack plugins</li>
+							<li>code splitting</li>
+							<li>webpack dev server</li>
+						</ul>
+						<br>
+						<br>
 						<br>
 						<a href="http://webpack.github.io/docs/hot-module-replacement-with-webpack.html">hot module replacement</a>
-					</section>
+						<aside class="notes">
+							<p>exchanges, adds, or removes modules while an application is running without a page reload.</p>
+						</aside>
+					</section>-->
 				</section>
 				<section>
 					<section>
@@ -1009,12 +1036,66 @@ describe("A spec using beforeEach and afterEach", function() {
 						</code></pre>
 						<br>
 						<a href="http://jasmine.github.io/edge/introduction.html">Jasmine</a>
-					</section>
-					<section>
-						<h2>Test Runner and code coverage</h2>
 						<br>
 						<a href="http://jasmine.github.io/2.0/ajax.html">Jamine mock ajax</a>
 					</section>
+					<section>
+						<h2>Test Runner and code coverage</h2>
+						<img src="images/coverage.png" alt="">
+						<br>
+						<a href="https://gotwarlost.github.io/istanbul/public/coverage/lcov-report/index.html">Coverage Report</a>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Folder Structure</h1>
+					</section>
+					<!-- <section>
+						<h2>No common rule</h2>
+						<ul>
+							<li>Whatever works for your project</li>
+							<li>But you need one</li>
+						</ul>
+					</section>
+					<section>
+						<img src="images/folderStructure.png" alt="">
+						<aside class="notes">
+							<p>Old Style: M, V, C style</p>
+							<p>Controller, service, directory</p>
+						</aside>
+					</section>
+					<section>
+						<img src="images/folderStructure2.png" alt="">
+						<br>
+						<a href="http://marmelab.com/blog/2015/12/17/react-directory-structure.html">React Folder Structure</a>
+					</section> 
+					<section>
+						<img style="height:700px" src="images/folderStructure3.png" alt="">
+					</section>-->
+					<section>
+						<img src="images/folderStructure4.png" alt="">
+						<aside class="notes">
+							<p>Configuring the test runner (either Jest or Mocha) is easy: just make it run the tests in ./src/**/*-spec.js.</p>
+						</aside>
+					</section>
+					<section>
+						<h2><a href="https://github.com/mgechev/angular2-seed#directory-structure">angular 2: directory structure</a></h2>
+						<img src="images/folderStructure5.png" alt="">
+						<br>
+						<a href="https://angular.io/docs/ts/latest/guide/style-guide.html">angular2 style guide</a>
+					</section>
+					<!-- <section>
+						<h2>BEM</h2>
+						<ul>
+							<li>logically and functionally independent page component</li>
+							<li class="fragment">equivalent of a component in Web Components</li>
+							<li class="fragment">block encapsulates behavior (JavaScript), templates, styles (CSS), and other implementation technologies</li>
+							<li class="fragment">Element: a small part of block</li>
+							<li class="fragment">Modifier: Block looks due to behavior</li>
+							<li class="fragment"></li>
+						</ul>
+						<a href="https://en.bem.info/methodology/key-concepts/">BEM key concepts</a>
+					</section> -->
 				</section>
 				<section>
 					<section>
@@ -1785,8 +1866,16 @@ Pressing tab after /**
 						<blockquote>Writing good code is hard and reproducing client-side errors is even harder</blockquote>
 					</section>
 					<section>
-						<pre><code>
-//windows.onError
+						<h2>Log JavaScript Error</h2>
+						<pre><code class="hljs javascript">
+window.onerror = function(message, source, lineno, colno, error) { 
+  var req = new XMLHttpRequest();
+  var params = 'msg='' + encodeURIComponent(msg) + 
+  			'&amp;url=' + encodeURIComponent(url) +
+  			'&amp;line='' + line;
+  req.open('POST', '/scripts/logerror.php');
+  req.send(params);
+}
 						</code></pre>
 					</section>
 				</section>
@@ -1891,12 +1980,8 @@ function parseDate (dateString){
 					<section>
 						<h2>Security</h2>
 						<a href="https://github.com/leizongmin/js-xss">js xss</a>
-					</section>
-					<section>
-						<h2>Facebook sixth sense</h2>
-						<p>can use as an example</p>
 						<br>
-						<a href="http://kirszenberg.com/facebook-sixth-sense">link</a>
+						<a href="http://kirszenberg.com/facebook-sixth-sense">Facebook sixth sense</a>
 					</section>
 				</section>
 				<section>
@@ -1904,18 +1989,85 @@ function parseDate (dateString){
 						<h1>Module Everything</h1>
 					</section>
 					<section>
-						<h2></h2>
-						<ul>
+						<h2>Writing CSS is easy.</h2>
+						<small class="fragment">Writing maintainable CSS is hard.</small>
+						<br>
+						<img class="fragment" src="images/border.png" alt="">
+						<img class="fragment" src="images/build2.jpg" alt="">
+						<!-- <ul>
+							<li><a href="https://addyosmani.com/blog/removing-unused-css/">Remove Unused CSS</a></li>
 							<li>Use a prefix (for class names)</li>
 							<li>No CSS selector nesting</li>
-							<li>Build components with BEM naming</li>
-							<li></li>
-						</ul>
+						</ul> -->
+						<br>
+						<br>
 						<br>
 						<a href="https://medium.com/peergrade-io/structuring-css-in-large-projects-37f1695f5ec8#.bicuecsn4">Structure large project css</a>
+						<br>
+						<a href="http://maintainablecss.com/chapters/reuse/">reuse CSS</a>
+						<br>
+						<a href="https://github.com/gajus/react-css-modules">react css module</a>
 					</section>
 					<section>
-						<h2>Module Image</h2>
+						<h2>CSS Module</h2>
+						<pre><code class="hljs sass">
+//contianer.sass
+@import 'stylesheets/config/colors'
+.container
+  background: $blue
+						</code></pre>
+						<pre class="fragment"><code class="hljs sass">
+
+//header.sass
+@import 'stylesheets/config/colors'
+.header
+  font-weight: bold
+  font-size: 3em
+  color: $red
+						</code></pre>
+						<pre class="fragment"><code>
+//footer.sass
+.footer
+  font-style: italic
+						</code></pre>
+						<br>
+						<a href="https://github.com/bensmithett/webpack-css-example">css build with webpack</a>
+					</section>
+					<section>
+						<h2>CSS build with Webpack</h2>
+						<br>
+						<pre><code>
+//webpack-css-example
+npm install
+npm run build
+Take a look at the generated CSS in build/
+						</code></pre>
+					</section>
+					<section>
+						<h2>generated CSS</h2>
+						<pre><code class="hljs css">
+/*app.css*/
+html {
+  font-family: sans-serif; }
+.header {
+  font-weight: bold;
+  font-size: 3em;
+  color: #f00; }
+.u-clearfix {
+  overflow: hidden; }
+.footer {
+  font-style: italic; }
+.container {
+  background: steelblue; }
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Module Everything else</h2>
+						<br>
+						<a href="http://julienrenaux.fr/2015/03/30/introduction-to-webpack-with-practical-examples/">Webpack practical examples</a>
+						<br>
+						<a href="https://github.com/webpack/html-loader">html loader</a>
 						<br>
 						<a href="https://github.com/tcoopman/image-webpack-loader">webpack image loader</a>
 					</section>
@@ -2018,9 +2170,6 @@ document.styleSheets
 							<li class="fragment">Modularize Everything</li>
 						</ol>
 					</section>
-					<section>
-						
-					</section>
 				</section>
 				<section>
 					<section>
@@ -2044,13 +2193,15 @@ document.styleSheets
 					</section>
 					<section>
 						<h2>Real Development Process</h2>
-						<ul>
-							<li class="fragment">Biggest jerk makes all the big decisions</li>
+						<ol>
+							<li class="fragment">Biggest jerk makes all big decisions</li>
 							<li class="fragment">GDD: Google Driven Development</li>
-							<li class="fragment">SDD: Stackoverflow Driven Development</li>
-							<li class="fragment">BDD: Bug Driven Development</li>
-							<li class="fragment">Every bug is created by the guy left</li>
-						</ul>
+							<li value="2" style="text-decoration:line-through" class="fragment">SDD: Stackoverflow Driven Development</li>
+							<li class="fragment">Always report progress as “It’s Almost Done”</li>
+							<li class="fragment">Don't finish the feature when there is code freeze.</li>
+							<li class="fragment">Build: put green dot on project manager's monitor</li>
+							<li class="fragment">Reduce JSlint warnings: //ignore file at top</li>
+						</ol>
 						<br>
 						<br>
 						<br>
@@ -2061,6 +2212,9 @@ document.styleSheets
 							<p>Our development methodology is not agile driven, test driven or behavior driven. It is google driven or Stackoverflow driven</p>
 							<p>In BDD, i mean bug driven development; all bug is created by the guy who left the job</p>
 							<p>All customer request is out of scope</p>
+							<li class="">BDD: Bug Driven Development</li>
+
+							<li class="">Every bug is created by the guy left</li>
 							<p> when you manager asks about the progress status</p>
 							<p>Give a oath that we will put enough description in the JIRA tickets so that QA can read and understand</p>
 						</aside>
@@ -2080,7 +2234,7 @@ document.styleSheets
 							<p>Management By Panic (MP) methodology. Every management action is predicated by an “emergency” change. Usually executed in the absence of planning.</p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>How to write quality code</h2>
 						<ul>
 							<li class="fragment">CPM: Copy Paste Modify Patterns</li>
@@ -2097,7 +2251,7 @@ document.styleSheets
 							<p>Because after code freeze, there will be a real code freeze. And one week after the real code freeze there will be a Real real code freeze. Ultimate code freeze. Client waiting code freeze. etc.</p>
 
 						</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>measure code quality</h2>
 						<img class="fragment" src="images/wtf.png" alt="">
