@@ -1,3 +1,3 @@
+var salute = require('./salute');
 var style = require('./style.css')
-var bar = require('./bar')
-document.write(bar);
+document.write(salute);
