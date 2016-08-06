@@ -300,7 +300,7 @@ console.log(salute.bar);
 						<h2>Tree Dependency</h2>
 						<pre><code>
 //bar.js
-exports.bar = 'Bar not so far!';
+exports.bar = 'Bar is not so far!';
 						</code></pre>
 						<pre class="fragment"><code>
 //foo.js
@@ -367,7 +367,7 @@ export { cube, doubleSquare };
 						</code></pre>
 						<pre class="fragment"><code>
 import { cube, doubleSquare } from 'library';
-console.log(cube(4)); // 16
+console.log(cube(4)); // 64
 						</code></pre>
 					</section>
 					<!-- <section>
@@ -413,11 +413,19 @@ export default 42;
 export default function foo() {};       
 
 						</code></pre>
+						<pre class="fragment"><code class="hljs javascript">
+//export an export from another module
+export { encrypt as en } from 'crypto';
+
+//export all exports from another module 
+export * from 'crypto';  
+						</code></pre>
+						
 						<aside class="notes">
 							<p></p>
 						</aside>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>es6 export</h2>
 						<pre><code>
 //export an existing variable
@@ -435,7 +443,7 @@ export * from 'crypto';
 						</code></pre>
 						<br>
 						<a href="https://github.com/ModuleLoader/es6-module-loader/wiki/Brief-Overview-of-ES6-Module-syntax">overview of es6 module</a>
-					</section>
+					</section> -->
 					<section>
 						<h2>import</h2>
 						<pre class=""><code>
@@ -636,14 +644,18 @@ Hints
 							<li class="fragment">Small Initial download</li>
 							<li class="fragment">Load chunks on demand  during runtime</li>
 						</ul>
-						<pre class="fragment"><code class="hljs javascript">
-var a = require("a");
-var b = require("b");
-
-require.ensure(["c"], function(require) {
-    require("b").xyz();
-    var d = require("d");
-});
+						<pre class="fragment"><code>
+if (window.location.pathname === '/feed') {
+  require.ensure(['/feedCore'], function() { 
+    // when this function is called, the module is guaranteed 
+    // to be synchronously available.
+    require('./feed').show(); 
+  });
+} else if (window.location.pathname === '/profile') {
+  require.ensure(['/profileCore'], function() {
+    require('./profile').show();
+  });
+}
 						</code></pre>
 						
 						<br>
@@ -694,7 +706,7 @@ module.exports = {
 							<p>Let's say you have a profile page and a feed page. You don't want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one "main module" (called an entrypoint) per page:</p>
 							<p>For profile, insert <script src="build/Profile.js"></script> into your page.</p>
 						</aside>
-					</section> -->
+					</section> 
 					<section>
 						<h2>async loading</h2>
 						<pre><code>
@@ -717,7 +729,7 @@ if (window.location.pathname === '/feed') {
 							<p>Specify the split point where you want to load asynchronously. For example:</p>
 							<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
 						</aside>
-					</section>
+					</section>-->
 					<section>
 						<h2>open as much as we needed</h2>
 						<img class="fragment" src="images/barbar.jpg" alt="">
@@ -815,7 +827,7 @@ $ = if (ENV === "desktop") {
 					</section>
 					<section>
 						<h2>Make things testable</h2>
-						<h4>Single Purpose function</h4>
+						<h4>Single Activity function</h4>
 						<pre class="fragment"><code>
 function createGreeting(name, location, age) {
     let greeting;
@@ -1150,14 +1162,14 @@ if(!el.offsetWidth || !el.offsetHeight) {
 }
 						</code></pre>
 						<pre class="fragment"><code>
-//or move to a variable
+//move to a variable
 var isVisible = el.offsetWidth && el.offsetHeight;
 
 if(!isVisible) {
 }
 						</code></pre>
 						<pre class="fragment"><code>
-//create separate function
+//or create separate function
 function isVisible(el) {
     return el.offsetWidth && el.offsetHeight;
 }
@@ -1174,11 +1186,11 @@ if(!isVisible(el)) {
 					<section>
 						<h2>Boolean flags</h2>
 						<pre><code>
-myThing.setData({ x: 1 }, true);
+myThings.setData({ x: 1 }, true);
 						</code></pre>
 						<p class="fragment">What is the menaing of true?</p>
 						<pre class="fragment"><code>
-myThing.mergeData({ x: 1 });
+myThings.mergeData({ x: 1 });
 						</code></pre>
 						<aside class="notes">
 							<p>What is the meaning of true?</p>
@@ -1205,6 +1217,8 @@ if (isNaNForUndefined) {
 }
 						</code></pre>
 						<aside class="notes">
+							<p> we write comment when we have time</p>
+							<p> but most of the time, client is waiting, manager is yelling, my paycheck is hanging, </p>
 							<p>Code gets refactored or fix bugs and comment becomes irrelevant.</p>
 							<p>People might ignore comment</p>
 							<p>But it's hard to ignore variable name</p>
@@ -2029,6 +2043,12 @@ function parseDate (dateString){
 						<a href="http://maintainablecss.com/chapters/reuse/">reuse CSS</a>
 						<br>
 						<a href="https://github.com/gajus/react-css-modules">react css module</a>
+						<aside class="notes">
+							<li>css everything is global</li>
+							<li><a href="https://addyosmani.com/blog/removing-unused-css/">Remove Unused CSS</a></li>
+							<li>Use a prefix (for class names)</li>
+							<li>No CSS selector nesting</li>
+						</aside>
 					</section>
 					<section>
 						<h2>CSS Module</h2>
@@ -2176,7 +2196,7 @@ document.styleSheets
 				</section>
 				<section>
 					<h2>Take a Moment</h2>
-					<p>Press B or . on your keyboard to pause the presentation.</p>
+					<p>Press B </p>
 				</section>
 				<section>
 					<section>
