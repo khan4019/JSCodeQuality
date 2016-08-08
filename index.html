@@ -678,6 +678,13 @@ if (window.location.pathname === '/feed') {
 						<aside class="notes">
 							<p>For big web apps it’s not efficient to put all code into a single file, especially if some blocks of code are only required under some circumstances. Webpack has a feature to split your codebase into “chunks” which are loaded on demand. </p>
 							<ul>
+								<li>feedCore is depended through the require.ensure array.
+								<ul>
+									<li>This means: make it available, but don't execute it
+									<li>webpack will load it on demand	
+								</ul>
+							</ul>
+							<ul>
 								<li> a and b are required normally via CommonJS
 								<li>c is depended through the require.ensure array.
 								<ul>
@@ -1965,7 +1972,7 @@ unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 						</code></pre>
 						<br>
-						<a href="">you might not need Jquery</a>
+						<a href="http://youmightnotneedjquery.com/">you might not need Jquery</a>
 						<aside class="notes">
 							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
 						</aside>
