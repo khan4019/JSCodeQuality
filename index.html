@@ -25,7 +25,11 @@
 			.hide{
 				display:none !important;
 			}
-			.text-normal a{
+			.noTextFormat a{
+				text-transform: none;
+			}
+
+			.noTextFormat span{
 				text-transform: none;
 			}
 		</style>
@@ -49,19 +53,25 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>JS Code Quality</h1>	
-					<p class="hide">for Large JS Application</p>
-					<br/>
-					<br>
-					<h2 class="fragment text-normal"><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </h2>
-					<br>
-					<br>
-					<br/>
-					<p>
-						<a href="http://thatjsdude.com">JS Dude</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
-					</p>
-					<p>www.thatJSdude.com</p>
-					<small>(youtube.com/user/khanLearning)</small>
+					<section>
+						<h1>JS Code Quality</h1>	
+						<p class="hide">for Large JS Application</p>
+						<br/>
+						<br>
+						<h2 class="fragment noTextFormat"><a href="https://goo.gl/hfwTvi">goo.gl/hfwTvi</a> </h2>
+						<br>
+						<br>
+						<br/>
+						<p>
+							<a href="http://thatjsdude.com">JS Dude</a> / <a href="http://twitter.com/mdkhan005">@mdkhan005</a>
+						</p>
+						<p>www.thatJSdude.com</p>
+						<small>(youtube.com/user/khanLearning)</small>
+					</section>
+					<section>
+						<h2 class="noTextFormat"><span>Md Khan</span></h2>
+						<img style="height:525px;width:550px;" src="images/mk2.jpg" alt="" class="fragment">
+					</section>
 				</section>
 				<!--<section>
 					<section>
@@ -298,9 +308,11 @@ console.log(salute.bar);
 					</section>
 					<section>
 						<h2>Tree Dependency</h2>
-						<pre><code>
+						<pre><code class="hljs javascript">
 //bar.js
-exports.bar = 'Bar is not so far!';
+var privateBar = 'Bar';
+var bar = privateBar + ' is not so far!';
+module.exports = bar;
 						</code></pre>
 						<pre class="fragment"><code>
 //foo.js
@@ -312,13 +324,14 @@ exports.foo = function(){
 						<pre class="fragment"><code>
 //app.js
 var foo = require('./foo');
-console.log(foo);
+console.log(foo());
 						</code></pre>
 					</section>
 					<section>
 						<h2>How to create module</h2>
 						<ul>
-							<li>Single Responsibility</li>
+							<!-- <li>Single Responsibility</li> -->
+							<li>Similar Responsibility</li>
 							<li class="fragment">Have a top-level scope that is not the global scope</li>
 							<li class="fragment">Shared code together</li>
 							<li class="fragment">Think reusability, maintainability, readability</li>
@@ -624,7 +637,7 @@ webpack -p
 webpack --watch  
 						</code></pre>
 					</section>
-					<section>
+					<!-- <section>
 						<pre><code>
 --display-modules
 --diplay-reasons
@@ -635,7 +648,7 @@ performance tool
 Hints
 
 						</code></pre>
-					</section>
+					</section> -->
 					<section>
 						<h2>Code Splitting</h2>
 						<ul>
@@ -646,13 +659,13 @@ Hints
 						</ul>
 						<pre class="fragment"><code>
 if (window.location.pathname === '/feed') {
-  require.ensure(['/feedCore'], function() { 
+  require.ensure(['./feedCore'], function() { 
     // when this function is called, the module is guaranteed 
     // to be synchronously available.
     require('./feed').show(); 
   });
 } else if (window.location.pathname === '/profile') {
-  require.ensure(['/profileCore'], function() {
+  require.ensure(['./profileCore'], function() {
     require('./profile').show();
   });
 }
@@ -664,6 +677,13 @@ if (window.location.pathname === '/feed') {
 						<a href="http://jonathancreamer.com/advanced-webpack-part-1-the-commonschunk-plugin/">Common Chunk Plugin</a>
 						<aside class="notes">
 							<p>For big web apps it’s not efficient to put all code into a single file, especially if some blocks of code are only required under some circumstances. Webpack has a feature to split your codebase into “chunks” which are loaded on demand. </p>
+							<ul>
+								<li>feedCore is depended through the require.ensure array.
+								<ul>
+									<li>This means: make it available, but don't execute it
+									<li>webpack will load it on demand	
+								</ul>
+							</ul>
 							<ul>
 								<li> a and b are required normally via CommonJS
 								<li>c is depended through the require.ensure array.
@@ -827,7 +847,7 @@ $ = if (ENV === "desktop") {
 					</section>
 					<section>
 						<h2>Make things testable</h2>
-						<h4>Single Activity function</h4>
+						<h4>function should do only one thing</h4>
 						<pre class="fragment"><code>
 function createGreeting(name, location, age) {
     let greeting;
@@ -1143,19 +1163,123 @@ describe("A spec using beforeEach and afterEach", function() {
 						<img src="images/module3.jpg" alt="">
 					</section>
 					<section>
-						<h2>2. Build System</h2>
+						<h2>2. Module Bundler</h2>
 						<img src="images/webpack.png" alt="">
 					</section>
 					<section>
 						<h2>3. Make things testable</h2>
 						<img src="images/testing.jpg" alt="">
 					</section>
+					<section>
+						<h2 class="noTextFormat"><span>Trivia-1</span></h2>
+						<pre><code class="hljs html">
+<article>
+    <a href="#">
+        <h1>Hello</h1>
+        <p>I am some text</p>
+    </a>
+</article>
+						</code></pre>
+						<p>Does html support block level links?</p>
+						<br>
+						<br>
+						<br>
+						<br>
+						<a href="http://davidshariff.com/quiz/">Front End Quiz</a>
+						<aside class="notes">
+							<p>Answer is yes</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Trivia -2</h2>
+						<pre><code>
+<img src="mypic.jpg" style="visibility: hidden" alt="My picture">
+						</code></pre>
+						<p>Does the HTML above trigger a http request when the page first loads ?</p>
+						<pre class="fragment"><code class="hljs html">
+<div style="display: none;">
+    <img src="mypic.jpg" alt="My photo">
+</div>
+						</code></pre>
+						<p class="fragment">Does the HTML above trigger a http request when the page first loads?</p>
+						<aside class="notes">
+							<p>First answer is yes</p>
+							<p>Second answer is also yes</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Trivia-3</h2>
+						<pre><code>
+4 + 3 + 2 + "1"
+						</code></pre>
+						<aside class="notes">
+							<p>Anser is 91</p>
+						</aside>
+					</section>
+					<!-- <section>
+						<pre><code class="hljs html">
+<head>
+    <link href="main1.css" rel="stylesheet">
+    <script>
+        alert('Hello World');
+    </script>
+</head>
+						</code></pre>
+						<p>Does main1.css have to be downloaded and parsed before Hello World is alerted?</p>
+					</section> -->
+					<section>
+						<pre><code>
+<head>
+    <link href="main1.css" rel="stylesheet">
+    <link href="main2.css" rel="stylesheet">
+</head>
+						</code></pre>
+						<p>Does main1.css have to be downloaded and parsed before main2.css can be fetched?</p>
+						<aside class="notes">
+							<p>Answer is no</p>
+						</aside>
+					</section>
+					<section>
+						<pre><code>
+<head>
+    <link href="main1.css" rel="stylesheet">
+</head>
+<body>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <link href="main2.css" rel="stylesheet">
+</body>
+						</code></pre>
+						<p>Does main2.css have to be downloaded and parsed before Paragraph 1 is rendered on the page?</p>
+						<aside class="notes">
+							<p>Answer is: yes</p>
+						</aside>
+					</section>
+					<section>
+						<pre><code>
+var foo = function bar() {}; 
+alert(typeof bar);
+						</code></pre>
+						<p></p>
+						<aside class="notes">
+							<p>answer is undefined</p>
+						</aside>
+					</section>
+					<section>
+						<pre><code>
+var arr = [];
+arr[0]  = 'a';
+arr[1]  = 'b';
+arr.foo = 'c';
+alert(arr.length);
+						</code></pre>
+					</section>
 				</section>
 				<section>
 					<section>
 						<h1>Coding Style</h1>
 					</section>
-					<section>
+					<!-- <section>
 						<h2>conditional expression</h2>
 						<pre><code>
 if(!el.offsetWidth || !el.offsetHeight) {
@@ -1182,7 +1306,7 @@ if(!isVisible(el)) {
 						<aside class="notes">
 							<p>If you have multiple conditional expression move them to a function</p>
 						</aside>
-					</section>
+					</section> -->
 					<section>
 						<h2>Boolean flags</h2>
 						<pre><code>
@@ -1366,7 +1490,8 @@ for (var i = 0; i < letNodes.length; i++) {
 let i, len, dragonball,
     items = getItems(),
     goSportsTeam = true;
-
+						</code></pre>
+						<pre class="fragment"><code>
 // bad
 let i;
 const items = getItems();
@@ -1846,6 +1971,8 @@ compact(["foo", 0]);
 unique(["foo", "foo"]);
 union(["foo"], ["bar"], ["foo"]);
 						</code></pre>
+						<br>
+						<a href="http://youmightnotneedjquery.com/">you might not need Jquery</a>
 						<aside class="notes">
 							<p>Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:</p>
 						</aside>
@@ -2203,10 +2330,10 @@ document.styleSheets
 						<h1>Five Things</h1>
 					</section>
 					<section>
-						<h2>Summary</h2>
+						<h2>Five Things</h2>
 						<ol>
 							<li class="fragment">Module</li>
-							<li class="fragment">Build System</li>
+							<li class="fragment">Module Bundler</li>
 							<li class="fragment">Make things testable</li>
 							<li class="fragment">Coding Style</li>
 							<li class="fragment">Modularize Everything</li>
@@ -2333,6 +2460,10 @@ document.styleSheets
 						<br>
 						<a href="http://www.dailymail.co.uk/travel/travel_news/article-2722591/Passengers-wear-clothes-check-staff-say-luggage-overweight.html">avoid check in fee</a>
 					</section>
+				</section>
+				<section>
+					<h2>One Thing</h2>
+					<small class="fragment1">Use Webpack</small>
 				</section>
 				<section>
 					<h2>Thank you</h2>
